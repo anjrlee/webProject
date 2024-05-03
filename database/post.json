@@ -1,0 +1,16 @@
+[
+    {
+        "title":"bicycle",
+        "poster": "user1@gmail.com",
+        "content" :"ooxx",
+        "type" : "record",
+        "tag" : ["funny","friend"]
+    },
+    {
+        "title":"bicycle",
+        "poster": "user1@gmail.com",
+        "content" :"ooxx",
+        "type" : "record",
+        "tag" : ["funny","friend"]
+    }
+]
