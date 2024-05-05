@@ -3,16 +3,20 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Laravel</title>
+    <title>央視世界紀錄</title>
+    <link href="../css/app.css" rel="stylesheet">
   </head>
   <body>
     <div id="app">
-      <div class="links">
-        <!-- 建立 Vue Router 連結-->
+      <!--<div class="links">
         <div class="title">央視世界紀錄</div>
+
+      </div>-->
+      <!--<div class="sideBar">
+        <div class="sideBarWord">Posts</div>
         <router-link to="/home">Home</router-link>
         <router-link to="/ExampleComponent">login</router-link>
-      </div>
+      </div>-->
 
       <!-- Vue Router 代入的內容 -->
       <router-view></router-view>
@@ -29,13 +33,34 @@
     height:15%;
     width:100%;
     position: absolute;
-    background-color:black;
+    background-color:rgb(116, 46, 46);
     text-align:center;
 }
 
 .title{
-    color:white;
+    position: relative;
+    background-color: antiquewhite;
+    color:rgb(0, 0, 0);
     font-size: 5vh;
     font-weight: bold;
+    margin:10%;
 }
+
+.sideBar{
+  height: 100%;
+  position: absolute;
+  width:20%;
+  left:0%;
+  top:0%;
+  background-color: black;
+}
+
+.sideBarWord{
+  position: relative;
+  height: 30%;
+  width:80%;
+  background-color: white;
+  margin:10%;
+}
+
 </style>

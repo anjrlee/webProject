@@ -5164,7 +5164,7 @@ window.Vue = (__webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js
 vue__WEBPACK_IMPORTED_MODULE_1__["default"].component('ExampleComponent', (__webpack_require__(/*! ./components/ExampleComponent.vue */ "./resources/js/components/ExampleComponent.vue")["default"]));
 vue__WEBPACK_IMPORTED_MODULE_1__["default"].component('home', (__webpack_require__(/*! ./components/Home.vue */ "./resources/js/components/Home.vue")["default"]));
 vue__WEBPACK_IMPORTED_MODULE_1__["default"].component('login', (__webpack_require__(/*! ./components/Login.vue */ "./resources/js/components/Login.vue")["default"]));
-vue__WEBPACK_IMPORTED_MODULE_1__["default"].component('register', (__webpack_require__(/*! ./components/Register.vue */ "./resources/js/components/Register.vue")["default"]));
+//Vue.component('register', require('./components/Register.vue').default);
 vue__WEBPACK_IMPORTED_MODULE_1__["default"].component('addPost', (__webpack_require__(/*! ./components/AddPost.vue */ "./resources/js/components/AddPost.vue")["default"]));
 vue__WEBPACK_IMPORTED_MODULE_1__["default"].component('verify', (__webpack_require__(/*! ./components/Verify.vue */ "./resources/js/components/Verify.vue")["default"]));
 //Vue.component('test', require('./components/ExampleComponent.vue').default);

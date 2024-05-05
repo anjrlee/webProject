@@ -24,7 +24,7 @@ window.Vue = require('vue').default;
 Vue.component('ExampleComponent', require('./components/ExampleComponent.vue').default);
 Vue.component('home', require('./components/Home.vue').default);
 Vue.component('login', require('./components/Login.vue').default);
-Vue.component('register', require('./components/Register.vue').default);
+//Vue.component('register', require('./components/Register.vue').default);
 Vue.component('addPost', require('./components/AddPost.vue').default);
 Vue.component('verify', require('./components/Verify.vue').default);
 //Vue.component('test', require('./components/ExampleComponent.vue').default);
