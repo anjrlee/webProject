@@ -1,18 +1,22 @@
 [
     {
-        "name": "user1",
-        "gender": "female",
+        "name": "user1",//default:anonymous
+        "gender": "female",//default:unknown
         "type": "manager",
-        "email": "user1@gmail.com",
-        "password": "user1Password",
-        "bio": "I'm user1"
+        "email": "user1@gmail.com",//required
+        "password": "user1Password",//required
+        "bio": "I'm user1",
+        "department":"MIS",//required
+        "grade":1
     },
     {
-        "name": "user1",
-        "gender": "female",
+        "name": "user1",//default:anonymous
+        "gender": "female",//default:unknown
         "type": "manager",
-        "email": "user1@gmail.com",
-        "password": "user1Password",
-        "bio": "I'm user1"
-    },
+        "email": "user1@gmail.com",//required
+        "password": "user1Password",//required
+        "bio": "I'm user1",//default:""
+        "department":"MIS",//required
+        "grade":1//required
+    }
 ]

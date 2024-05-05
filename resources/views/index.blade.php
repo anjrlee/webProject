@@ -11,15 +11,16 @@
       <!--<div class="links">
         <div class="title">央視世界紀錄</div>
 
-      </div>-->
-      <!--<div class="sideBar">
+      </div>
+      <div class="sideBar">
         <div class="sideBarWord">Posts</div>
         <router-link to="/home">Home</router-link>
         <router-link to="/ExampleComponent">login</router-link>
       </div>-->
 
       <!-- Vue Router 代入的內容 -->
-      <router-view></router-view>
+      <router-view class="test"></router-view>
+      
     </div> 
     
     <!-- 引入 Vue app -->
@@ -61,6 +62,13 @@
   width:80%;
   background-color: white;
   margin:10%;
+}
+
+.test{
+  width:100%;
+  height:80%;
+  position: absolute;
+  background-color:rgb(48, 83, 114);
 }
 
 </style>
