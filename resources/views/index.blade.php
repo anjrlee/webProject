@@ -19,7 +19,7 @@
       </div>-->
 
       <!-- Vue Router 代入的內容 -->
-      <router-view class="test"></router-view>
+      <router-view></router-view>
       
     </div> 
     

@@ -1,5 +1,5 @@
 <template>
     <div class="container">
-        <h1>addPost</h1>
+        <div class="bg-black w-20 h-1/6 relative"></div>
     </div>
 </template>
