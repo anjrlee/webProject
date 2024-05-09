@@ -19,6 +19,7 @@
       </div>-->
 
       <!-- Vue Router 代入的內容 -->
+      <div class='bg-black h-10 w-full absolute'></div>
       <router-view></router-view>
       
     </div> 
