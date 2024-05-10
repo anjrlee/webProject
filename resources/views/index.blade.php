@@ -8,18 +8,44 @@
   </head>
   <body>
     <div id="app">
-      <!--<div class="links">
-        <div class="title">央視世界紀錄</div>
-
+      <div class="h-[15%] bg-black w-full absolute text-center flex">
+        <div class="h-5/6 w-[4%] relative m-[1%] cursor-pointer">
+            <div class="h-[10%] bg-white w-full relative m-[20%]"></div>
+            <div class="h-[10%] bg-white w-full relative m-[20%]"></div>
+            <div class="h-[10%] bg-white w-full relative m-[20%]"></div>
+        </div>
+        <div class="relative text-white text-[3vw] left-[35%] flex items-center">央視世界紀錄</div>
       </div>
-      <div class="sideBar">
-        <div class="sideBarWord">Posts</div>
-        <router-link to="/home">Home</router-link>
-        <router-link to="/ExampleComponent">login</router-link>
+      
+      <!--<div class="h-full absolute bg-black w-1/5">
+        <div class="h-[8%] w-5/6 bg-gray-200 m-[8%] rounded-full flex">
+          <div class="left-[1%] top-[15%] w-[17%] h-[80%] relative"> <img src='images/searchIcon.png' alt="Search Icon"></div>
+          <div class="w-[70%] h-[60%] top-[23%] left-[5%] relative">
+              <input type="text" class="bg-transparent outline-none"></input>
+          </div>
+        </div>
+
+
+        <div class="sideBarWord">
+        <div class="sideBarTitle">post</div>
+        <div class="sideBarLink"><router-link to="/home">休閒類</router-link></div>
+        <div class="sideBarLink"><router-link to="/ExampleComponent" >學術研究類</router-link></div>
+        <div class="sideBarLink"><router-link to="/ExampleComponent" >校園生活類</router-link></div>
+        </div>
+
+        <div class="sideBarWord">
+          <div class="sideBarTitle"><router-link to="/ExampleComponent" >article</router-link></div>
+        </div>
+
+        <div class="sideBarWord">
+          <div class="sideBarTitle"><router-link to="/ExampleComponent" >add my post</router-link></div>
+        </div>
+
+        
+
       </div>-->
 
       <!-- Vue Router 代入的內容 -->
-      <div class='bg-black h-10 w-full absolute'></div>
       <router-view></router-view>
       
     </div> 
@@ -29,47 +55,25 @@
   </body>
 </html>
 <style>
-.links{
-    top:0%;
-    left:0%;
-    height:15%;
-    width:100%;
-    position: absolute;
-    background-color:rgb(116, 46, 46);
-    text-align:center;
-}
-
-.title{
-    position: relative;
-    background-color: antiquewhite;
-    color:rgb(0, 0, 0);
-    font-size: 5vh;
-    font-weight: bold;
-    margin:10%;
-}
-
-.sideBar{
-  height: 100%;
-  position: absolute;
-  width:20%;
-  left:0%;
-  top:0%;
-  background-color: black;
-}
-
 .sideBarWord{
   position: relative;
-  height: 30%;
   width:80%;
-  background-color: white;
-  margin:10%;
+  margin:15%;
 }
 
-.test{
-  width:100%;
-  height:80%;
-  position: absolute;
-  background-color:rgb(48, 83, 114);
+
+.sideBarLink{
+   color:white;
+   position: relative;
+   margin-left: 15%;
+   margin-bottom: 5%;
 }
 
+.sideBarTitle{
+   color:white;
+   position: relative;
+   margin:9%;
+   font-weight: bold;
+   font-size: 1.7vw;
+}
 </style>

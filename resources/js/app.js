@@ -23,10 +23,12 @@ window.Vue = require('vue').default;
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 Vue.component('ExampleComponent', require('./components/ExampleComponent.vue').default);
 Vue.component('home', require('./components/Home.vue').default);
-Vue.component('login', require('./components/Login.vue').default);
-//Vue.component('register', require('./components/Register.vue').default);
-Vue.component('addPost', require('./components/AddPost.vue').default);
-Vue.component('verify', require('./components/Verify.vue').default);
+Vue.component('login', require('./components/loginRegister/Login.vue').default);
+Vue.component('register', require('./components/loginRegister/Register.vue').default);
+Vue.component('addPost', require('./components/addPost/AddPost.vue').default);
+Vue.component('verify', require('./components/verify/Verify.vue').default);
+Vue.component('profile', require('./components/profile/Profile.vue').default);
+Vue.component('post', require('./components/post/Post.vue').default);
 //Vue.component('test', require('./components/ExampleComponent.vue').default);
 //Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 
