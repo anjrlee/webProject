@@ -1,13 +1,15 @@
 #### about building and running
 - npm run dev =>build after modified (記得build!!!)
 - php artisan serve=> like npm serve, run on localhost
+- npm run watch => 即時build
 
 #### important files' location 
 - ./resources
     - ./resources/js/components : components
     - ./resource/js/router.js
-    - css, images...
+    - css
 - routes : routes
+- image: public/images (important)(大家自己件資料夾!)
 
 #### adding routers(add a page)
 
