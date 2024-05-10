@@ -21,6 +21,16 @@
     ];
 
     ```
+3. register the component in app.js
+```
+Vue.component('xxx', require('./components/folder/xxx.vue').default);
+```
+
+#### work distribution
+addPost,profile:趙苡婷
+loginRegister,verify:蘇亦寧
+post:吳帛軒
+index:李安之
 
 
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
