@@ -32,6 +32,12 @@ loginRegister,verify:蘇亦寧
 post:吳帛軒
 index:李安之
 
+#### problems may encounter
+
+- php artisan serve: fail to open stream... =>composer i
+- php artisan key:generate: fail to open stream from .env =>change env.txt to .env (change the name)
+- npm run dev: 'mix' 不是內部或外部命令、可執行的程式或批次檔。=>npm install
+- npm run watch: 'mix' 不是內部或外部命令、可執行的程式或批次檔。=>npm install
 
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
