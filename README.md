@@ -37,7 +37,7 @@ index:李安之
 #### problems may encounter
 
 - php artisan serve: fail to open stream... =>composer i
-- php artisan key:generate: fail to open stream from .env =>change env.txt to .env (change the name)
+- php artisan key:generate: fail to open stream from .env =>copy env.txt and change the name to .env
 - npm run dev: 'mix' 不是內部或外部命令、可執行的程式或批次檔。=>npm install
 - npm run watch: 'mix' 不是內部或外部命令、可執行的程式或批次檔。=>npm install
 

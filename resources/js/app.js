@@ -1,44 +1,37 @@
-/**
- * First we will load all of this project's JavaScript dependencies which
- * includes Vue and other libraries. It is a great starting point when
- * building robust, powerful web applications using Vue and Laravel.
- */
+import { createApp } from 'vue'; // Import createApp function from Vue 3
+import router from './router.js'; // Import your router configuration
+import './bootstrap'; // Import bootstrap or any other dependencies
 
-import Vue from 'vue';
-import router from './router.js';
+// Remove this line as it's not needed in Vue 3
+// window.Vue = require('vue').default;
 
-require('./bootstrap');
+// Import your Vue components without the .default suffix
 
-window.Vue = require('vue').default;
+import Home from './components/Home.vue';
+import Login from './components/loginRegister/Login.vue';
+import Register from './components/loginRegister/Register.vue';
+import AddPost from './components/addPost/AddPost.vue';
+import Verify from './components/verify/Verify.vue';
+import Profile from './components/profile/Profile.vue';
+import Post from './components/post/Post.vue';
 
-/**
- * The following block of code may be used to automatically register your
- * Vue components. It will recursively scan this directory for the Vue
- * components and automatically register them with their "basename".
- *
- * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
- */
-
-// const files = require.context('./', true, /\.vue$/i)
-// files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
-Vue.component('ExampleComponent', require('./components/ExampleComponent.vue').default);
-Vue.component('home', require('./components/Home.vue').default);
-Vue.component('login', require('./components/loginRegister/Login.vue').default);
-Vue.component('register', require('./components/loginRegister/Register.vue').default);
-Vue.component('addPost', require('./components/addPost/AddPost.vue').default);
-Vue.component('verify', require('./components/verify/Verify.vue').default);
-Vue.component('profile', require('./components/profile/Profile.vue').default);
-Vue.component('post', require('./components/post/Post.vue').default);
-//Vue.component('test', require('./components/ExampleComponent.vue').default);
-//Vue.component('example-component', require('./components/ExampleComponent.vue').default);
-
-/**
- * Next, we will create a fresh Vue application instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
-
-const app = new Vue({
-    el: '#app',
-    router
+// Create a new Vue app instance using createApp
+const app = createApp({
+    // App options here
 });
+
+// Register your components using the component method
+
+app.component('home', Home);
+app.component('login', Login);
+app.component('register', Register);
+app.component('addPost', AddPost);
+app.component('verify', Verify);
+app.component('profile', Profile);
+app.component('post', Post);
+
+// Use the router with the app
+app.use(router);
+
+// Mount the app to the element with id 'app'
+app.mount('#app');
