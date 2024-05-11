@@ -7,13 +7,15 @@ import './bootstrap'; // Import bootstrap or any other dependencies
 
 // Import your Vue components without the .default suffix
 
-import Home from './components/Home.vue';
+import Home from './components/index/Home.vue';
+import Articles from './components/index/articles.vue';
 import Login from './components/loginRegister/Login.vue';
 import Register from './components/loginRegister/Register.vue';
 import AddPost from './components/addPost/AddPost.vue';
 import Verify from './components/verify/Verify.vue';
 import Profile from './components/profile/Profile.vue';
 import Post from './components/post/Post.vue';
+
 
 // Create a new Vue app instance using createApp
 const app = createApp({
@@ -29,6 +31,7 @@ app.component('addPost', AddPost);
 app.component('verify', Verify);
 app.component('profile', Profile);
 app.component('post', Post);
+app.component('articles', Articles);
 
 // Use the router with the app
 app.use(router);

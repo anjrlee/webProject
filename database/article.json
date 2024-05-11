@@ -1,8 +1,10 @@
 [
     {
         "title":"hello world",
-        "image":"",//cover
-        "author":"",//email,
+        "cover":"images/index/postPic1.png",
+        "//commentForImage":"cover",
+        "author":"",
+        "//commentForAuthor":"email",
         "id":"",
         "type":"",
         "link":"",

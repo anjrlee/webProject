@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import Home from './components/Home.vue';
+import Home from './components/index/Home.vue';
+import Articles from './components/index/articles.vue';
 import Login from './components/loginRegister/Login.vue';
 import Register from './components/loginRegister/Register.vue';
 import AddPost from './components/addPost/AddPost.vue';
@@ -11,6 +12,7 @@ const router = createRouter({
     history: createWebHistory(),
     routes: [
         { path: '/', component: Home },
+        { path: '/articles', component: Articles },
         { path: '/login', component: Login },
         { path: '/register', component: Register },
         { path: '/addpost', component: AddPost },

@@ -15,17 +15,28 @@
 
 1. add in components(./resources/js/components) 'xxx.vue'
 2. add in router(./resource/js/router.js) 
-    a. import xxx
+    a. import xxx from ./path
     b. 
     ```
-    export const routes = [
-        { path: '/xxx', component: xxx, name: 'xxx' },
-    ];
+    { path: '/the path you want', component: xxx },
 
     ```
 3. register the component in app.js
+    a. import xxx from ./path
+    ```
+    app.component('xxx', xxx);
+
+    ```
+
+#### reminders
+
+- in every xxx.vue, it need to have
 ```
-Vue.component('xxx', require('./components/folder/xxx.vue').default);
+<template>
+<div>
+your content
+</div>
+</template>
 ```
 
 #### work distribution
