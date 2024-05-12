@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import Home from './components/index/Home.vue';
 import Articles from './components/index/articles.vue';
+import ArticlesRead from './components/articles/article.vue';
 import Login from './components/loginRegister/Login.vue';
 import Register from './components/loginRegister/Register.vue';
 import AddPost from './components/addPost/AddPost.vue';
@@ -18,7 +19,8 @@ const router = createRouter({
         { path: '/addpost', component: AddPost },
         { path: '/verify', component: Verify },
         { path: '/profile', component: Profile },
-        { path: '/post/:id', component: Post, props: true }, // Example of dynamic route with props
+        { path: '/post/:id', component: Post, props: true },
+        { path: '/articleRead/:id', component: ArticlesRead, props: true },
         // Define your routes here
     ]
 });

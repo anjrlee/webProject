@@ -15,6 +15,7 @@ import AddPost from './components/addPost/AddPost.vue';
 import Verify from './components/verify/Verify.vue';
 import Profile from './components/profile/Profile.vue';
 import Post from './components/post/Post.vue';
+import ArticleRead from './components/articles/article.vue';
 
 
 // Create a new Vue app instance using createApp
@@ -32,6 +33,7 @@ app.component('verify', Verify);
 app.component('profile', Profile);
 app.component('post', Post);
 app.component('articles', Articles);
+app.component('articleRead', ArticleRead);
 
 // Use the router with the app
 app.use(router);
