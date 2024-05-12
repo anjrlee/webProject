@@ -3,7 +3,7 @@
     <div class="body404">
     <div class="noise"></div>
     <div class="overlay"></div>
-    <div class="relative h-2/5 w-4/5 left-[20%] top-[30%]">
+    <div class="relative h-2/5 w-[60%] left-[25%] top-[30%]">
       <h1 class="text-[2vw] text-white">Error <span class="errorcode">404</span></h1>
       <p class="output">The page you are looking for might have been removed, had its name changed or is temporarily unavailable.</p>
       <p class="output">Please try to <a href="/">[return to the homepage]</a>.</p>

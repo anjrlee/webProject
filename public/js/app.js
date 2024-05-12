@@ -24267,7 +24267,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
-var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"body404\"><div class=\"noise\"></div><div class=\"overlay\"></div><div class=\"relative h-2/5 w-4/5 left-[20%] top-[30%]\"><h1 class=\"text-[2vw] text-white\">Error <span class=\"errorcode\">404</span></h1><p class=\"output\">The page you are looking for might have been removed, had its name changed or is temporarily unavailable.</p><p class=\"output\">Please try to <a href=\"/\">[return to the homepage]</a>.</p><p class=\"output\">Good luck.</p></div></div>", 1);
+var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"body404\"><div class=\"noise\"></div><div class=\"overlay\"></div><div class=\"relative h-2/5 w-[60%] left-[25%] top-[30%]\"><h1 class=\"text-[2vw] text-white\">Error <span class=\"errorcode\">404</span></h1><p class=\"output\">The page you are looking for might have been removed, had its name changed or is temporarily unavailable.</p><p class=\"output\">Please try to <a href=\"/\">[return to the homepage]</a>.</p><p class=\"output\">Good luck.</p></div></div>", 1);
 var _hoisted_2 = [_hoisted_1];
 function render(_ctx, _cache) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", null, [].concat(_hoisted_2));

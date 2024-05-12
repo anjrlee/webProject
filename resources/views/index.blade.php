@@ -20,7 +20,7 @@
       </div>
       
       
-      <div class="hidden h-full fixed bg-black w-[400px]" id="sideBar">
+      <div class="sideBar" id="sideBar">
         <div class="h-[8%] w-5/6 bg-gray-200 m-[8%] rounded-full flex">
           <div class="left-[1%] top-[15%] w-[17%] h-[80%] relative"> <img src='images/index/searchIcon.png' alt="Search Icon"></div>
           <div class="w-[70%] h-[60%] top-[25%] left-[5%] relative">
@@ -89,6 +89,21 @@
 </script>
 
 <style>
+.sideBar{
+  display: none;
+  height: 100%;
+  position: fixed;
+  background-color: black;
+  width:400px;
+  animation-name: sideBarAni;
+  animation-duration: 1s;
+}
+
+@keyframes sideBarAni {
+  0%   {left:-400px;}
+  100% {left:0px;}
+}
+
 .sideBarWord{
   position: relative;
   width:80%;
@@ -104,12 +119,20 @@
    font-size: 2.5vh;
 }
 
+.sideBarLink:hover{
+  background-color: rgb(160, 160, 160);
+}
+
 .sideBarTitle{
    color:white;
    position: relative;
    margin:9%;
    font-weight: bold;
    font-size: 3.5vh;
+}
+
+.sideBarTitle:hover{
+  background-color: rgb(160, 160, 160);
 }
 
 
