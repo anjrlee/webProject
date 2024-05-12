@@ -6,7 +6,7 @@ import './bootstrap'; // Import bootstrap or any other dependencies
 // window.Vue = require('vue').default;
 
 // Import your Vue components without the .default suffix
-
+import Page404 from './components/index/page404.vue';
 import Home from './components/index/Home.vue';
 import Articles from './components/index/articles.vue';
 import Login from './components/loginRegister/Login.vue';
@@ -34,6 +34,7 @@ app.component('profile', Profile);
 app.component('post', Post);
 app.component('articles', Articles);
 app.component('articleRead', ArticleRead);
+app.component('page404', Page404);
 
 // Use the router with the app
 app.use(router);
