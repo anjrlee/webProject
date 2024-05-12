@@ -1,7 +1,7 @@
 [
     {
         "upLoadDate":"testtt",
-        "record":"",
+        "recordScore":"",
         "date":"",
         "proveFile":"",
         "ifProved":"",
@@ -17,7 +17,7 @@
     {
         "//commentForId":"uploadDate",
         "upLoadDate":"",
-        "record":"",
+        "recordScore":"",
         "date":"",
         "proveFile":"",
         "ifProved":"",
@@ -33,7 +33,7 @@
     {
         "//commentForId":"uploadDate",
         "upLoadDate":"",
-        "record":"",
+        "recordScore":"",
         "date":"",
         "proveFile":"",
         "ifProved":"",
@@ -49,7 +49,7 @@
     {
         "//commentForId":"uploadDate",
         "upLoadDate":"",
-        "record":"",
+        "recordScore":"",
         "date":"",
         "proveFile":"",
         "ifProved":"",
@@ -65,7 +65,7 @@
     {
         "//commentForId":"uploadDate",
         "upLoadDate":"",
-        "record":"",
+        "recordScore":"",
         "date":"",
         "proveFile":"",
         "ifProved":"",
@@ -81,7 +81,7 @@
     {
         "//commentForId":"uploadDate",
         "upLoadDate":"",
-        "record":"",
+        "recordScore":"",
         "date":"",
         "proveFile":"",
         "ifProved":"",
@@ -97,7 +97,7 @@
     {
         "//commentForId":"uploadDate",
         "upLoadDate":"",
-        "record":"",
+        "recordScore":"",
         "date":"",
         "proveFile":"",
         "ifProved":"",
@@ -112,7 +112,7 @@
     },
     {
         "upLoadDate":"",
-        "record":"",
+        "recordScore":"",
         "date":"",
         "proveFile":"",
         "ifProved":"",

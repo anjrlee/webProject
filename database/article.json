@@ -6,7 +6,6 @@
         "author":"user1",
         "upLoadDate":"hii",
         "type":"fun",
-        "link":"linkID",
         "MW":"month",
         "date":"JAN"
     },
@@ -17,7 +16,6 @@
         "author":"",
         "upLoadDate":"",
         "type":"",
-        "link":"",
         "MW":"week",
         "date":"Jan week1"
     },
@@ -28,7 +26,6 @@
         "author":"",
         "upLoadDate":"",
         "type":"",
-        "link":"",
         "MW":"week",
         "date":"1"
     },
@@ -39,7 +36,6 @@
         "author":"",
         "upLoadDate":"",
         "type":"",
-        "link":"",
         "MW":"week",
         "date":"1"
     },
@@ -50,7 +46,6 @@
         "author":"",
         "upLoadDate":"",
         "type":"",
-        "link":"",
         "MW":"week",
         "date":"1"
     }
