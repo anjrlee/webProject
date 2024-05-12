@@ -1,8 +1,6 @@
 [
     {
-        "//commentForId":"uploadDate",
-        "id":"testtt",
-        "name":"項目",
+        "upLoadDate":"testtt",
         "record":"",
         "date":"",
         "proveFile":"",
@@ -18,8 +16,7 @@
     },
     {
         "//commentForId":"uploadDate",
-        "id":"",
-        "name":"項目",
+        "upLoadDate":"",
         "record":"",
         "date":"",
         "proveFile":"",
@@ -35,8 +32,7 @@
     },
     {
         "//commentForId":"uploadDate",
-        "id":"",
-        "name":"項目",
+        "upLoadDate":"",
         "record":"",
         "date":"",
         "proveFile":"",
@@ -52,8 +48,7 @@
     },
     {
         "//commentForId":"uploadDate",
-        "id":"",
-        "name":"項目",
+        "upLoadDate":"",
         "record":"",
         "date":"",
         "proveFile":"",
@@ -69,8 +64,7 @@
     },
     {
         "//commentForId":"uploadDate",
-        "id":"",
-        "name":"項目",
+        "upLoadDate":"",
         "record":"",
         "date":"",
         "proveFile":"",
@@ -86,8 +80,7 @@
     },
     {
         "//commentForId":"uploadDate",
-        "id":"",
-        "name":"項目",
+        "upLoadDate":"",
         "record":"",
         "date":"",
         "proveFile":"",
@@ -103,8 +96,7 @@
     },
     {
         "//commentForId":"uploadDate",
-        "id":"",
-        "name":"項目",
+        "upLoadDate":"",
         "record":"",
         "date":"",
         "proveFile":"",
@@ -119,9 +111,7 @@
         "cover":"images/index/postPic1.png"
     },
     {
-        "//commentForId":"uploadDate",
-        "id":"",
-        "name":"項目",
+        "upLoadDate":"",
         "record":"",
         "date":"",
         "proveFile":"",
