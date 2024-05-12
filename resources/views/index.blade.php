@@ -8,8 +8,8 @@
   </head>
   <body>
     <div id="app">
-    
-      <div class="h-[120px] bg-black w-full fixed text-center flex z-[2147483647]">
+    <router-view></router-view>
+      <div class="h-[120px] bg-black w-full fixed text-center flex ">
         <div class="h-[72px] w-[3.5%] m-[1%] cursor-pointer" id="sideBarIcon">
             <div class="h-[10%] bg-white w-full relative m-[20%]"></div>
             <div class="h-[10%] bg-white w-full relative m-[20%]"></div>
@@ -19,7 +19,7 @@
         <div class="h-full w-[100px] left-[72%] top-[10%] relative cursor-pointer" id="profile"><img src="images/index/profile.png" /></div>
       </div>
       
-      <router-view></router-view>
+      
       <div class="hidden h-full fixed bg-black w-[400px]" id="sideBar">
         <div class="h-[8%] w-5/6 bg-gray-200 m-[8%] rounded-full flex">
           <div class="left-[1%] top-[15%] w-[17%] h-[80%] relative"> <img src='images/index/searchIcon.png' alt="Search Icon"></div>
@@ -48,7 +48,7 @@
       </div>
 
       
-      <div class="w-4/5 h-full absolute left-[20%] hidden" id="sideBarUndo"></div>
+      <div class="w-4/5 h-full absolute left-[20%] hidden " id="sideBarUndo"></div>
 
       <!-- Vue Router 代入的內容 -->
       
@@ -59,26 +59,24 @@
     <script src="/js/app.js"></script>
   </body>
 
-<?php
-  echo '';
-
-?>
-
-
-
 </html>
 
 <script>
     const sideBarUndo=document.querySelector("#sideBarUndo");
     const sideBar=document.querySelector("#sideBar");
+    function sideBarDisplayNone(){
+        sideBar.style.display="none";
+        sideBarUndo.style.display="none";
+    }
     document.querySelector("#sideBarIcon").addEventListener("click", function (e) {
-        sideBar.style.display="block";
-        sideBarUndo.style.display="block";
+            sideBar.style.display="block";
+            sideBarUndo.style.display="block";
+        
+        
     });
 
     sideBarUndo.addEventListener("click", function (e) {
-        sideBar.style.display="none";
-        sideBarUndo.style.display="none";
+      sideBarDisplayNone()
     });
 
     document.querySelector("#profile").addEventListener("click", function (e) {
