@@ -1,0 +1,104 @@
+<template>
+    <div>
+        <router-view></router-view>
+      <div class="h-[120px] bg-black w-full fixed text-center flex  content-center">
+        <div class="h-[70%] w-[66px] top-[15%] cursor-pointer relative left-[2%]" id="sideBarIcon">
+            <div class="h-[10%] bg-white w-full relative top-[20%]"></div>
+            <div class="h-[10%] bg-white w-full relative top-[40%]"></div>
+            <div class="h-[10%] bg-white w-full relative top-[60%]"></div>
+        </div>
+        <div class="relative text-white text-[3vw] w-[20%] left-[36%] flex items-center ">央氏世界紀錄</div>
+        <div class="h-full w-[100px] left-[70%] top-[10%] relative cursor-pointer" id="profile"><img src="images/index/profile.png" /></div>
+
+      </div>
+      
+      
+      <div class="sideBar" id="sideBar">
+        <div class="h-[8%] w-5/6 bg-gray-200 m-[8%] rounded-full flex">
+          <div class="left-[1%] top-[15%] w-[17%] h-[80%] relative"> <img src='images/index/searchIcon.png' alt="Search Icon"></div>
+          <div class="w-[70%] h-[60%] top-[25%] left-[5%] relative">
+              <input type="text" class="bg-transparent outline-none text-[1.1vw]"></input>
+          </div>
+        </div>
+
+        <div class="sideBarWord">
+        <div class="sideBarTitle"><router-link to="/">post</router-link></div>
+        <div class="sideBarLink"><router-link to="/?id=relax">休閒類</router-link></div>
+        <div class="sideBarLink"><router-link to="/?id=academic" >學術研究類</router-link></div>
+        <div class="sideBarLink"><router-link to="/?id=campus" >校園生活類</router-link></div>
+        </div>
+
+        <div class="sideBarWord">
+          <div class="sideBarTitle"><router-link to="/articles" >article</router-link></div>
+        </div>
+
+        <div class="sideBarWord">
+          <div class="sideBarTitle"><router-link to="/addPost" >add my post</router-link></div>
+        </div>
+
+        <div class="sideBarWord">
+          <div class="sideBarTitle"><router-link to="/profile" >account</router-link></div>
+        </div>
+
+        
+
+      </div>
+
+      
+      <div class="w-4/5 h-full absolute left-[20%] hidden " id="sideBarUndo"></div>
+
+      <!-- Vue Router 代入的內容 -->
+      
+    </div>
+</template>
+<style>
+.sideBar{
+  display: none;
+  height: 100%;
+  position: fixed;
+  background-color: black;
+  width:400px;
+  animation-name: sideBarAni;
+  animation-duration: 1s;
+}
+
+@keyframes sideBarAni {
+  0%   {left:-400px;}
+  100% {left:0px;}
+}
+
+.sideBarWord{
+  position: relative;
+  width:80%;
+  margin:15%;
+}
+
+
+.sideBarLink{
+   color:white;
+   position: relative;
+   margin-left: 15%;
+   margin-bottom: 5%;
+   font-size: 25px;
+}
+
+.sideBarLink:hover{
+  background-color: rgb(160, 160, 160);
+}
+
+.sideBarTitle{
+   color:white;
+   position: relative;
+   margin:9%;
+   font-weight: bold;
+   font-size: 35px;
+}
+
+.sideBarTitle:hover{
+  background-color: rgb(160, 160, 160);
+}
+
+
+
+
+</style>

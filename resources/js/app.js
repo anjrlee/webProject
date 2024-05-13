@@ -16,6 +16,7 @@ import Verify from './components/verify/Verify.vue';
 import Profile from './components/profile/Profile.vue';
 import Post from './components/post/Post.vue';
 import ArticleRead from './components/articles/article.vue';
+import App from './components/App.vue';
 
 
 // Create a new Vue app instance using createApp
@@ -25,6 +26,7 @@ const app = createApp({
 
 // Register your components using the component method
 
+app.component('App', App);
 app.component('home', Home);
 app.component('login', Login);
 app.component('register', Register);
