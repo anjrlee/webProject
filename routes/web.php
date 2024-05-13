@@ -24,3 +24,25 @@ Route::get('/addPost', function () {
 Route::get('/profile', function () {
     return view('profile');
 });
+
+Route::get('/404', function () {
+    return view('page404');
+});
+
+Route::get('/login', function () {
+    return view('login');
+});
+
+Route::get('/register', function () {
+    return view('register');
+});
+
+Route::get('/post/{id}', function ($id) {
+    // Here you can use the $id parameter to fetch the corresponding post
+    return view('post', ['postId' => $id]);
+});
+
+Route::get('/articleRead/{id}', function ($id) {
+    // Here you can use the $id parameter to fetch the corresponding post
+    return view('articleRead', ['articleReadId' => $id]);
+});
