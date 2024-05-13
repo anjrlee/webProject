@@ -41,8 +41,8 @@ your content
 ```
 
 #### work distribution
-addPost,profile:趙苡婷
-loginRegister,verify:蘇亦寧
+addPost,profile:趙以婷
+loginRegister,verify:蘇奕寧
 post:吳帛軒
 index:李安之
 

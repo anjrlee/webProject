@@ -13,6 +13,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/{path}', function () {
+Route::get('/', function () {
     return view('index');
-})->where('path', '^((?!api).)*$');
+});
+
+Route::get('/addPost', function () {
+    return view('addPost');
+});
+
+Route::get('/profile', function () {
+    return view('profile');
+});
