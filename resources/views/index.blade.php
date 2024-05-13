@@ -9,14 +9,15 @@
   <body>
     <div id="app">
     <router-view></router-view>
-      <div class="h-[120px] bg-black w-full fixed text-center flex ">
-        <div class="h-[72px] w-[3.5%] m-[1%] cursor-pointer" id="sideBarIcon">
-            <div class="h-[10%] bg-white w-full relative m-[20%]"></div>
-            <div class="h-[10%] bg-white w-full relative m-[20%]"></div>
-            <div class="h-[10%] bg-white w-full relative m-[20%]"></div>
+      <div class="h-[120px] bg-black w-full fixed text-center flex  content-center">
+        <div class="h-[70%] w-[66px] top-[15%] cursor-pointer relative left-[2%]" id="sideBarIcon">
+            <div class="h-[10%] bg-white w-full relative top-[20%]"></div>
+            <div class="h-[10%] bg-white w-full relative top-[40%]"></div>
+            <div class="h-[10%] bg-white w-full relative top-[60%]"></div>
         </div>
-        <div class="relative text-white text-[4.2vh] left-[35%] flex items-center">央視世界紀錄</div>
-        <div class="h-full w-[100px] left-[72%] top-[10%] relative cursor-pointer" id="profile"><img src="images/index/profile.png" /></div>
+        <div class="relative text-white text-[3vw] w-[20%] left-[36%] flex items-center ">央氏世界紀錄</div>
+        <div class="h-full w-[100px] left-[70%] top-[10%] relative cursor-pointer" id="profile"><img src="images/index/profile.png" /></div>
+
       </div>
       
       
@@ -43,6 +44,10 @@
           <div class="sideBarTitle"><router-link to="/addPost" >add my post</router-link></div>
         </div>
 
+        <div class="sideBarWord">
+          <div class="sideBarTitle"><router-link to="/profile" >account</router-link></div>
+        </div>
+
         
 
       </div>
@@ -61,7 +66,7 @@
 
 </html>
 
-<script>
+<script setup>
     const sideBarUndo=document.querySelector("#sideBarUndo");
     const sideBar=document.querySelector("#sideBar");
     function sideBarDisplayNone(){
@@ -80,13 +85,14 @@
     });
 
     document.querySelector("#profile").addEventListener("click", function (e) {
-      location.href = './profile';
+      location.href = '/profile';
     });
 
 
 
     
 </script>
+
 
 <style>
 .sideBar{
@@ -116,7 +122,7 @@
    position: relative;
    margin-left: 15%;
    margin-bottom: 5%;
-   font-size: 2.5vh;
+   font-size: 25px;
 }
 
 .sideBarLink:hover{
@@ -128,7 +134,7 @@
    position: relative;
    margin:9%;
    font-weight: bold;
-   font-size: 3.5vh;
+   font-size: 35px;
 }
 
 .sideBarTitle:hover{

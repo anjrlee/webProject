@@ -24143,7 +24143,7 @@ var _hoisted_2 = {
 };
 var _hoisted_3 = ["onClick"];
 var _hoisted_4 = {
-  "class": "w-full h-1/5 relative text-[1.3vw] flex items-center justify-center"
+  "class": "w-full h-1/5 relative text-[20px] flex items-center justify-center"
 };
 var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "w-full h-[10%] relative"

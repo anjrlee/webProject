@@ -1,4 +1,5 @@
 #### about building and running
+- remember to install php and composer
 - npm run dev =>build after modified (記得build!!!)
 - php artisan serve=> like npm serve, run on localhost
 - npm run watch => 即時build
