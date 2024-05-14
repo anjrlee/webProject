@@ -1,19 +1,20 @@
 <template>
-    <div>
+    <div >
         <router-view></router-view>
-      <div class="h-[120px] bg-black w-full fixed text-center flex  content-center">
-        <div class="h-[70%] w-[66px] top-[15%] cursor-pointer relative left-[2%]" id="sideBarIcon">
+      <div class="h-[100px] bg-black w-full fixed text-center flex ">
+        <div class="absolute w-full h-[100px] flex flex-wrap justify-center items-center text-[30px] text-white">央氏世界紀錄</div>
+        <div class="h-[70%] w-[66px] top-[15%] cursor-pointer absolute left-[2%]" @click="sideBarShowFun()">
             <div class="h-[10%] bg-white w-full relative top-[20%]"></div>
             <div class="h-[10%] bg-white w-full relative top-[40%]"></div>
             <div class="h-[10%] bg-white w-full relative top-[60%]"></div>
         </div>
-        <div class="relative text-white text-[3vw] w-[20%] left-[36%] flex items-center ">央氏世界紀錄</div>
-        <div class="h-full w-[100px] left-[70%] top-[10%] relative cursor-pointer" id="profile"><img src="images/index/profile.png" /></div>
+        
+        <div class="flex flex-wrap justify-center items-center h-full w-[10%] left-[85%] absolute cursor-pointer " ><router-link to="/profile"><img src="images/index/profile.png" class="w-4/5 h-4/5" /></router-link></div>
 
       </div>
       
       
-      <div class="sideBar" id="sideBar">
+      <div class="sideBar" v-if="sideBarShow">
         <div class="h-[8%] w-5/6 bg-gray-200 m-[8%] rounded-full flex">
           <div class="left-[1%] top-[15%] w-[17%] h-[80%] relative"> <img src='images/index/searchIcon.png' alt="Search Icon"></div>
           <div class="w-[70%] h-[60%] top-[25%] left-[5%] relative">
@@ -45,15 +46,25 @@
       </div>
 
       
-      <div class="w-4/5 h-full absolute left-[20%] hidden " id="sideBarUndo"></div>
+      <div class="w-4/5 h-full absolute left-[20%] " v-if="sideBarShow" @click="sideBarShowDisable()"></div>
 
       <!-- Vue Router 代入的內容 -->
       
     </div>
 </template>
+<script setup>
+import {ref} from 'vue'
+const sideBarShow=ref(false);
+function sideBarShowFun(){
+   sideBarShow.value=true;
+}
+
+function sideBarShowDisable(){
+  sideBarShow.value=false;
+}
+</script>
 <style>
 .sideBar{
-  display: none;
   height: 100%;
   position: fixed;
   background-color: black;
@@ -70,7 +81,8 @@
 .sideBarWord{
   position: relative;
   width:80%;
-  margin:15%;
+  margin-left:15%;
+  margin-bottom:5%;
 }
 
 
@@ -79,7 +91,7 @@
    position: relative;
    margin-left: 15%;
    margin-bottom: 5%;
-   font-size: 25px;
+   font-size: 20px;
 }
 
 .sideBarLink:hover{
@@ -89,9 +101,9 @@
 .sideBarTitle{
    color:white;
    position: relative;
-   margin:9%;
    font-weight: bold;
-   font-size: 35px;
+   font-size: 30px;
+   margin-bottom: 5%;
 }
 
 .sideBarTitle:hover{

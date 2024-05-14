@@ -1,6 +1,5 @@
 <template>
-    <div class="container">
-        <App class="navbar"></App>
+    <div class="container"> 
         <p>profile</p>
     </div>
 </template>
