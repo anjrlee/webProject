@@ -1,6 +1,6 @@
 import { createApp } from 'vue'; // Import createApp function from Vue 3
 import router from './router.js'; // Import your router configuration
-import './bootstrap'; // Import bootstrap or any other dependencies
+import './bootstrap.js'; // Import bootstrap or any other dependencies
 
 // Remove this line as it's not needed in Vue 3
 // window.Vue = require('vue').default;

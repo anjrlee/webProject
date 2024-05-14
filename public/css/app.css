@@ -604,6 +604,9 @@ video {
 .-mt-px {
   margin-top: -1px;
 }
+.mb-3 {
+  margin-bottom: 0.75rem;
+}
 .mb-\[2\%\] {
   margin-bottom: 2%;
 }
@@ -814,6 +817,9 @@ video {
 .py-4 {
   padding-top: 1rem;
   padding-bottom: 1rem;
+}
+.pt-0 {
+  padding-top: 0px;
 }
 .pt-8 {
   padding-top: 2rem;
