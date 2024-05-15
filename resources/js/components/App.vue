@@ -9,7 +9,7 @@
             <div class="h-[10%] bg-white w-full relative top-[60%]"></div>
         </div>
         
-        <div class="flex flex-wrap justify-center items-center h-full w-[10%] left-[85%] absolute cursor-pointer " ><router-link to="/profile"><img src="images/index/profile.png" class="w-4/5 h-4/5" /></router-link></div>
+        <div class="flex flex-wrap justify-center items-center h-full w-[7%] left-[87%] absolute cursor-pointer " ><router-link to="/profile"><img src="images/index/profile.png" class="w-4/5 h-4/5" /></router-link></div>
 
       </div>
       
@@ -23,22 +23,22 @@
         </div>
 
         <div class="sideBarWord">
-        <div class="sideBarTitle"><router-link to="/">post</router-link></div>
-        <div class="sideBarLink"><router-link to="/?id=relax">休閒類</router-link></div>
-        <div class="sideBarLink"><router-link to="/?id=academic" >學術研究類</router-link></div>
-        <div class="sideBarLink"><router-link to="/?id=campus" >校園生活類</router-link></div>
+        <div class="sideBarTitle"><router-link to="/" style="text-decoration: none; color: white;">post</router-link></div>
+        <div class="sideBarLink"><router-link to="/?id=relax" style="text-decoration: none; color: white;">休閒類</router-link></div>
+        <div class="sideBarLink"><router-link to="/?id=academic" style="text-decoration: none; color: white;">學術研究類</router-link></div>
+        <div class="sideBarLink"><router-link to="/?id=campus" style="text-decoration: none; color: white;">校園生活類</router-link></div>
         </div>
 
         <div class="sideBarWord">
-          <div class="sideBarTitle"><router-link to="/articles" >article</router-link></div>
+          <div class="sideBarTitle"><router-link to="/articles" style="text-decoration: none; color: white;">article</router-link></div>
         </div>
 
         <div class="sideBarWord">
-          <div class="sideBarTitle"><router-link to="/addPost" >add my post</router-link></div>
+          <div class="sideBarTitle"><router-link to="/addPost" style="text-decoration: none; color: white;">add my post</router-link></div>
         </div>
 
         <div class="sideBarWord">
-          <div class="sideBarTitle"><router-link to="/profile" >account</router-link></div>
+          <div class="sideBarTitle"><router-link to="/profile" style="text-decoration: none; color: white;">account</router-link></div>
         </div>
 
         
@@ -83,15 +83,21 @@ function sideBarShowDisable(){
   width:80%;
   margin-left:15%;
   margin-bottom:5%;
+  text-decoration: none;
 }
 
+.router-link-active {
+  text-decoration: none;
+  color:white;
+}
 
 .sideBarLink{
-   color:white;
+   
    position: relative;
    margin-left: 15%;
    margin-bottom: 5%;
    font-size: 20px;
+ 
 }
 
 .sideBarLink:hover{
@@ -99,11 +105,13 @@ function sideBarShowDisable(){
 }
 
 .sideBarTitle{
+  
    color:white;
    position: relative;
    font-weight: bold;
    font-size: 30px;
    margin-bottom: 5%;
+
 }
 
 .sideBarTitle:hover{
