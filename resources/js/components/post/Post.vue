@@ -1,10 +1,104 @@
 <template>
-    <div>
+    <App class="navbar"></App>
+  
+    <div class="container">
+      <div class="title"> 
+        <div class="title-background"></div>
+        <h1>{{ userProfile.title }}</h1>
+      </div>
+      <div class="image-section">
+        <img :src="userProfile.cover" class="image">
+      </div>
+      <div class="info-section">
+        <h2>紀錄保持人: </h2><br>
+        <p>{{ userProfile.recorder }}</p><br>
+        <h2>紀錄: </h2><br>
+        <p>{{ userProfile.recordScore }}</p><br>
+        <h2>完成日期: </h2><br>
+        <p>{{ userProfile.date }}</p><br>
+        <h2>種類: </h2><br>
+        <p>{{ userProfile.type }}</p><br>
+      </div>
+      <div class="award-section">
+        <h2>得獎感言: </h2><br>
+        <p>{{ userProfile.awardSpeech }}</p><br>
+      </div>
+  
     </div>
-</template>
-<script setup>
-import { useRoute } from 'vue-router'
-const route = useRoute()
-const id=route.params.id
-console.log(id);
-</script>
+  </template>
+  
+  <script setup>
+  import { useRoute } from 'vue-router'
+  import { reactive } from 'vue';
+  //import coverImage from './bicycle.jpg';
+  import App from '../App.vue'; 
+  
+  const route = useRoute()
+  const id=route.params.id
+  console.log(id);
+  
+  const userProfile = reactive({
+    title: "偷腳踏車被公審最多次", 
+    cover: '/images/post/bicycle.jpg',
+    recorder: "王子俊",
+    recordScore: "1次",
+    date: "2023/03/02",
+    type: "campus",
+    awardSpeech: "Hi",
+    email: "user1@gmail.com",
+  })
+  </script>
+  
+  <style scoped>
+  .navbar {
+    height: 120px;
+  }
+  
+  .title {
+    position: relative; /* 使得內容可以相對於標題容器定位 */
+    margin-top: 20px;
+    margin-bottom: 50px;
+    text-align: center;
+    border: 2px solid gray;
+  }
+  
+  .title-background {
+    position: absolute; /* 相對於標題容器定位 */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('/images/post/bk_test3.jpg'); /* 底圖路徑 */
+    background-size: cover; /* 自動調整背景圖片大小以填滿容器 */
+    background-position: center; /* 將背景圖片置中 */
+    opacity: 0.5; /* 設置背景圖片透明度，根據需要調整 */
+    z-index: -1; /* 將背景圖片放到標題容器的底層 */
+  }
+  
+  .info-section {
+    width: 40%;
+    float: right;
+  }
+  
+  .image-section {
+    float: left;
+    width: 50%;
+    border: 2px solid gray;
+  }
+  
+  .image {
+    width: 100%; /* 設置圖片的最大寬度 */
+    max-height: 500px; /* 設置最大高度 */
+    height: auto;
+    object-fit: cover; /* 保持比例填滿容器 */
+  }
+  
+  .award-section {
+    clear: both;
+    margin-top: 50px;
+    border-top: 1px solid black; /* 添加分隔線 */
+    padding-top: 10px;
+  }
+  
+  </style>
+  
