@@ -591,6 +591,12 @@ video {
 .top-\[60\%\] {
   top: 60%;
 }
+.left-\[90\%\] {
+  left: 90%;
+}
+.left-\[87\%\] {
+  left: 87%;
+}
 .m-\[2\%\] {
   margin: 2%;
 }
@@ -750,6 +756,18 @@ video {
 }
 .w-full {
   width: 100%;
+}
+.w-\[\%\] {
+  width: %;
+}
+.w-\[8\%\] {
+  width: 8%;
+}
+.w-\[7\.5\%\] {
+  width: 7.5%;
+}
+.w-\[7\%\] {
+  width: 7%;
 }
 .max-w-6xl {
   max-width: 72rem;
