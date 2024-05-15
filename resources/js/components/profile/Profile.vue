@@ -5,7 +5,4 @@
 </template>
 
 <style scoped>
-    .navbar{
-        height: 120px;
-    }
 </style>

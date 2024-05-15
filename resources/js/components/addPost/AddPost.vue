@@ -1,27 +1,31 @@
 <template>
-    <App class="navbar"></App>
     <div class="container">
         <div class="row justify-content-center mt-4">
             <div class="col">
-                <p class="display-6"><strong>新增紀錄</strong></p>
+                <p class="display-6"><strong>新增紀錄</strong><small>*為必填</small></p>
                 <div class="line"></div>
                 <form class="mt-4">
                     <div class="mb-3">
-                        <label for="title" class="form-label">項目名稱：</label>
-                        <input type="text" class="form-control" id="title" placeholder="丟松果最快速">
+                        <label for="title" class="form-label"><p class="require">*</p>項目名稱：</label>
+                        <input type="text" class="form-control" id="title" placeholder="丟松果最快速" required>
                     </div>
                     <div class="mb-3">
-                        <label for="recordScore" class="form-label">完成紀錄：</label>
-                        <input type="text" class="form-control" id="recordScore" placeholder="100(km/hr)">
+                        <label for="recordScore" class="form-label"><p class="require">*</p>完成紀錄：</label>
+                        <input type="text" class="form-control" id="recordScore" placeholder="100(km/hr)" required>
                     </div>
                     <div class="mb-3">
-                        <label for="recorder" class="form-label">完成者：</label>
-                        <input type="text" class="form-control" id="recorder" placeholder="王小明">
+                        <label for="recorder" class="form-label"><p class="require">*</p>完成者：</label>
+                        <input type="text" class="form-control" id="recorder" placeholder="王小明" required>
                     </div>
                     <div class="mb-3">
-                        <label for="date" class="form-label">完成日期：</label>
-                        <input type="date" class="form-control" id="date">
+                        <label for="date" class="form-label"><p class="require">*</p>完成日期：<small>請點選月曆圖示選擇日期</small></label>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <input type="date" class="form-control" id="date" required>
+                            </div>
+                        </div>
                     </div>
+
 
 
                     <div class="row mb-3">
@@ -74,9 +78,9 @@
 </template>
 
 <script>
-import App from '../App.vue'; // 导入 App.vue 
-import 'bootstrap'; // 导入 Bootstrap 样式
-import 'bootstrap/dist/css/bootstrap.min.css'; // 导入 Bootstrap CSS
+import App from '../App.vue'; 
+import 'bootstrap'; 
+import 'bootstrap/dist/css/bootstrap.min.css'; 
 
 export default {
     components: {
@@ -86,10 +90,6 @@ export default {
 </script>
 
 <style scoped>
-.navbar {
-    height: 120px;
-}
-
 .line {
     height: 1%;
     border-top: solid #000000;
@@ -98,5 +98,18 @@ export default {
 form,
 input {
     font-size: 1.5rem;
+}
+
+small{
+    font-size: 0.9rem;
+    color: #ff0000;
+    margin-left: 1%;
+    white-space: nowrap;
+    display: inline-block;
+}
+
+.require{
+    color: #ff0000;
+    display: inline-block;
 }
 </style>
