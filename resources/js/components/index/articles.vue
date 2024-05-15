@@ -1,8 +1,8 @@
 <template>
     <div class="container">
-        <div class="w-3/5 absolute left-[20%] top-[18%] flex-wrap">
-        <div class="h-2/5 relative mb-[5%]">
-            <div class="w-1/5 left-[5%] h-1/5 relative mb-[2%] flex">
+        <div class="w-[85%] absolute left-[7.5%] top-[18%] flex-wrap">
+        <div class="h-2/5 relative mb-[5%] ">
+            <div class="w-1/5 left-[5%] h-1/5 relative mb-[2%] flex mt-[5%]">
                 <div class=" text-[2vw]">周刊</div>
                 <div class="ml-[3%] text-[1.2vw] flex items-end cursor-pointer" @click="readMore('week')">{{ readMoreLess[MWData.week.readMoreLess] }}</div>
             </div>

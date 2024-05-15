@@ -24425,13 +24425,13 @@ var _hoisted_1 = {
   "class": "container"
 };
 var _hoisted_2 = {
-  "class": "w-3/5 absolute left-[20%] top-[18%] flex-wrap"
+  "class": "w-[85%] absolute left-[7.5%] top-[18%] flex-wrap"
 };
 var _hoisted_3 = {
   "class": "h-2/5 relative mb-[5%]"
 };
 var _hoisted_4 = {
-  "class": "w-1/5 left-[5%] h-1/5 relative mb-[2%] flex"
+  "class": "w-1/5 left-[5%] h-1/5 relative mb-[2%] flex mt-[5%]"
 };
 var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "text-[2vw]"

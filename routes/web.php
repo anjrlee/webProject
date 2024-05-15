@@ -37,6 +37,10 @@ Route::get('/register', function () {
     return view('register');
 });
 
+Route::get('/article', function () {
+    return view('article');
+});
+
 Route::get('/post/{id}', function ($id) {
     // Here you can use the $id parameter to fetch the corresponding post
     return view('post', ['postId' => $id]);
