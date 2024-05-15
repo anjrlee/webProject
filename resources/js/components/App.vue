@@ -1,7 +1,7 @@
 <template>
     <div >
         <router-view></router-view>
-      <div class="h-[100px] bg-black w-full fixed text-center flex ">
+      <div class="h-[100px] bg-black w-full fixed text-center flex z-[50]">
         <div class="absolute w-full h-[100px] flex flex-wrap justify-center items-center text-[30px] text-white">央氏世界紀錄</div>
         <div class="h-[70%] w-[66px] top-[15%] cursor-pointer absolute left-[2%]" @click="sideBarShowFun()">
             <div class="h-[10%] bg-white w-full relative top-[20%]"></div>
