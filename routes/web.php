@@ -26,7 +26,7 @@ Route::get('/profile', function () {
 });
 
 Route::get('/404', function () {
-    return view('page404');
+    return view('404');
 });
 
 Route::get('/login', function () {
@@ -46,3 +46,7 @@ Route::get('/articleRead/{id}', function ($id) {
     // Here you can use the $id parameter to fetch the corresponding post
     return view('articleRead', ['articleReadId' => $id]);
 });
+
+Route::get('/{any}', function () {
+    return view('404');
+})->where('any', '.*');
