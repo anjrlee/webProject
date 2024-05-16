@@ -1,41 +1,40 @@
 <template>
     <div class="main-container">
         <div class="container mt-[100px] z-[0] absolute">
-            <p class="form__title"><strong>審核列表</strong></p>
-            <hr class="form--separator">
-            <div class="table">
-                <div class="table__title">
-                    <div class="table-cell">項目名稱</div>
-                    <div class="table-cell">發表者</div>
-                    <div class="table-cell">發表時間</div>
-                    <div class="table-cell">狀態</div>
-                </div>
-                <div v-for="item in items" :key="item.id" class="table-row" @click="showItemcontent(item)">
-                    <div class="table-cell">{{ item.title }}</div>
-                    <div class="table-cell">{{ item.author }}</div>
-                    <div class="table-cell">{{ item.published }}</div>
-                    <div class="table-cell">{{ item.Istatus }}</div>
+            <div v-show="itemTable" class="showable">
+                <p class="form__title"><strong>審核列表</strong></p>
+                <hr class="form--separator">
+                <div class="table">
+                    <div class="table__title">
+                        <div class="table-cell">項目名稱</div>
+                        <div class="table-cell">發表者</div>
+                        <div class="table-cell">發表時間</div>
+                        <div class="table-cell">狀態</div>
+                    </div>
+                    <div v-for="item in items" :key="item.id" class="table-row" @click="showItemcontent(item)">
+                        <div class="table-cell">{{ item.title }}</div>
+                        <div class="table-cell">{{ item.author }}</div>
+                        <div class="table-cell">{{ item.published }}</div>
+                        <div class="table-cell">{{ item.Istatus }}</div>
+                    </div>
                 </div>
             </div>
 
             <div id="Itemcontent" v-if="selectItem">
-                <div class="row justify-content-center mt-4">
-                    <div class="col">
-                        <p class="form__title"><strong>審核列表</strong></p>
-                        <hr class="form--separator">
-                        <form class="mb-4">
-                            <div class="mb-3">
-                                <p class="label"><strong>項目名稱: </strong>{{ selectItem.title }}</p>
-                                <p class="label"><strong>完成紀錄: </strong>{{ selectItem.recordScore}}</p>
-                                <p class="label"><strong>完成者: </strong>{{ selectItem.recorder }}</p>
-                                <p class="label"><strong>完成日期: </strong>{{ selectItem.date }}</p>
-                                <p class="label"><strong>證明檔案: </strong>{{ selectItem.proveFile }}</p>
-                            </div>
-                            <button @click="approve(selectItem.id)" class="button1">許可</button>
-                            <button @click="reject(selectItem.id)" class="button2">拒絕</button>
-                        </form>
+                <button @click="goback" class="button3">返回</button>
+                <p class="form__title"><strong>審核列表</strong></p>
+                <hr class="form--separator">
+                <form class="mt-4">
+                    <div class="mb-3">
+                        <p class="label"><strong>項目名稱: </strong>{{ selectItem.title }}</p>
+                        <p class="label"><strong>完成紀錄: </strong>{{ selectItem.recordScore}}</p>
+                        <p class="label"><strong>完成者: </strong>{{ selectItem.recorder }}</p>
+                        <p class="label"><strong>完成日期: </strong>{{ selectItem.date }}</p>
+                        <p class="label"><strong>證明檔案: </strong>{{ selectItem.proveFile }}</p>
                     </div>
-                </div>
+                    <button @click="approve(selectItem.id)" class="button1">許可</button>
+                    <button @click="reject(selectItem.id)" class="button2">拒絕</button>
+                </form>
             </div>
         </div>
     </div>
@@ -54,7 +53,8 @@ export default {
     data(){
         return{
             items: [],
-            selectItem: null
+            selectItem: null,
+            itemTable: true
         };
     },
     methods:{
@@ -76,12 +76,19 @@ export default {
         },
         showItemcontent(item){
             this.selectItem = item;
+            this.itemTable = false;
             /*axios.get('/api/items/${item.id}')
                 .then(Response => {
                     this.selectItem = Response.data;
             });*/
         },
+        goback(){
+            this.itemTable = true; 
+            this.selectItem = null;  
+        },
         approve(itemId){
+            this.itemTable=true;
+            this.selectItem = null; 
             /*axios.post('api/items/${itemId}/approve')
                 .then(Response => {
                     console.log('已許可', Response.data);
@@ -90,6 +97,8 @@ export default {
                 });*/
         },
         reject(itemId){
+            this.itemTable=true;
+            this.selectItem = null; 
             /*axios.post('api/items/${itemId}/reject')
                 .then(Response => {
                     console.log('已拒絕', Response.data);
@@ -112,7 +121,7 @@ export default {
     }
 
     .form__title{
-        font-size: 30px;
+        font-size: 40px;
         margin-top: 20px;
     }
 
@@ -131,6 +140,7 @@ export default {
     .table__title{
         display: table-header-group;
         font-weight: bold;
+        font-size: 30px;
     }
 
     .table-row{
@@ -153,14 +163,15 @@ export default {
     }
 
     .label{
-        font-size: 20px;
+        font-size: 30px;
+        margin-left: 12%;
     }
 
     .button1{
-        position: relative;
-        margin-top: 150px;
-        margin-right: 65px;
-        width: 100px;
+        position: absolute;
+        top: 450px;
+        left: 400px;
+        width: 130px;
         text-align: center;
         font-size: 30px;
         color: white;
@@ -169,10 +180,10 @@ export default {
     }
 
     .button2{
-        position: relative;
-        margin-top: 150px;
-        margin-right: 65px;
-        width: 100px;
+        position: absolute;
+        top: 450px;
+        left: 700px;
+        width: 130px;
         text-align: center;
         font-size: 30px;
         color: white;
