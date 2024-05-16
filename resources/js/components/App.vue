@@ -9,7 +9,7 @@
             <div class="h-[10%] bg-white w-full relative top-[60%]"></div>
         </div>
         
-        <div class="flex flex-wrap justify-center items-center h-full w-[7%] left-[87%] absolute cursor-pointer " ><router-link to="/profile"><img src="images/index/profile.png" class="w-4/5 h-4/5" /></router-link></div>
+        
 
       </div>
       
@@ -46,7 +46,7 @@
       </div>
 
       
-      <div class="w-4/5 h-full absolute left-[20%] " v-if="sideBarShow" @click="sideBarShowDisable()"></div>
+      
 
       <!-- Vue Router 代入的內容 -->
       
@@ -56,12 +56,10 @@
 import {ref} from 'vue'
 const sideBarShow=ref(false);
 function sideBarShowFun(){
-   sideBarShow.value=true;
+   sideBarShow.value=!sideBarShow.value;
 }
 
-function sideBarShowDisable(){
-  sideBarShow.value=false;
-}
+
 </script>
 <style>
 .sideBar{
