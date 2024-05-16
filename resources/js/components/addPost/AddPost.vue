@@ -42,27 +42,45 @@
                             <label for="cover" class="form-label col">封面圖片：<small>（僅限上傳png和jpg檔）</small></label>
                         </div>
                         <div class="row">
-                            <div class="col-sm-3">
+                            <div class="col-sm-4">
                                 <input type="file" class="form-control" id="cover" accept="image/png, image/jpeg">
                             </div>
                         </div>
                     </div>
-                    
-                    <button type="submit" class="btn btn-primary">Sign in</button>
+                    <div class="mb-3 text-center">
+                        <button type="button" class="btn btn-black" @click="showConfirmation();">送出</button>
+                    </div>
                 </form>
             </div>
         </div>
     </div>
 </template>
 
-<script>
+<script setup>
 import 'bootstrap'; 
 import 'bootstrap/dist/css/bootstrap.min.css'; 
+import { onMounted } from 'vue';
+onMounted(() => {
+    window.scrollTo(0, 0);
+});
+const showConfirmation = () => {
+    const title = document.getElementById('title').value;
+    const recordScore = document.getElementById('recordScore').value;
+    const recorder = document.getElementById('recorder').value;
+    const date = document.getElementById('date').value;
+    const proveFile = document.getElementById('proveFile').value;
+    const awardSpeech = document.getElementById('awardSpeech').value;
+    const cover = document.getElementById('cover').value;
+    // 构建确认信息
+    const confirmationMessage = `項目名稱：${title}\n完成紀錄：${recordScore}\n完成者：${recorder}\n完成日期：${date}\n證明檔案：${proveFile}\n得獎感言：${awardSpeech}\n封面圖片：${cover}`;
 
-export default {
-    
-}
+    // 显示确认框
+    if (window.confirm(`請檢查您的輸入是否正確。\n\n${confirmationMessage}`)) {
+        
+    }
+};
 </script>
+
 
 <style scoped>
 .container{
@@ -77,7 +95,8 @@ export default {
 
 form,
 input,
-textarea {
+textarea,
+button {
     font-size: 1.5rem;
 }
 
@@ -92,4 +111,13 @@ small{
     display: inline-block;
 }
 
+.btn-black {
+    background-color: #000000;
+    color: #ffffff;
+    border: none;
+}
+
+.btn-black:hover {
+    background-color: #2f2f2f;
+}
 </style>
