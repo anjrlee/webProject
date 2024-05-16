@@ -8,6 +8,7 @@ import Register from './components/loginRegister/Register.vue';
 import AddPost from './components/addPost/AddPost.vue';
 import Verify from './components/verify/Verify.vue';
 import Profile from './components/profile/Profile.vue';
+import Edit from './components/profile/Edit.vue';
 import Post from './components/post/Post.vue';
 
 
@@ -23,6 +24,7 @@ const router = createRouter(
         { path: '/addpost', component: AddPost },
         { path: '/verify', component: Verify },
         { path: '/profile', component: Profile },
+        { path: '/profile/edit', component: Edit },
         { path: '/post/:id', component: Post, props: true },
         { path: '/articleRead/:id', component: ArticlesRead, props: true },
         { path: '/:pathMatch(.*)',redirect: '/404'}
