@@ -4,31 +4,31 @@
   <div class="container">
     <div class="title"> 
       <div class="title-background"></div>
-      <h1>{{ userProfile.title }}</h1>
+      <h1>{{ recordItem.title }}</h1>
     </div>
 
     <div class="image-section">
-      <img :src="userProfile.cover" class="image">
+      <img :src="recordItem.cover" class="image">
     </div>
 
     <div class="info-section">
       <img class="icon" src="/images/post/1.png">
       <h2>紀錄保持人: </h2><br>
-      <p class="info-detail">{{ userProfile.recorder }}</p><br>
+      <p class="info-detail">{{ recordItem.recorder }}</p><br>
       <img class="icon" src="/images/post/2.png">
       <h2>紀錄: </h2><br>
-      <p class="info-detail">{{ userProfile.recordScore }}</p><br>
+      <p class="info-detail">{{ recordItem.recordScore }}</p><br>
       <img class="icon" src="/images/post/3.png">
       <h2>完成日期: </h2><br>
-      <p class="info-detail"> {{ userProfile.date }}</p><br>
+      <p class="info-detail"> {{ recordItem.date }}</p><br>
       <img class="icon" src="/images/post/4.png">
       <h2>種類: </h2><br>
-      <p class="info-detail">{{ userProfile.type }}</p><br>
+      <p class="info-detail">{{ recordItem.type }}</p><br>
     </div>
 
     <div class="award-section">
       <h2>得獎感言: </h2><br>
-      <p>{{ userProfile.awardSpeech }}</p><br>
+      <p>{{ recordItem.awardSpeech }}</p><br>
     </div>
   
   </div>
@@ -43,7 +43,7 @@ const route = useRoute()
 const id=route.params.id
 console.log(id);
   
-const userProfile = reactive({
+const recordItem = reactive({
   title: "偷腳踏車被公審最多次", 
   cover: '/images/post/bicycle.jpg',
   recorder: "王子俊",
@@ -110,7 +110,7 @@ const userProfile = reactive({
 }
   
 .icon{
-  max-width: 30px;
+  max-width: 40px;
   height: auto;
   float: left;
   margin-right: 10px;

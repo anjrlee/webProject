@@ -4,17 +4,17 @@
   <div class="container">
     <div class="title"> 
       <div class="title-background"></div>
-      <h1>{{ userProfile.title }}</h1>
+      <h1>{{ articleItem.title }}</h1>
     </div>
 
-    <p class="info">{{ userProfile.author + " " + userProfile.date }}</p>
-    <p class="info">{{ userProfile.type }}</p>
+    <p class="info">{{ articleItem.author + " " + articleItem.date }}</p>
+    <p class="info">{{ articleItem.type }}</p>
 
     <div class="image-section">
-      <img :src="userProfile.cover" class="image">
+      <img :src="articleItem.cover" class="image">
     </div>
 
-    <p>{{ userProfile.content }}</p><br><hr><br>
+    <p>{{ articleItem.content }}</p><br><hr><br>
     
     <h2>相關連結:</h2>
     <div v-for="i in links">
@@ -37,7 +37,7 @@ const link3 = "https://cn.vuejs.org/guide/essentials/reactivity-fundamentals.htm
 
 
 
-const userProfile = reactive({
+const articleItem = reactive({
     email: "user1@gmail.com",
     title: "研究室周刊-xxx老師的研究室在幹嘛?",
     cover: "/images/post/bk_test3.jpg",
