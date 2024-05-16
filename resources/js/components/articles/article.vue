@@ -1,23 +1,27 @@
 <template>
-    <App class="navbar"></App>
+  <App class="navbar"></App>
   
-    <div class="container">
-        <div class="title"> 
-            <div class="title-background"></div>
-            <h1>{{ userProfile.title }}</h1>
-        </div>
-        <p class="info">{{ userProfile.author + " " + userProfile.date }}</p>
-        <p class="info">{{ userProfile.type }}</p>
-        <div class="image-section">
-          <img :src="userProfile.cover" class="image">
-        </div>
-        <p>{{ userProfile.content }}</p><br><hr><br>
-        <h2>相關連結:</h2>
-        <div v-for="i in links">
-          <a :href="i">{{ i }}</a><br> 
-        </div>       
-        
+  <div class="container">
+    <div class="title"> 
+      <div class="title-background"></div>
+      <h1>{{ articleItem.title }}</h1>
     </div>
+
+    <p class="info">{{ articleItem.author + " " + articleItem.date }}</p>
+    <p class="info">{{ articleItem.type }}</p>
+
+    <div class="image-section">
+      <img :src="articleItem.cover" class="image">
+    </div>
+
+    <p>{{ articleItem.content }}</p><br><hr><br>
+    
+    <h2>相關連結:</h2>
+    <div v-for="i in links">
+      <a :href="i">{{ i }}</a><br> 
+    </div>       
+        
+  </div>
 </template>
 
 <script setup>
@@ -33,7 +37,7 @@ const link3 = "https://cn.vuejs.org/guide/essentials/reactivity-fundamentals.htm
 
 
 
-const userProfile = reactive({
+const articleItem = reactive({
     email: "user1@gmail.com",
     title: "研究室周刊-xxx老師的研究室在幹嘛?",
     cover: "/images/post/bk_test3.jpg",
@@ -64,6 +68,7 @@ const links = reactive( [ link1, link2, link3 ] );
   margin-bottom: 20px;
   text-align: center;
   border: 2px solid gray;
+  word-wrap: break-word;
 }
 
 .title-background {
@@ -72,7 +77,7 @@ const links = reactive( [ link1, link2, link3 ] );
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url('/images/post/bk_test3.jpg'); /* 底圖路徑 */
+  background-image: url('/images/post/title_bk.png'); /* 底圖路徑 */
   background-size: cover; /* 自動調整背景圖片大小以填滿容器 */
   background-position: center; /* 將背景圖片置中 */
   opacity: 0.5; /* 設置背景圖片透明度，根據需要調整 */
@@ -85,17 +90,19 @@ const links = reactive( [ link1, link2, link3 ] );
     margin-bottom: 50px;
   }
   
-  .image {
-    width: 50%; /* 設置圖片的最大寬度 */
-    max-height: 500px; /* 設置最大高度 */
-    height: auto;
-    object-fit: cover; /* 保持比例填滿容器 */
-    border: 2px solid gray;
-  }
+.image {
+  width: 50%; /* 設置圖片的最大寬度 */
+  max-height: 500px; /* 設置最大高度 */
+  height: auto;
+  object-fit: cover; /* 保持比例填滿容器 */
+  border: 2px solid gray;
+}
 
 .info{
   display: flex;
   justify-content: right;
 }
+
+
 
 </style>
