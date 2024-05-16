@@ -23843,10 +23843,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/addPost/AddPost.vue?vue&type=script&lang=js":
-/*!*********************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/addPost/AddPost.vue?vue&type=script&lang=js ***!
-  \*********************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/addPost/AddPost.vue?vue&type=script&setup=true&lang=js":
+/*!********************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/addPost/AddPost.vue?vue&type=script&setup=true&lang=js ***!
+  \********************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -23856,9 +23856,43 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var bootstrap__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! bootstrap */ "./node_modules/bootstrap/dist/js/bootstrap.esm.js");
 /* harmony import */ var bootstrap_dist_css_bootstrap_min_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! bootstrap/dist/css/bootstrap.min.css */ "./node_modules/bootstrap/dist/css/bootstrap.min.css");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({});
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  __name: 'AddPost',
+  setup: function setup(__props, _ref) {
+    var __expose = _ref.expose;
+    __expose();
+    (0,vue__WEBPACK_IMPORTED_MODULE_2__.onMounted)(function () {
+      window.scrollTo(0, 0);
+    });
+    var showConfirmation = function showConfirmation() {
+      var title = document.getElementById('title').value;
+      var recordScore = document.getElementById('recordScore').value;
+      var recorder = document.getElementById('recorder').value;
+      var date = document.getElementById('date').value;
+      var proveFile = document.getElementById('proveFile').value;
+      var awardSpeech = document.getElementById('awardSpeech').value;
+      var cover = document.getElementById('cover').value;
+      // 构建确认信息
+      var confirmationMessage = "\u9805\u76EE\u540D\u7A31\uFF1A".concat(title, "\n\u5B8C\u6210\u7D00\u9304\uFF1A").concat(recordScore, "\n\u5B8C\u6210\u8005\uFF1A").concat(recorder, "\n\u5B8C\u6210\u65E5\u671F\uFF1A").concat(date, "\n\u8B49\u660E\u6A94\u6848\uFF1A").concat(proveFile, "\n\u5F97\u734E\u611F\u8A00\uFF1A").concat(awardSpeech, "\n\u5C01\u9762\u5716\u7247\uFF1A").concat(cover);
+
+      // 显示确认框
+      if (window.confirm("\u8ACB\u6AA2\u67E5\u60A8\u7684\u8F38\u5165\u662F\u5426\u6B63\u78BA\u3002\n\n".concat(confirmationMessage))) {}
+    };
+    var __returned__ = {
+      showConfirmation: showConfirmation,
+      onMounted: vue__WEBPACK_IMPORTED_MODULE_2__.onMounted
+    };
+    Object.defineProperty(__returned__, '__isScriptSetup', {
+      enumerable: false,
+      value: true
+    });
+    return __returned__;
+  }
+});
 
 /***/ }),
 
@@ -24372,10 +24406,37 @@ var _withScopeId = function _withScopeId(n) {
 var _hoisted_1 = {
   "class": "container mt-[100px] z-[0] absolute"
 };
-var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"row justify-content-center mt-4\" data-v-5b734098><div class=\"col\" data-v-5b734098><p class=\"display-6\" data-v-5b734098><strong data-v-5b734098>新增紀錄</strong><small data-v-5b734098>*為必填</small></p><div class=\"line\" data-v-5b734098></div><form class=\"mt-4\" data-v-5b734098><div class=\"mb-3\" data-v-5b734098><label for=\"title\" class=\"form-label\" data-v-5b734098><p class=\"require\" data-v-5b734098>*</p>項目名稱：</label><input type=\"text\" class=\"form-control\" id=\"title\" placeholder=\"丟松果最快速\" required data-v-5b734098></div><div class=\"mb-3\" data-v-5b734098><label for=\"recordScore\" class=\"form-label\" data-v-5b734098><p class=\"require\" data-v-5b734098>*</p>完成紀錄：</label><input type=\"text\" class=\"form-control\" id=\"recordScore\" placeholder=\"100(km/hr)\" required data-v-5b734098></div><div class=\"mb-3\" data-v-5b734098><label for=\"recorder\" class=\"form-label\" data-v-5b734098><p class=\"require\" data-v-5b734098>*</p>完成者：</label><input type=\"text\" class=\"form-control\" id=\"recorder\" placeholder=\"王小明\" required data-v-5b734098></div><div class=\"mb-3\" data-v-5b734098><div class=\"row\" data-v-5b734098><label for=\"date\" class=\"form-label col\" data-v-5b734098><p class=\"require\" data-v-5b734098>*</p>完成日期：<small data-v-5b734098>（請點選月曆圖示選擇日期）</small></label></div><div class=\"row\" data-v-5b734098><div class=\"col-sm-3\" data-v-5b734098><input type=\"date\" class=\"form-control\" id=\"date\" required data-v-5b734098></div></div></div><div class=\"mb-3\" data-v-5b734098><div class=\"row\" data-v-5b734098><label for=\"proveFile\" class=\"form-label col\" data-v-5b734098><p class=\"require\" data-v-5b734098>*</p>證明檔案：<small data-v-5b734098>（請將檔案上傳至Google Drive或YouTube等平台，貼上共享連結）</small></label></div><input type=\"url\" class=\"form-control\" id=\"proveFile\" placeholder=\"https://drive.google.com/...\" required data-v-5b734098></div><div class=\"mb-3\" data-v-5b734098><label for=\"awardSpeech\" class=\"form-label\" data-v-5b734098>得獎感言：</label><textarea class=\"form-control\" id=\"awardSpeech\" style=\"resize:none;\" rows=\"5\" data-v-5b734098>無</textarea></div><div class=\"mb-3\" data-v-5b734098><div class=\"row\" data-v-5b734098><label for=\"cover\" class=\"form-label col\" data-v-5b734098>封面圖片：<small data-v-5b734098>（僅限上傳png和jpg檔）</small></label></div><div class=\"row\" data-v-5b734098><div class=\"col-sm-3\" data-v-5b734098><input type=\"file\" class=\"form-control\" id=\"cover\" accept=\".png, .jpeg\" data-v-5b734098></div></div></div><button type=\"submit\" class=\"btn btn-primary\" data-v-5b734098>Sign in</button></form></div></div>", 1);
-var _hoisted_3 = [_hoisted_2];
+var _hoisted_2 = {
+  "class": "row justify-content-center mt-4"
+};
+var _hoisted_3 = {
+  "class": "col"
+};
+var _hoisted_4 = /*#__PURE__*/_withScopeId(function () {
+  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
+    "class": "display-6"
+  }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("strong", null, "新增紀錄"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("small", null, "*為必填")], -1 /* HOISTED */);
+});
+var _hoisted_5 = /*#__PURE__*/_withScopeId(function () {
+  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+    "class": "line"
+  }, null, -1 /* HOISTED */);
+});
+var _hoisted_6 = {
+  "class": "mt-4"
+};
+var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"mb-3\" data-v-5b734098><label for=\"title\" class=\"form-label\" data-v-5b734098><p class=\"require\" data-v-5b734098>*</p>項目名稱：</label><input type=\"text\" class=\"form-control\" id=\"title\" placeholder=\"丟松果最快速\" required data-v-5b734098></div><div class=\"mb-3\" data-v-5b734098><label for=\"recordScore\" class=\"form-label\" data-v-5b734098><p class=\"require\" data-v-5b734098>*</p>完成紀錄：</label><input type=\"text\" class=\"form-control\" id=\"recordScore\" placeholder=\"100(km/hr)\" required data-v-5b734098></div><div class=\"mb-3\" data-v-5b734098><label for=\"recorder\" class=\"form-label\" data-v-5b734098><p class=\"require\" data-v-5b734098>*</p>完成者：</label><input type=\"text\" class=\"form-control\" id=\"recorder\" placeholder=\"王小明\" required data-v-5b734098></div><div class=\"mb-3\" data-v-5b734098><div class=\"row\" data-v-5b734098><label for=\"date\" class=\"form-label col\" data-v-5b734098><p class=\"require\" data-v-5b734098>*</p>完成日期：<small data-v-5b734098>（請點選月曆圖示選擇日期）</small></label></div><div class=\"row\" data-v-5b734098><div class=\"col-sm-3\" data-v-5b734098><input type=\"date\" class=\"form-control\" id=\"date\" required data-v-5b734098></div></div></div><div class=\"mb-3\" data-v-5b734098><div class=\"row\" data-v-5b734098><label for=\"proveFile\" class=\"form-label col\" data-v-5b734098><p class=\"require\" data-v-5b734098>*</p>證明檔案：<small data-v-5b734098>（請將檔案上傳至Google Drive或YouTube等平台，貼上共享連結）</small></label></div><input type=\"url\" class=\"form-control\" id=\"proveFile\" placeholder=\"https://drive.google.com/...\" required data-v-5b734098></div><div class=\"mb-3\" data-v-5b734098><label for=\"awardSpeech\" class=\"form-label\" data-v-5b734098>得獎感言：</label><textarea class=\"form-control\" id=\"awardSpeech\" style=\"resize:none;\" rows=\"5\" data-v-5b734098>無</textarea></div><div class=\"mb-3\" data-v-5b734098><div class=\"row\" data-v-5b734098><label for=\"cover\" class=\"form-label col\" data-v-5b734098>封面圖片：<small data-v-5b734098>（僅限上傳png和jpg檔）</small></label></div><div class=\"row\" data-v-5b734098><div class=\"col-sm-4\" data-v-5b734098><input type=\"file\" class=\"form-control\" id=\"cover\" accept=\"image/png, image/jpeg\" data-v-5b734098></div></div></div>", 7);
+var _hoisted_14 = {
+  "class": "mb-3 text-center"
+};
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [].concat(_hoisted_3));
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [_hoisted_4, _hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", _hoisted_6, [_hoisted_7, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_14, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+    type: "button",
+    "class": "btn btn-black",
+    onClick: _cache[0] || (_cache[0] = function ($event) {
+      $setup.showConfirmation();
+    })
+  }, "送出")])])])])]);
 }
 
 /***/ }),
@@ -29509,7 +29570,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.container[data-v-5b734098]{\r\n  left: 50%;\r\n  transform: translate(-50%, 0%);\n}\n.line[data-v-5b734098] {\r\n    height: 1%;\r\n    border-top: solid #000000;\n}\nform[data-v-5b734098],\r\ninput[data-v-5b734098],\r\ntextarea[data-v-5b734098] {\r\n    font-size: 1.5rem;\n}\nsmall[data-v-5b734098]{\r\n    font-size: 0.9rem;\r\n    color: #ff0000;\r\n    margin-left: 1%;\n}\n.require[data-v-5b734098]{\r\n    color: #ff0000;\r\n    display: inline-block;\n}\r\n\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.container[data-v-5b734098]{\r\n  left: 50%;\r\n  transform: translate(-50%, 0%);\n}\n.line[data-v-5b734098] {\r\n    height: 1%;\r\n    border-top: solid #000000;\n}\nform[data-v-5b734098],\r\ninput[data-v-5b734098],\r\ntextarea[data-v-5b734098],\r\nbutton[data-v-5b734098] {\r\n    font-size: 1.5rem;\n}\nsmall[data-v-5b734098]{\r\n    font-size: 0.9rem;\r\n    color: #ff0000;\r\n    margin-left: 1%;\n}\n.require[data-v-5b734098]{\r\n    color: #ff0000;\r\n    display: inline-block;\n}\n.btn-black[data-v-5b734098] {\r\n    background-color: #000000;\r\n    color: #ffffff;\r\n    border: none;\n}\n.btn-black[data-v-5b734098]:hover {\r\n    background-color: #2f2f2f;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -47583,7 +47644,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _AddPost_vue_vue_type_template_id_5b734098_scoped_true__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./AddPost.vue?vue&type=template&id=5b734098&scoped=true */ "./resources/js/components/addPost/AddPost.vue?vue&type=template&id=5b734098&scoped=true");
-/* harmony import */ var _AddPost_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./AddPost.vue?vue&type=script&lang=js */ "./resources/js/components/addPost/AddPost.vue?vue&type=script&lang=js");
+/* harmony import */ var _AddPost_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./AddPost.vue?vue&type=script&setup=true&lang=js */ "./resources/js/components/addPost/AddPost.vue?vue&type=script&setup=true&lang=js");
 /* harmony import */ var _AddPost_vue_vue_type_style_index_0_id_5b734098_scoped_true_lang_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./AddPost.vue?vue&type=style&index=0&id=5b734098&scoped=true&lang=css */ "./resources/js/components/addPost/AddPost.vue?vue&type=style&index=0&id=5b734098&scoped=true&lang=css");
 /* harmony import */ var C_xampp_htdocs_webProject_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
@@ -47593,7 +47654,7 @@ __webpack_require__.r(__webpack_exports__);
 ;
 
 
-const __exports__ = /*#__PURE__*/(0,C_xampp_htdocs_webProject_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__["default"])(_AddPost_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_AddPost_vue_vue_type_template_id_5b734098_scoped_true__WEBPACK_IMPORTED_MODULE_0__.render],['__scopeId',"data-v-5b734098"],['__file',"resources/js/components/addPost/AddPost.vue"]])
+const __exports__ = /*#__PURE__*/(0,C_xampp_htdocs_webProject_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__["default"])(_AddPost_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_AddPost_vue_vue_type_template_id_5b734098_scoped_true__WEBPACK_IMPORTED_MODULE_0__.render],['__scopeId',"data-v-5b734098"],['__file',"resources/js/components/addPost/AddPost.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -47904,18 +47965,18 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/components/addPost/AddPost.vue?vue&type=script&lang=js":
-/*!*****************************************************************************!*\
-  !*** ./resources/js/components/addPost/AddPost.vue?vue&type=script&lang=js ***!
-  \*****************************************************************************/
+/***/ "./resources/js/components/addPost/AddPost.vue?vue&type=script&setup=true&lang=js":
+/*!****************************************************************************************!*\
+  !*** ./resources/js/components/addPost/AddPost.vue?vue&type=script&setup=true&lang=js ***!
+  \****************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_AddPost_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__["default"])
+/* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_AddPost_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_0__["default"])
 /* harmony export */ });
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_AddPost_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./AddPost.vue?vue&type=script&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/addPost/AddPost.vue?vue&type=script&lang=js");
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_AddPost_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./AddPost.vue?vue&type=script&setup=true&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/addPost/AddPost.vue?vue&type=script&setup=true&lang=js");
  
 
 /***/ }),
