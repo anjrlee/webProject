@@ -21,8 +21,10 @@
             </div>
 
             <div id="Itemcontent" v-if="selectItem">
-                <button @click="goback" class="button3">返回</button>
-                <p class="form__title"><strong>審核列表</strong></p>
+                <div class="header-row">
+                    <p class="form__title"><strong>審核列表</strong></p>
+                    <button @click="goback" class="button3">返回</button>
+                </div>
                 <hr class="form--separator">
                 <form class="mt-4">
                     <div class="mb-3">
@@ -79,8 +81,15 @@ export default {
             this.itemTable = false;
             /*axios.get('/api/items/${item.id}')
                 .then(Response => {
-                    this.selectItem = Response.data;
-            });*/
+                    this.selectItem = Response.data,map(item => ({
+                        ...item,
+                        Instatus: '待審核'
+                    }));
+            })
+            .catch(error => {
+                    console.log(error);
+                });
+            */
         },
         goback(){
             this.itemTable = true; 
@@ -88,6 +97,7 @@ export default {
         },
         approve(itemId){
             this.itemTable=true;
+            this.selectItem.Istatus = '許可';
             this.selectItem = null; 
             /*axios.post('api/items/${itemId}/approve')
                 .then(Response => {
@@ -98,6 +108,7 @@ export default {
         },
         reject(itemId){
             this.itemTable=true;
+            this.selectItem.Istatus = '拒絕';
             this.selectItem = null; 
             /*axios.post('api/items/${itemId}/reject')
                 .then(Response => {
@@ -128,7 +139,8 @@ export default {
     .form--separator{
         height: 1%;
         border-top: solid #000000;
-
+        margin-top: 1px;
+        margin-bottom: 10px;
     }
 
     .table{
@@ -162,6 +174,13 @@ export default {
         text-align: center;
     }
 
+    .header-row{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+    }
+
     .label{
         font-size: 30px;
         margin-left: 12%;
@@ -191,4 +210,17 @@ export default {
         border-radius: 15px;
     }
 
+    .button3{
+        width: 100px;
+        text-align: center;
+        font-size: 20px;
+        color: white;
+        background: #007bff;
+        border-radius: 15px;
+        border: none;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
 </style>
