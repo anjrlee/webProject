@@ -71,10 +71,7 @@ const showConfirmation = () => {
     const proveFile = document.getElementById('proveFile').value;
     const awardSpeech = document.getElementById('awardSpeech').value;
     const cover = document.getElementById('cover').value;
-    // 构建确认信息
     const confirmationMessage = `項目名稱：${title}\n完成紀錄：${recordScore}\n完成者：${recorder}\n完成日期：${date}\n證明檔案：${proveFile}\n得獎感言：${awardSpeech}\n封面圖片：${cover}`;
-
-    // 显示确认框
     if (window.confirm(`請檢查您的輸入是否正確。\n\n${confirmationMessage}`)) {
         
     }
