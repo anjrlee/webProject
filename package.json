@@ -27,6 +27,7 @@
         "vue-template-compiler": "^2.6.12"
     },
     "dependencies": {
+        "bootstrap-icons": "^1.11.3",
         "bootstrap-vue": "^2.23.1"
     }
 }
