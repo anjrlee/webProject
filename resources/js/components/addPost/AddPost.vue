@@ -4,7 +4,15 @@
             <div class="col">
                 <p class="display-6"><strong>新增紀錄</strong><small>*為必填</small></p>
                 <div class="line"></div>
-                <form class="mt-4">
+                <form class="mt-4" @submit.prevent="showConfirmation">
+                    <div class="mb-3">
+                        <label for="type" class="form-label"><p class="require">*</p>類別：</label>
+                        <select class="form-select" id="type" required>
+                            <option value="leisure">休閒類</option>
+                            <option value="study">學術研究類</option>
+                            <option value="campus">校園生活類</option>
+                        </select>
+                    </div>
                     <div class="mb-3">
                         <label for="title" class="form-label"><p class="require">*</p>項目名稱：</label>
                         <input type="text" class="form-control" id="title" placeholder="丟松果最快速" required>
@@ -48,7 +56,7 @@
                         </div>
                     </div>
                     <div class="mb-3 text-center">
-                        <button type="button" class="btn btn-black" @click="showConfirmation();">送出</button>
+                        <button type="submit" class="btn btn-black">送出</button>
                     </div>
                 </form>
             </div>
@@ -64,6 +72,7 @@ onMounted(() => {
     window.scrollTo(0, 0);
 });
 const showConfirmation = () => {
+    const type = document.getElementById('type').value;
     const title = document.getElementById('title').value;
     const recordScore = document.getElementById('recordScore').value;
     const recorder = document.getElementById('recorder').value;
@@ -71,7 +80,7 @@ const showConfirmation = () => {
     const proveFile = document.getElementById('proveFile').value;
     const awardSpeech = document.getElementById('awardSpeech').value;
     const cover = document.getElementById('cover').value;
-    const confirmationMessage = `項目名稱：${title}\n完成紀錄：${recordScore}\n完成者：${recorder}\n完成日期：${date}\n證明檔案：${proveFile}\n得獎感言：${awardSpeech}\n封面圖片：${cover}`;
+    const confirmationMessage = `類別：${type}\n項目名稱：${title}\n完成紀錄：${recordScore}\n完成者：${recorder}\n完成日期：${date}\n證明檔案：${proveFile}\n得獎感言：${awardSpeech}\n封面圖片：${cover}`;
     if (window.confirm(`請檢查您的輸入是否正確。\n\n${confirmationMessage}`)) {
         
     }
@@ -93,7 +102,8 @@ const showConfirmation = () => {
 form,
 input,
 textarea,
-button {
+button,
+select {
     font-size: 1.5rem;
 }
 
