@@ -552,9 +552,6 @@ video {
 .left-\[2\%\] {
   left: 2%;
 }
-.left-\[20\%\] {
-  left: 20%;
-}
 .left-\[25\%\] {
   left: 25%;
 }
@@ -563,9 +560,6 @@ video {
 }
 .left-\[7\.5\%\] {
   left: 7.5%;
-}
-.left-\[87\%\] {
-  left: 87%;
 }
 .right-0 {
   right: 0px;
@@ -670,6 +664,15 @@ video {
 .flex {
   display: flex;
 }
+.table {
+  display: table;
+}
+.table-cell {
+  display: table-cell;
+}
+.table-row {
+  display: table-row;
+}
 .grid {
   display: grid;
 }
@@ -756,9 +759,6 @@ video {
 }
 .w-\[66px\] {
   width: 66px;
-}
-.w-\[7\%\] {
-  width: 7%;
 }
 .w-\[70\%\] {
   width: 70%;
