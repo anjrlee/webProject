@@ -27,7 +27,7 @@ const router = createRouter(
         { path: '/profile/edit', component: Edit },
         { path: '/post/:id', component: Post, props: true },
         { path: '/articleRead/:id', component: ArticlesRead, props: true },
-        { path: '/:pathMatch(.*)',redirect: '/404'}
+/*         { path: '/:pathMatch(.*)',redirect: '/404'} */
         // Define your routes here
     ]
 });
