@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
 
 Route::get('/addPost', function () {
@@ -30,7 +30,7 @@ Route::get('/404', function () {
 });
 
 Route::get('/login', function () {
-    return view('dashboard');
+    return view('login');
 });
 
 Route::get('/register', function () {
@@ -54,15 +54,3 @@ Route::get('/articleRead/{id}', function ($id) {
 Route::get('/{any}', function () {
     return view('404');
 })->where('any', '.*');
-
-Route::middleware([
-    'auth:sanctum',
-    config('jetstream.auth_session'),
-    'verified'
-])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
-});
-//login路由
-Route::post('/login', 'App\Http\Controllers\Auth\LoginController@login');
