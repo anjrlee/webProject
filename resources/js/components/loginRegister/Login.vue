@@ -41,11 +41,11 @@
     export default{
         data(){
             return{
-            SignupUsername: ' ',
-            SignupEmail: ' ',
-            SignupPassword: ' ',
-            LoginEmail: ' ',
-            LoginPassword: ' ',
+            SignupUsername: '',
+            SignupEmail: '',
+            SignupPassword: '',
+            LoginEmail: '',
+            LoginPassword: '',
             Signup: false,
             Login: true,
             pageL: true,
@@ -173,13 +173,13 @@
   }
   
   .overlay--pageL{
-    right: 305px;
+    right: 300px;
     width: 230px;
     height: 300px;
   }
 
   .overlay--pageR{
-    right: 65px;
+    right: 60px;
     width: 230px;
     height: 300px;
   }
