@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAddPostTable extends Migration
+class CreatePostsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateAddPostTable extends Migration
      */
     public function up()
     {
-        Schema::create('add_post', function (Blueprint $table) {
+        Schema::create('posts', function (Blueprint $table) {
             $table->id();
             $table->string('type');
             $table->string('title');
@@ -23,6 +23,8 @@ class CreateAddPostTable extends Migration
             $table->longText('awardSpeech')->nullable();
             $table->string('cover')->nullable();
             $table->timestamps();
+
+            //到時候要加入email 
         });
     }
 
@@ -33,6 +35,6 @@ class CreateAddPostTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('add_post');
+        Schema::dropIfExists('posts');
     }
 }
