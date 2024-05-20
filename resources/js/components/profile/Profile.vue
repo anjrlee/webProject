@@ -4,7 +4,7 @@
             <div class="col">
                 <h3 class="display-6 d-inline"><strong>個人資料</strong></h3>
                 <router-link to="/profile/edit" v-if="isOwnProfile" class="btn btn-black d-inline float-right"><i class="bi bi-pencil-square fs-5"></i>編輯</router-link>
-                <button @click="logout" class="btn btn-danger d-inline float-right me-3">登出</button> 
+                <button @click="logout" class="btn btn-danger d-inline float-right me-3">登出</button> <!-- 登出按钮 -->
                 <div class="line mt-3"></div>
                 <div class="mt-4 mb-3">
                     <p id="name">姓名：{{ profile.name }}</p>
@@ -26,42 +26,47 @@
     </div>
 </template>
 
-<script>
+<script setup>
 import 'bootstrap'; 
 import 'bootstrap/dist/css/bootstrap.min.css'; 
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import { ref, onMounted } from 'vue';
 import axios from 'axios';
 
-export default{
-    data() {
-        return {
-            profile: {},
-            isOwnProfile: true
-        };
-    },
-    mounted() {
+const profile = ref({
+    name: '',
+    gender: '',
+    email: '',
+    bio: '',
+    department: '',
+    grade: ''
+});
 
-        axios.get('/user', { withCredentials: true })
-            .then(response => {
+const isOwnProfile = ref(true);
 
-                this.profile = response.data;
-            })
-            .catch(error => {
-                console.error(error);
-                // 处理错误
-            });
+
+async function fetchUserProfile() {
+    try {
+        const response = await axios.get('/api/user/profile'); 
+        profile.value = response.data; 
+    } catch (error) {
+        console.error('获取用户信息失败', error);
     }
-};
-// 登出
+}
+
+onMounted(fetchUserProfile); 
+
+
 async function logout() {
     try {
         await axios.post('/logout'); 
+        window.location.href = '/loginpre';
     } catch (error) {
-        console.error('登出失敗', error);
+        console.error('登出失败', error);
     }
 }
 </script>
+
 
 <style scoped>
 .container {
