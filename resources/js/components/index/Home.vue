@@ -3,12 +3,12 @@
 <template>
     <div class="container">
       
-        <div class="w-4/5 h-4/5 absolute left-[10%] flex top-[30%] flex-wrap">
-          <div class="relative h-[300px] w-[300px]  ml-[3%] cursor-pointer" v-for="i in data" @click="go(i.id)">
+        <div class="w-4/5 h-4/5 absolute left-[10%] flex top-[20%] flex-wrap">
+          <div class="relative h-[300px] w-[300px]  ml-[3%] mb-[5%] cursor-pointer" v-for="i in data" @click="go(i.id)">
                <posts class="bg-white h-4/5 w-full relative" :data="i"/>
                <div class="w-full h-1/5 relative text-[20px] flex items-center justify-center">{{i.title}}</div>
           </div>
-          <div class="w-full h-[10%] relative"></div>
+         
         </div>
        
     </div>
