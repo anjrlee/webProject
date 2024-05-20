@@ -22,7 +22,7 @@ class CreatePostsTable extends Migration
             $table->string('proveFile');
             $table->longText('awardSpeech')->nullable();
             $table->string('cover')->nullable();
-            $table->timestamps();
+            /*             $table->timestamps(); */
 
             //到時候要加入email 
         });

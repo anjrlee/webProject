@@ -21,6 +21,8 @@ const router = createRouter(
         { path: '/articles', component: Articles },
         { path: '/login', component: Login },
         { path: '/register', component: Register },
+        { path: '/loginpre', component: Login },
+        { path: '/registerpre', component: Register },
         { path: '/addpost', component: AddPost },
         { path: '/verify', component: Verify },
         { path: '/profile', component: Profile },
@@ -28,6 +30,7 @@ const router = createRouter(
         { path: '/post/:id', component: Post, props: true },
         { path: '/articleRead/:id', component: ArticlesRead, props: true },
         { path: '/:pathMatch(.*)',redirect: '/404'}
+        
         // Define your routes here
     ]
 });
