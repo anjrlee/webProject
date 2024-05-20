@@ -1,79 +1,130 @@
 <template>
-    <div v-show="Signup" class="container__form container--signup">
-        <form @submit.prevent="handleSignup" class="form" id=formS>
-        <h2 class="form__title"><strong>註冊</strong></h2>
-        <hr class="form--separator">
-        <label for="username">用戶名</label>
-        <input type="text" class="input" v-model="SignupUsername"/>
-        <label for="email">電子郵件</label>
-        <input type="email" class="input" v-model="SignupEmail"/>
-        <label for="password">密碼</label>
-        <input type="password" class="input" v-model="SignupPassword"/>
-        <button type="submit" class="button3">註冊</button>
-        </form>
-    </div>
+  <div>
+      <div v-show="Signup" class="container__form container--signup">
+          <form @submit.prevent="handleSignup" class="form" id="formS">
+              <h2 class="form__title"><strong>註冊</strong></h2>
+              <hr class="form--separator">
+              <label for="username">用戶名</label>
+              <input type="text" class="input" v-model="SignupUsername" />
+              <label for="email">電子郵件</label>
+              <input type="email" class="input" v-model="SignupEmail" />
+              <label for="department">系級(例:資管二)</label>
+              <input type="text" class="input" v-model="SignupDepartment" />
+              <label for="password">密碼</label>
+              <input type="password" class="input" v-model="SignupPassword" />
+              <button type="submit" class="button3">註冊</button>
+          </form>
+      </div>
 
-    <div v-show="Login" class="container__form container--login">
-        <form @submit.prevent="handleLogin" class="form" id="formL">
-        <h2 class="form__title"><strong>登入</strong></h2>
-        <hr class="form--separator">
-        <label for="email">電子郵件</label>
-        <input type="email" class="input" v-model="LoginEmail"/>
-        <label for="password">密碼</label>
-        <input type="password" class="input" v-model="LoginPassword"/>
-        <button type="submit" class="button4">登入</button>
-        </form>
-    </div>
+      <div v-show="Login" class="container__form container--login">
+          <form @submit.prevent="handleLogin" class="form" id="formL">
+              <h2 class="form__title"><strong>登入</strong></h2>
+              <hr class="form--separator">
+              <label for="email">電子郵件</label>
+              <input type="email" class="input" v-model="LoginEmail" />
+              <label for="password">密碼</label>
+              <input type="password" class="input" v-model="LoginPassword" />
+              <button type="submit" class="button4">登入</button>
+          </form>
+      </div>
 
-    <div class="overlay__panel overlay--pageL" v-show="pageL">
-                <button @click="gotoSignup" class="button1">註冊</button>
-            </div>
-            <div class="overlay__panel overlay--pageR" v-show="pageR">
-                <button @click="gotoLogin" class="button2">登入</button>
-            </div>
-  
-    <div class="container__overlay">
-        <div class="overlay"></div>
-    </div>
+      <div class="overlay__panel overlay--pageL" v-show="pageL">
+          <button @click="gotoSignup" class="button1">註冊</button>
+      </div>
+      <div class="overlay__panel overlay--pageR" v-show="pageR">
+          <button @click="gotoLogin" class="button2">登入</button>
+      </div>
+
+      <div class="container__overlay">
+          <div class="overlay"></div>
+      </div>
+  </div>
 </template>
 
 <script>
-    export default{
-        data(){
-            return{
-            SignupUsername: '',
-            SignupEmail: '',
-            SignupPassword: '',
-            LoginEmail: '',
-            LoginPassword: '',
-            Signup: false,
-            Login: true,
-            pageL: true,
-            pageR: false
-            };
-        },
-        methods:{
-            handleSignup(){
-              console.log('註冊',  this.SignupUsername, this.SignupEmail, this.SignupPassword);
-            },
-            handleLogin(){
-              console.log('登入', this.LoginEmail, this.LoginPassword);
-            },
-            gotoSignup(){
-              this.Signup=true;
-              this.Login=false;
-              this.pageL=false;
-              this.pageR=true;
-            },
-            gotoLogin(){
-              this.Signup=false;
-              this.Login=true;
-              this.pageL=true;
-              this.pageR=false;
-            }
+import axios from 'axios';
+
+export default {
+  data() {
+      return {
+          SignupUsername: '',
+          SignupEmail: '',
+          SignupPassword: '',
+          SignupDepartment: '',
+          LoginEmail: '',
+          LoginPassword: '',
+          Signup: false,
+          Login: true,
+          pageL: true,
+          pageR: false
+      };
+  },
+  methods: {
+    async handleSignup() {
+      try {
+        const csrfToken = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content');
+        const response = await axios.post('/register', {
+            name: this.SignupUsername,
+            email: this.SignupEmail,
+            password: this.SignupPassword,
+            department: this.SignupDepartment, // Adding department to the request
+            _token: csrfToken
+        });
+        console.log('註冊成功!', response.data.message); // Accessing the message from the response
+        // Reset form fields after successful registration
+        this.SignupUsername = '';
+        this.SignupEmail = '';
+        this.SignupPassword = '';
+        this.SignupDepartment = '';
+      } catch (error) {
+        if (error.response) {
+            console.error('註冊失敗', error.response.data);
+        } else if (error.request) {
+            console.error('註冊失敗', '無法收到響應');
+        } else if (error.message !== undefined && error.message !== null) {
+            console.error('註冊失敗', error.message);
+        } else {
+            console.error('註冊失敗', '未知錯誤');
         }
-    };
+      }
+    },
+
+    async handleLogin() {
+      try {
+        const csrfToken = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content');
+        const response = await axios.post('/login', {
+            email: this.LoginEmail,
+            password: this.LoginPassword,
+            _token: csrfToken
+        });
+        console.log('登入成功', response.data);
+      } catch (error) {
+        if (error.response) {
+            console.error('登入失敗', error.response.data);
+        } else if (error.request) {
+            console.error('登入失敗', '無法收到響應');
+        } else {
+            console.error('登入失敗', error.message);
+        }
+      }
+    },
+
+    gotoSignup() {
+      this.Signup = true;
+      this.Login = false;
+      this.pageL = false;
+      this.pageR = true;
+    },
+    gotoLogin() {
+      this.Signup = false;
+      this.Login = true;
+      this.pageL = true;
+      this.pageR = false;
+    }
+  }
+};
 </script>
+
 
 <style scoped>
   h2{
@@ -144,13 +195,13 @@
   .container--signup{
     right: 300px;
     width: 230px;
-    height: 300px;
+    height: 400px;
   }
 
   .container--login{
     right: 60px;
     width: 230px;
-    height: 300px;
+    height: 400px;
   }
 
   .overlay{
@@ -175,13 +226,13 @@
   .overlay--pageL{
     right: 300px;
     width: 230px;
-    height: 300px;
+    height: 400px;
   }
 
   .overlay--pageR{
     right: 60px;
     width: 230px;
-    height: 300px;
+    height: 400px;
   }
 
   .button1{
@@ -208,5 +259,8 @@
     background: #010000;
     opacity: 0.25;
     border-radius: 15px;
+  }
+  .input{
+    text-align: center;
   }
 </style>

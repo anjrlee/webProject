@@ -8,17 +8,21 @@
             <div class="h-[10%] bg-white w-full relative top-[40%]"></div>
             <div class="h-[10%] bg-white w-full relative top-[60%]"></div>
         </div>
-        
+        <div class="absolute top-[15%] right-[2%] transform [-translate-y-1/2]">
+        <router-link to="/profile" class="text-white">
+          <img src="/images/index/profile.png" alt="Profile" class="w-[80px] h-auto" />
+        </router-link>
+      </div>
         
 
       </div>
       
       
       <div class="sideBar" v-if="sideBarShow">
-        <div class="h-[8%] w-5/6 bg-gray-200 m-[8%] rounded-full flex">
+        <div class="h-[3%] w-5/6 bg-gray-200 m-[8%] rounded-full flex">
           <div class="left-[1%] top-[15%] w-[17%] h-[80%] relative"> <img src='images/index/searchIcon.png' alt="Search Icon"></div>
           <div class="w-[70%] h-[60%] top-[25%] left-[5%] relative">
-              <input type="text" class="bg-transparent outline-none text-[1.1vw]"></input>
+              <input type="text" class="bg-transparent outline-none text-[1.1vw]">
           </div>
         </div>
 
@@ -38,7 +42,11 @@
         </div>
 
         <div class="sideBarWord">
-          <div class="sideBarTitle"><router-link to="/profile" style="text-decoration: none; color: white;">account</router-link></div>
+          <div class="sideBarTitle"><router-link to="/login" style="text-decoration: none; color: white;" v-if="!ifLogin">Login</router-link></div>
+        </div>
+
+        <div class="sideBarWord">
+          <div class="sideBarTitle"><router-link to="/profile" style="text-decoration: none; color: white;"  v-if="ifLogin">profile</router-link></div>
         </div>
 
         
@@ -55,6 +63,9 @@
 <script setup>
 import {ref} from 'vue'
 const sideBarShow=ref(false);
+var ifLogin=false;
+
+
 function sideBarShowFun(){
    sideBarShow.value=!sideBarShow.value;
 }
