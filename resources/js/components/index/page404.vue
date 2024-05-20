@@ -15,7 +15,7 @@
   </div>
 </template>
 
-<style lang="scss">
+<style scoped lang="scss">
 
 .body404{
   background-image: radial-gradient(#11581E, #041607);

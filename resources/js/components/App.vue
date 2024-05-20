@@ -19,7 +19,7 @@
       
       
       <div class="sideBar" v-if="sideBarShow">
-        <div class="h-[8%] w-5/6 bg-gray-200 m-[8%] rounded-full flex">
+        <div class="h-[3%] w-5/6 bg-gray-200 m-[8%] rounded-full flex">
           <div class="left-[1%] top-[15%] w-[17%] h-[80%] relative"> <img src='images/index/searchIcon.png' alt="Search Icon"></div>
           <div class="w-[70%] h-[60%] top-[25%] left-[5%] relative">
               <input type="text" class="bg-transparent outline-none text-[1.1vw]">
@@ -42,7 +42,11 @@
         </div>
 
         <div class="sideBarWord">
-          <div class="sideBarTitle"><router-link to="/profile" style="text-decoration: none; color: white;">account</router-link></div>
+          <div class="sideBarTitle"><router-link to="/login" style="text-decoration: none; color: white;" v-if="!ifLogin">Login</router-link></div>
+        </div>
+
+        <div class="sideBarWord">
+          <div class="sideBarTitle"><router-link to="/profile" style="text-decoration: none; color: white;"  v-if="ifLogin">profile</router-link></div>
         </div>
 
         
@@ -59,6 +63,9 @@
 <script setup>
 import {ref} from 'vue'
 const sideBarShow=ref(false);
+var ifLogin=false;
+
+
 function sideBarShowFun(){
    sideBarShow.value=!sideBarShow.value;
 }
