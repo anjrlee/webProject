@@ -19,7 +19,9 @@ class CreatePostsTable extends Migration
             $table->string('title');
             $table->string('recorder');
             $table->date('date');
+            $table->string('recordScore');
             $table->string('proveFile');
+            $table->string('ifProved')->default('no');
             $table->longText('awardSpeech')->nullable();
             $table->string('cover')->nullable();
             /*             $table->timestamps(); */
