@@ -7,7 +7,7 @@
                 <form class="mt-4" @submit.prevent="showConfirmation">
                     <div class="mb-3">
                         <label for="type" class="form-label"><p class="require">*</p>類別：</label>
-                        <select class="form-select" id="type" required>
+                        <select class="form-select" id="type" v-model="post.type" required>
                             <option value="leisure">休閒類</option>
                             <option value="study">學術研究類</option>
                             <option value="campus">校園生活類</option>
@@ -15,15 +15,15 @@
                     </div>
                     <div class="mb-3">
                         <label for="title" class="form-label"><p class="require">*</p>項目名稱：</label>
-                        <input type="text" class="form-control" id="title" placeholder="丟松果最快速" required>
+                        <input type="text" class="form-control" id="title" v-model="post.title" placeholder="丟松果最快速" required>
                     </div>
                     <div class="mb-3">
                         <label for="recordScore" class="form-label"><p class="require">*</p>完成紀錄：</label>
-                        <input type="text" class="form-control" id="recordScore" placeholder="100(km/hr)" required>
+                        <input type="text" class="form-control" id="recordScore" v-model="post.recordScore" placeholder="100(km/hr)" required>
                     </div>
                     <div class="mb-3">
                         <label for="recorder" class="form-label"><p class="require">*</p>完成者：</label>
-                        <input type="text" class="form-control" id="recorder" placeholder="王小明" required>
+                        <input type="text" class="form-control" id="recorder" v-model="post.recorder" placeholder="王小明" required>
                     </div>
                     <div class="mb-3">
                         <div class="row">
@@ -31,7 +31,7 @@
                         </div>
                         <div class="row">
                             <div class="col-sm-3">
-                                <input type="date" class="form-control" id="date" required>
+                                <input type="date" class="form-control" id="date" v-model="post.date" required>
                             </div>
                         </div>
                     </div>
@@ -39,11 +39,11 @@
                         <div class="row">
                             <label for="proveFile" class="form-label col"><p class="require">*</p>證明檔案：<small>（請將檔案上傳至Google Drive或YouTube等平台，貼上共享連結）</small></label>
                         </div>
-                        <input type="url" class="form-control" id="proveFile" placeholder="https://drive.google.com/..." required>
+                        <input type="url" class="form-control" id="proveFile" v-model="post.proveFile" placeholder="https://drive.google.com/..." required>
                     </div>
                     <div class="mb-3">
                         <label for="awardSpeech" class="form-label">得獎感言：</label>
-                        <textarea class="form-control" id="awardSpeech" style="resize: none;" rows="5">無</textarea>
+                        <textarea class="form-control" id="awardSpeech" v-model="post.awardSpeech" style="resize: none;" rows="5">無</textarea>
                     </div>
                     <div class="mb-3">
                         <div class="row">
@@ -51,7 +51,7 @@
                         </div>
                         <div class="row">
                             <div class="col-sm-4">
-                                <input type="file" class="form-control" id="cover" accept="image/png, image/jpeg">
+                                <input type="file" class="form-control" id="cover" @change="handleFileUpload" accept="image/png, image/jpeg">
                             </div>
                         </div>
                     </div>
@@ -67,38 +67,30 @@
 <script>
 import axios from 'axios';
 
-export default{
+export default {
     name: 'addPost',
-    data(){
-        return{
-            post:{
-            title: '',
-            date: '',
-            recorder:'',
-            awardSpeech: '',
-            type: '',
-            recordScore:'',
-            proveFile:'',
-            cover:null,
+    data() {
+        return {
+            post: {
+                title: '',
+                date: '',
+                recorder: '',
+                awardSpeech: '',
+                type: '',
+                recordScore: '',
+                proveFile: '',
+                cover: null,
             },
-
-        }
+            errorMessage: ''
+        };
     },
-    methods:{
+    methods: {
         handleFileUpload(event) {
             this.post.cover = event.target.files[0];
         },
 
-        async showConfirmation(){
-            const type = document.getElementById('type').value;
-            const title = document.getElementById('title').value;
-            const recordScore = document.getElementById('recordScore').value;
-            const recorder = document.getElementById('recorder').value;
-            const date = document.getElementById('date').value;
-            const proveFile = document.getElementById('proveFile').value;
-            const awardSpeech = document.getElementById('awardSpeech').value;
-            const cover = document.getElementById('cover').value;
-            const confirmationMessage = `類別：${type}\n項目名稱：${title}\n完成紀錄：${recordScore}\n完成者：${recorder}\n完成日期：${date}\n證明檔案：${proveFile}\n得獎感言：${awardSpeech}\n封面圖片：${cover}`;
+        async showConfirmation() {
+            const confirmationMessage = `類別：${this.post.type}\n項目名稱：${this.post.title}\n完成紀錄：${this.post.recordScore}\n完成者：${this.post.recorder}\n完成日期：${this.post.date}\n證明檔案：${this.post.proveFile}\n得獎感言：${this.post.awardSpeech}`;
             if (window.confirm(`請檢查您的輸入是否正確。\n\n${confirmationMessage}`)) {
                 const formData = new FormData();
                 formData.append('type', this.post.type);
@@ -112,26 +104,26 @@ export default{
                     formData.append('cover', this.post.cover);
                 }
                 try {
-                    const csrfToken = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content');
                     const response = await axios.post("http://127.0.0.1:8000/api/add-post", formData, {
                         headers: {
                             'Content-Type': 'multipart/form-data'
-                        },
-                        _token: csrfToken
+                        }
                     });
                     if (response.status === 200) {
                         alert(response.data.message);
                     }
-                }catch (error) {
+                } catch (error) {
+                    if (error.response && error.response.status === 422) {
+                        this.errorMessage = error.response.data.errors;
+                    } else {
+                        this.errorMessage = "There was an error submitting the form!";
+                    }
                     console.error("There was an error submitting the form!", error);
                 }
-
             }
         },
-
     }
 }
-
 </script>
 
 <style scoped>
