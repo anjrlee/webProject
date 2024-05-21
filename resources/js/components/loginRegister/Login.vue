@@ -97,6 +97,9 @@ export default {
             password: this.LoginPassword,
             _token: csrfToken
         });
+        if (response.status === 200) {
+          window.location.href = response.data.redirect;
+        }
         console.log('登入成功', response.data);
       } catch (error) {
         if (error.response) {

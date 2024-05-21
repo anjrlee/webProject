@@ -20,3 +20,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::post('add-post', [postController::class, 'addPost']);
+Route::get('/posts', [PostController::class, 'showall']);
+Route::post('/posts/{id}/approve', [PostController::class, 'approve']);
+Route::post('/posts/{id}/reject', [PostController::class, 'reject']);

@@ -14,7 +14,7 @@ use App\Models\Psw;
 class LoginController extends Controller
 {
     use AuthenticatesUsers;
-
+    protected $redirectTo = '/';
     public function login(Request $request)
     {
         $this->validate($request, [
@@ -39,7 +39,12 @@ class LoginController extends Controller
         // Check if the provided password matches the hashed password
         if (Hash::check($request->password, $psw->password)) {
             Auth::login($user);
-            return response()->json(['message' => '登入成功', 'user' => $user], 200);
+            return response()->json([
+                'message' => '登入成功',
+                'user' => $user,
+                'redirect' => $this->redirectPath() // 添加重定向 URL
+            ], 200);
+
         } else {
             // Password did not match
             return response()->json(['message' => '登入失敗，password mismatch'], 401);
@@ -58,8 +63,11 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
 
+    public function redirectPath()
+    {
+        return $this->redirectTo;
+    }
     /**
      * Create a new controller instance.
      *

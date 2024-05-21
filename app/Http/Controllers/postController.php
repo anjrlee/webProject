@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class postController extends Controller
 {
@@ -46,7 +47,28 @@ class postController extends Controller
             'message' => 'Post created successfully!',
             'code' => 200
         ]);
-    }
 
+    }
+    public function showall()
+    {
+        $posts = Post::all();
+        return response()->json($posts);
+    }
+    public function approve(Request $request, $id)
+    {
+        $post = Post::findOrFail($id);
+        $post->ifProved = 'approved';
+        $post->save();
+
+        return response()->json(['message' => 'Post approved successfully']);
+    }
+    public function reject(Request $request, $id)
+    {
+        $post = Post::findOrFail($id);
+        $post->ifProved = 'rejected';
+        $post->save();
+
+        return response()->json(['message' => 'Post rejected successfully']);
+    }
 
 }
