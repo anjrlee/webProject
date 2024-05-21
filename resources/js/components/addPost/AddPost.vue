@@ -64,29 +64,75 @@
     </div>
 </template>
 
-<script setup>
-import 'bootstrap'; 
-import 'bootstrap/dist/css/bootstrap.min.css'; 
-import { onMounted } from 'vue';
-onMounted(() => {
-    window.scrollTo(0, 0);
-});
-const showConfirmation = () => {
-    const type = document.getElementById('type').value;
-    const title = document.getElementById('title').value;
-    const recordScore = document.getElementById('recordScore').value;
-    const recorder = document.getElementById('recorder').value;
-    const date = document.getElementById('date').value;
-    const proveFile = document.getElementById('proveFile').value;
-    const awardSpeech = document.getElementById('awardSpeech').value;
-    const cover = document.getElementById('cover').value;
-    const confirmationMessage = `類別：${type}\n項目名稱：${title}\n完成紀錄：${recordScore}\n完成者：${recorder}\n完成日期：${date}\n證明檔案：${proveFile}\n得獎感言：${awardSpeech}\n封面圖片：${cover}`;
-    if (window.confirm(`請檢查您的輸入是否正確。\n\n${confirmationMessage}`)) {
-        
-    }
-};
-</script>
+<script>
+import axios from 'axios';
 
+export default{
+    name: 'addPost',
+    data(){
+        return{
+            post:{
+            title: '',
+            date: '',
+            recorder:'',
+            awardSpeech: '',
+            type: '',
+            recordScore:'',
+            proveFile:'',
+            cover:null,
+            },
+
+        }
+    },
+    methods:{
+        handleFileUpload(event) {
+            this.post.cover = event.target.files[0];
+        },
+
+        async showConfirmation(){
+            const type = document.getElementById('type').value;
+            const title = document.getElementById('title').value;
+            const recordScore = document.getElementById('recordScore').value;
+            const recorder = document.getElementById('recorder').value;
+            const date = document.getElementById('date').value;
+            const proveFile = document.getElementById('proveFile').value;
+            const awardSpeech = document.getElementById('awardSpeech').value;
+            const cover = document.getElementById('cover').value;
+            const confirmationMessage = `類別：${type}\n項目名稱：${title}\n完成紀錄：${recordScore}\n完成者：${recorder}\n完成日期：${date}\n證明檔案：${proveFile}\n得獎感言：${awardSpeech}\n封面圖片：${cover}`;
+            if (window.confirm(`請檢查您的輸入是否正確。\n\n${confirmationMessage}`)) {
+                const formData = new FormData();
+                formData.append('type', this.post.type);
+                formData.append('title', this.post.title);
+                formData.append('recordScore', this.post.recordScore);
+                formData.append('recorder', this.post.recorder);
+                formData.append('awardSpeech', this.post.awardSpeech);
+                formData.append('proveFile', this.post.proveFile);
+                formData.append('date', this.post.date);
+                if (this.post.cover) {
+                    formData.append('cover', this.post.cover);
+                }
+                try {
+                    const csrfToken = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content');
+                    const response = await axios.post("http://127.0.0.1:8000/api/add-post", formData, {
+                        headers: {
+                            'Content-Type': 'multipart/form-data'
+                        },
+                        _token: csrfToken
+                    });
+                    if (response.status === 200) {
+                        alert(response.data.message);
+                    }
+                }catch (error) {
+                    console.error("There was an error submitting the form!", error);
+                }
+
+            }
+        },
+
+    }
+}
+
+</script>
 
 <style scoped>
 .container{

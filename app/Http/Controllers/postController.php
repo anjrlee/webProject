@@ -8,31 +8,35 @@ use Illuminate\Http\Request;
 class postController extends Controller
 {
     public function addPost(Request $request){
-        $incomingFields = $request->validate([
-            'title' => 'required',
-            'date' => 'required',
-            'recorder' => 'required',
-            'awardSpeech' => 'nullable',
-            'type' => 'required',
-            'recordScore' => 'required',
+        $request->validate([
+            'type' => 'required|string',
+            'title' => 'required|string',
+            'recordScore' => 'required|string',
+            'recorder' => 'required|string',
+            'date' => 'required|date',
             'proveFile' => 'required|url',
-            'cover' => 'required|file|mimes:jpg,png',
-
+            'cover' => 'nullable|image|mimes:png,jpg|max:2048',
+            'awardSpeech' => 'nullable|longText'
         ]);
 
-        $incomingFields['title'] = strip_tags($incomingFields['title']);
-        $incomingFields['recorder'] = strip_tags($incomingFields['recorder']);
-        $incomingFields['awardSpeech'] = strip_tags($incomingFields['awardSpeech']);
-        $incomingFields['recordScore'] = strip_tags($incomingFields['recordScore']);
-        $incomingFields['proveFile'] = strip_tags($incomingFields['proveFile']);
-
-        if($request->hasFile('cover')){
-            $incomingFields['cover'] = $request->file('cover')->store('covers', 'public');
+        $post = new Post();
+        $post->title = $request->title;
+        $post->date = $request->date;
+        $post->recorder = $request->recorder;
+        $post->awardSpeech = $request->awardSpeech;
+        $post->type = $request->type;
+        $post->recordScore = $request->recordScore;
+        $post->proveFile = $request->proveFile;
+        if ($request->hasFile('cover')) {
+            $coverPath = $request->file('cover')->store('covers', 'public');
+            $post->cover = $coverPath;
         }
-
-        Post::create($incomingFields);
-
-        return redirect('/');
         
+        $post->save();
+        return response()->json([
+            'message' => 'Post created successfully!',
+            'code' => 200
+        ]);
     }
+        
 }
