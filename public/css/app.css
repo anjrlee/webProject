@@ -546,14 +546,8 @@ video {
 .relative {
   position: relative;
 }
-.left-\[1\%\] {
-  left: 1%;
-}
 .left-\[10\%\] {
   left: 10%;
-}
-.left-\[14\%\] {
-  left: 14%;
 }
 .left-\[2\%\] {
   left: 2%;
@@ -584,9 +578,6 @@ video {
 }
 .top-\[20\%\] {
   top: 20%;
-}
-.top-\[25\%\] {
-  top: 25%;
 }
 .top-\[30\%\] {
   top: 30%;
@@ -688,9 +679,6 @@ video {
 .mt-\[5\%\] {
   margin-top: 5%;
 }
-.mt-\[3\%\] {
-  margin-top: 3%;
-}
 .block {
   display: block;
 }
@@ -745,29 +733,17 @@ video {
 .h-\[320px\] {
   height: 320px;
 }
-.h-\[4\%\] {
-  height: 4%;
-}
-.h-\[60\%\] {
-  height: 60%;
+.h-\[7\%\] {
+  height: 7%;
 }
 .h-\[70\%\] {
   height: 70%;
-}
-.h-\[80\%\] {
-  height: 80%;
 }
 .h-auto {
   height: auto;
 }
 .h-full {
   height: 100%;
-}
-.h-\[5\%\] {
-  height: 5%;
-}
-.h-\[7\%\] {
-  height: 7%;
 }
 .min-h-screen {
   min-height: 100vh;
@@ -787,9 +763,6 @@ video {
 .w-8 {
   width: 2rem;
 }
-.w-\[17\%\] {
-  width: 17%;
-}
 .w-\[300px\] {
   width: 300px;
 }
@@ -801,9 +774,6 @@ video {
 }
 .w-\[66px\] {
   width: 66px;
-}
-.w-\[70\%\] {
-  width: 70%;
 }
 .w-\[80px\] {
   width: 80px;
@@ -851,9 +821,6 @@ video {
 .overflow-hidden {
   overflow: hidden;
 }
-.rounded-full {
-  border-radius: 9999px;
-}
 .rounded-lg {
   border-radius: 0.5rem;
 }
@@ -874,13 +841,6 @@ video {
 .bg-gray-100 {
   --tw-bg-opacity: 1;
   background-color: rgb(243 244 246 / var(--tw-bg-opacity));
-}
-.bg-gray-200 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(229 231 235 / var(--tw-bg-opacity));
-}
-.bg-transparent {
-  background-color: transparent;
 }
 .bg-white {
   --tw-bg-opacity: 1;
@@ -911,9 +871,6 @@ video {
 }
 .align-baseline {
   vertical-align: baseline;
-}
-.text-\[1\.1vw\] {
-  font-size: 1.1vw;
 }
 .text-\[1\.2vw\] {
   font-size: 1.2vw;
@@ -995,10 +952,6 @@ video {
   --tw-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
   --tw-shadow-colored: 0 1px 2px 0 var(--tw-shadow-color);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
-}
-.outline-none {
-  outline: 2px solid transparent;
-  outline-offset: 2px;
 }
 .filter {
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);

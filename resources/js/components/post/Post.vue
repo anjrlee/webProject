@@ -12,6 +12,9 @@
     </div>
 
     <div class="info-section">
+      <img class="icon" src="/images/post/0.png">
+      <h2>發文者: </h2><br>
+      <p class="info-detail">{{ recordItem.username }}</p><br>
       <img class="icon" src="/images/post/1.png">
       <h2>紀錄保持人: </h2><br>
       <p class="info-detail">{{ recordItem.recorder }}</p><br>
@@ -51,7 +54,7 @@ const recordItem = reactive({
   date: "2023/03/02",
   type: "campus",
   awardSpeech: "Hi",
-  email: "user1@gmail.com",
+  username: "ncu111403599",
 })
 
 </script>

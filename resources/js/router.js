@@ -27,7 +27,7 @@ const router = createRouter(
         { path: '/verify', component: Verify },
         { path: '/profile', component: Profile },
         { path: '/profile/edit', name: 'edit-profile',
-        component: () => import('./components/profile/edit.vue')},
+        component: () => import('./components/profile/Edit.vue')},
         { path: '/post/:id', component: Post, props: true },
         { path: '/articleRead/:id', component: ArticlesRead, props: true },
         { path: '/:pathMatch(.*)',redirect: '/404'}
