@@ -22,8 +22,10 @@
               <hr class="form--separator">
               <label for="email">電子郵件</label>
               <input type="email" class="input" v-model="LoginEmail" />
+              <span v-if="emailError" class="error-message">{{ emailError }}</span>
               <label for="password">密碼</label>
               <input type="password" class="input" v-model="LoginPassword" />
+              <span v-if="passwordError" class="error-message">{{ passwordError }}</span>
               <button type="submit" class="button4">登入</button>
           </form>
       </div>
@@ -56,7 +58,9 @@ export default {
           Signup: false,
           Login: true,
           pageL: true,
-          pageR: false
+          pageR: false,
+          emailError: '',
+          passwordError: ''
       };
   },
   methods: {
@@ -67,11 +71,10 @@ export default {
             name: this.SignupUsername,
             email: this.SignupEmail,
             password: this.SignupPassword,
-            department: this.SignupDepartment, // Adding department to the request
+            department: this.SignupDepartment,
             _token: csrfToken
         });
-        console.log('註冊成功!', response.data.message); // Accessing the message from the response
-        // Reset form fields after successful registration
+        console.log('註冊成功!', response.data.message);
         this.SignupUsername = '';
         this.SignupEmail = '';
         this.SignupPassword = '';
@@ -90,6 +93,8 @@ export default {
     },
 
     async handleLogin() {
+      this.emailError = '';
+      this.passwordError = '';
       try {
         const csrfToken = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content');
         const response = await axios.post('/login', {
@@ -102,13 +107,18 @@ export default {
         }
         console.log('登入成功', response.data);
       } catch (error) {
-        if (error.response) {
-            console.error('登入失敗', error.response.data);
-        } else if (error.request) {
-            console.error('登入失敗', '無法收到響應');
+        if (error.response && error.response.data) {
+          if (error.response.data.field === 'email') {
+            this.emailError = error.response.data.message;
+/*             this.LoginPassword = ''; */
+          } else if (error.response.data.field === 'password') {
+            this.passwordError = error.response.data.message;
+/*             this.LoginPassword = ''; */
+          }
         } else {
-            console.error('登入失敗', error.message);
+          console.error('登入失敗', error.response ? error.response.data : error);
         }
+
       }
     },
 
@@ -266,4 +276,8 @@ export default {
   .input{
     text-align: center;
   }
+  .error-message {
+    color: red;
+    font-size: 0.9em;
+}
 </style>

@@ -3,7 +3,7 @@
         <div class="row justify-content-center mt-4">
             <div class="col">
                 <h3 class="display-6 d-inline"><strong>編輯個人資料</strong></h3>
-                <button class="btn btn-black d-inline float-right" @click="save()"><i class="bi bi-floppy fs-5"></i>儲存</button>
+                <button class="btn btn-black d-inline float-right" @click="save"><i class="bi bi-floppy fs-5"></i>儲存</button>
                 <div class="line mt-3"></div>
                 <form>
                     <div class="mt-4 mb-3">
@@ -32,7 +32,7 @@
                     </div>
                     <div class="mt-4 mb-3">
                         <label for="bio" class="form-label">自我介紹：</label>
-                        <textarea class="form-control" id="bio" style="resize: none;" rows="5">{{ profile.bio }}</textarea>
+                        <textarea class="form-control" id="bio" style="resize: none;" rows="5" v-model="profile.bio"></textarea>
                     </div>
                 </form>
             </div>
@@ -45,23 +45,31 @@ import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import { ref, onMounted } from 'vue';
-import { useRouter } from 'vue-router'; 
+import { useRouter, useRoute } from 'vue-router';
 
 const router = useRouter();
+const route = useRoute();
 const profile = ref({
-    name: '王希銘',
-    gender: '男',
-    email: 'example@example.com',
-    bio: '早安',
-    department: '資訊管理學系',
-    grade: '大二'
+    name: '',
+    gender: '',
+    email: '',
+    bio: '',
+    department: '',
+    grade: ''
+});
+
+onMounted(() => {
+    if (route.query) {
+        profile.value = route.query;
+    }
 });
 
 const save = () => {
     router.push('/profile');
 };
-
 </script>
+
+
 
 <style scoped>
 .container {

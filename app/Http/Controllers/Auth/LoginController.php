@@ -26,14 +26,14 @@ class LoginController extends Controller
         $user = User::where('email', $request->email)->first();
 
         if (!$user) {
-            return response()->json(['message' => '登入失敗，user'], 401);
+            return response()->json(['message' => '帳號不存在，請先註冊', 'field' => 'email'], 401);
         }
 
         // Find the hashed password in the psw table
         $psw = Psw::where('user_id', $user->id)->first();
 
         if (!$psw) {
-            return response()->json(['message' => '登入失敗，psw'], 401);
+            return response()->json(['message' => '密碼不正確，請重試', 'field' => 'password'], 401);
         }
 
         // Check if the provided password matches the hashed password
@@ -42,15 +42,14 @@ class LoginController extends Controller
             return response()->json([
                 'message' => '登入成功',
                 'user' => $user,
-                'redirect' => $this->redirectPath() // 添加重定向 URL
+                'redirect' => $this->redirectPath()
             ], 200);
-
         } else {
             // Password did not match
-            return response()->json(['message' => '登入失敗，password mismatch'], 401);
+            return response()->json(['message' => '密碼不正確，請重試', 'field' => 'password'], 401);
         }
-
     }
+
 
     public function logout()
     {

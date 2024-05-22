@@ -9,9 +9,9 @@
             <div class="h-[10%] bg-white w-full relative top-[60%]"></div>
         </div>
         <div class="absolute top-[15%] right-[2%] transform [-translate-y-1/2]">
-        <router-link to="/profile" class="text-white">
-          <img src="/images/index/profile.png" alt="Profile" class="w-[80px] h-auto" />
-        </router-link>
+        <button @click="goToProfile" class="text-white">
+            <img src="/images/index/profile.png" alt="Profile" class="w-[80px] h-auto" />
+        </button>
       </div>
         
 
@@ -62,8 +62,16 @@
 </template>
 <script setup>
 import {ref} from 'vue'
+import { useRouter } from 'vue-router';
 const sideBarShow=ref(false);
 var ifLogin=false;
+
+const router = useRouter();
+const goToProfile = () => {
+    router.push('/profile').then(() => {
+        router.go(0); // 重新加載頁面
+    });
+};
 
 
 function sideBarShowFun(){

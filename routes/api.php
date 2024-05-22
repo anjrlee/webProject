@@ -15,11 +15,14 @@ use App\Http\Controllers\postController;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::middleware('auth:api')->get('/user/profile', function (Request $request) {
+    Log::info('User profile accessed');
+    return response()->json($request->user());
 });
 
 Route::post('add-post', [postController::class, 'addPost']);
 Route::get('/posts', [PostController::class, 'showall']);
 Route::post('/posts/{id}/approve', [PostController::class, 'approve']);
 Route::post('/posts/{id}/reject', [PostController::class, 'reject']);
+
+
