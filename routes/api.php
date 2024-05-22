@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProfileController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\postController;
@@ -24,5 +25,4 @@ Route::post('add-post', [postController::class, 'addPost']);
 Route::get('/posts', [PostController::class, 'showall']);
 Route::post('/posts/{id}/approve', [PostController::class, 'approve']);
 Route::post('/posts/{id}/reject', [PostController::class, 'reject']);
-
-
+Route::put('/profile', [ProfileController::class, 'update']);

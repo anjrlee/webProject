@@ -24,10 +24,6 @@
                         <input type="text" class="form-control" id="department" v-model="profile.department">
                     </div>
                     <div class="mt-4 mb-3">
-                        <label for="grade" class="form-label">年級：</label>
-                        <input type="text" class="form-control" id="grade" v-model="profile.grade">
-                    </div>
-                    <div class="mt-4 mb-3">
                         <p id="email">Email：{{ profile.email }}</p>
                     </div>
                     <div class="mt-4 mb-3">
@@ -46,6 +42,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import { ref, onMounted } from 'vue';
 import { useRouter, useRoute } from 'vue-router';
+import axios from 'axios';
 
 const router = useRouter();
 const route = useRoute();
@@ -64,8 +61,25 @@ onMounted(() => {
     }
 });
 
-const save = () => {
-    router.push('/profile');
+const save = async () => {
+    try {
+        const token = localStorage.getItem('access_token'); // Ensure this is how you store the token
+        const response = await axios.put('http://127.0.0.1:8000/api/profile/', profile.value, {
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json'
+            }
+        });
+        if (response.status === 200) {
+            alert(response.data.message);
+            router.push('/profile').then(() => {
+        router.go(0);
+    });
+        }
+    } catch (error) {
+        console.error(error);
+        alert('Failed to update profile');
+    }
 };
 </script>
 
