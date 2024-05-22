@@ -1,5 +1,9 @@
 import { createApp } from 'vue'; // Import createApp function from Vue 3
 import router from './router.js'; // Import your router configuration
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import { faUser,faNewspaper,faPencil,faGlasses,faSchool,faGraduationCap} from '@fortawesome/free-solid-svg-icons'
+import { faReadme} from '@fortawesome/free-brands-svg-icons'
 import './bootstrap.js'; // Import bootstrap or any other dependencies
 
 // Remove this line as it's not needed in Vue 3
@@ -25,8 +29,12 @@ const app = createApp({
     // App options here
 });
 
+library.add(
+    faUser,faNewspaper,faPencil,faGlasses,faSchool,faReadme,faGraduationCap
+)
 // Register your components using the component method
 
+app.component('font-awesome-icon', FontAwesomeIcon)
 app.component('App', App);
 app.component('home', Home);
 app.component('login', Login);
