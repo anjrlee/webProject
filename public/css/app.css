@@ -688,6 +688,9 @@ video {
 .mt-\[5\%\] {
   margin-top: 5%;
 }
+.mt-\[3\%\] {
+  margin-top: 3%;
+}
 .block {
   display: block;
 }
@@ -759,6 +762,12 @@ video {
 }
 .h-full {
   height: 100%;
+}
+.h-\[5\%\] {
+  height: 5%;
+}
+.h-\[7\%\] {
+  height: 7%;
 }
 .min-h-screen {
   min-height: 100vh;

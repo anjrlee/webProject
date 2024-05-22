@@ -2,7 +2,7 @@
     <div >
         <div class="bg"></div>
       <router-view></router-view>
-      <div class="h-[100px] bg-white w-full fixed text-center flex z-[50]  bg-opacity-75">
+      <div class="head h-[100px] w-full fixed text-center flex z-[50]  bg-opacity-75">
         <div class="absolute w-full h-[100px] flex flex-wrap justify-center items-center text-[35px] font-bold">央氏世界紀錄</div>
         <div class="h-[70%] w-[66px] top-[15%] cursor-pointer absolute left-[2%]" @click="sideBarShowFun()">
             <div class="h-[10%] bg-black w-full relative top-[20%]"></div>
@@ -20,11 +20,7 @@
       
       
       <div class="sideBar" v-if="sideBarShow">
-        <div class="h-[4%] w-5/6 bg-gray-200 m-[8%] rounded-full flex">
-          <div class="left-[1%] top-[15%] w-[17%] h-[80%] relative"></div>
-          <div class="w-[70%] h-[60%] top-[25%] left-[5%] relative">
-              <input type="text" class="bg-transparent outline-none text-[1.1vw]">
-          </div>
+        <div class="h-[7%] w-5/6 m-[8%]  flex">
         </div>
 
         <div class="sideBarWord">
@@ -78,10 +74,13 @@ function sideBarShowFun(){
 
 </script>
 <style>
+.head{
+  background-color:rgb(213, 199, 188) ;
+}
 .sideBar{
   height: 100%;
   position: fixed;
-  background-color: rgb(255, 255, 255,0.75);
+  background-color: rgb(213, 199, 188);
   width:400px;
   animation-name: sideBarAni;
   animation-duration: 1s;
@@ -137,9 +136,7 @@ function sideBarShowFun(){
     width: 100%;
     height: 100%;
     position: fixed;
-    background-image: url('/images/login/login_bg.jpg');
-    background-size: cover;
-    opacity: 0.2;
+    background-color: rgb(241, 228, 228);
     z-index: -1;
     background-repeat: repeat-y;
 
