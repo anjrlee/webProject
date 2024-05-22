@@ -13,9 +13,9 @@
                     </div>
                     <div v-for="item in items" :key="item.id" class="table-row" @click="showItemcontent(item)">
                         <div class="table-cell">{{ item.title }}</div>
-                        <div class="table-cell">{{ item.author }}</div>
-                        <div class="table-cell">{{ item.published }}</div>
-                        <div class="table-cell">{{ item.Istatus }}</div>
+                        <div class="table-cell">{{ item.recorder }}</div>
+                        <div class="table-cell">{{ item.date }}</div>
+                        <div class="table-cell">{{ item.ifProved }}</div>
                     </div>
                 </div>
             </div>
@@ -28,7 +28,7 @@
                 <hr class="form--separator">
                 <form class="mt-4">
                     <div class="mb-3">
-                        <p class="label"><strong>項目名稱: </strong>{{ selectItem.title }}</p>
+                        <p class="label"><strong>項目名稱: </strong>{{selectItem.title}}</p>
                         <p class="label"><strong>完成紀錄: </strong>{{ selectItem.recordScore}}</p>
                         <p class="label"><strong>完成者: </strong>{{ selectItem.recorder }}</p>
                         <p class="label"><strong>完成日期: </strong>{{ selectItem.date }}</p>
@@ -43,9 +43,9 @@
 </template>
 
 <script>
-import App from '../App.vue'; // 导入 App.vue 
-import 'bootstrap'; // 导入 Bootstrap 样式
-import 'bootstrap/dist/css/bootstrap.min.css'; // 导入 Bootstrap CSS
+import App from '../App.vue'; 
+import 'bootstrap'; 
+import 'bootstrap/dist/css/bootstrap.min.css'; 
 //import axios from 'axios';
 
 export default {
@@ -60,36 +60,10 @@ export default {
         };
     },
     methods:{
-        getItems(){
-            /*axios.get('/.api/items')
-                .then(Response => {
-                    this.items = Response.data;
-                })
-                .catch(error => {
-                    console.log(error);
-                });
-            },
-            this.items = item;*/
-            const mdata = [
-                {id: 1, title: '丟松果大賽最高速度', author: '王曉明', published: '2024/3/12', Istatus: '待審核'},
-                {id: 2, title: '丟松果大賽最遠距離', author: '陳一一', published: '2024/4/5', Istatus: '待審核'}
-            ];
-            this.items = mdata;
-        },
+
         showItemcontent(item){
             this.selectItem = item;
             this.itemTable = false;
-            /*axios.get('/api/items/${item.id}')
-                .then(Response => {
-                    this.selectItem = Response.data,map(item => ({
-                        ...item,
-                        Instatus: '待審核'
-                    }));
-            })
-            .catch(error => {
-                    console.log(error);
-                });
-            */
         },
         goback(){
             this.itemTable = true; 
@@ -97,29 +71,39 @@ export default {
         },
         approve(itemId){
             this.itemTable=true;
-            this.selectItem.Istatus = '許可';
             this.selectItem = null; 
-            /*axios.post('api/items/${itemId}/approve')
-                .then(Response => {
-                    console.log('已許可', Response.data);
-                    this.selectItem = null;
-                    this.getItems();
-                });*/
         },
         reject(itemId){
             this.itemTable=true;
-            this.selectItem.Istatus = '拒絕';
             this.selectItem = null; 
-            /*axios.post('api/items/${itemId}/reject')
-                .then(Response => {
-                    console.log('已拒絕', Response.data);
-                    this.selectItem = null;
-                    this.getItems();
-                });*/
+        },
+        async fetchPosts() {
+            try {
+                const response = await axios.get('/api/posts');
+                this.items = response.data;
+            } catch (error) {
+                console.error('Error fetching posts:', error);
+            }
+        },
+        async approve(id) {
+            try {
+                const response = await axios.post(`/api/posts/${id}/approve`);
+                console.log(response.data); 
+            } catch (error) {
+                console.error('Error approving post:', error);
+            }
+        },
+        async reject(id) {
+            try {
+                const response = await axios.post(`/api/posts/${id}/reject`);
+                console.log(response.data); 
+            } catch (error) {
+                console.error('Error rejecting post:', error);
+            }
         },
     },
     mounted(){
-        this.getItems();
+        this.fetchPosts();
     }
 };
 </script>

@@ -4,35 +4,71 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class postController extends Controller
 {
-    public function addPost(Request $request){
-        $incomingFields = $request->validate([
-            'title' => 'required',
-            'date' => 'required',
-            'recorder' => 'required',
-            'awardSpeech' => 'nullable',
-            'type' => 'required',
-            'recordScore' => 'required',
+    public function addPost(Request $request)
+    {
+        $validator = \Validator::make($request->all(), [
+            'type' => 'required|string',
+            'title' => 'required|string',
+            'recordScore' => 'required|string',
+            'recorder' => 'required|string',
+            'date' => 'required|date',
             'proveFile' => 'required|url',
-            'cover' => 'required|file|mimes:jpg,png',
-
+            'cover' => 'nullable|image|mimes:png,jpg|max:2048',
+            'awardSpeech' => 'nullable|string'
         ]);
 
-        $incomingFields['title'] = strip_tags($incomingFields['title']);
-        $incomingFields['recorder'] = strip_tags($incomingFields['recorder']);
-        $incomingFields['awardSpeech'] = strip_tags($incomingFields['awardSpeech']);
-        $incomingFields['recordScore'] = strip_tags($incomingFields['recordScore']);
-        $incomingFields['proveFile'] = strip_tags($incomingFields['proveFile']);
-
-        if($request->hasFile('cover')){
-            $incomingFields['cover'] = $request->file('cover')->store('covers', 'public');
+        if ($validator->fails()) {
+            return response()->json([
+                'message' => 'Validation failed',
+                'errors' => $validator->errors()
+            ], 422);
         }
 
-        Post::create($incomingFields);
+        $post = new Post();
+        $post->title = $request->title;
+        $post->date = $request->date;
+        $post->recorder = $request->recorder;
+        $post->awardSpeech = $request->awardSpeech;
+        $post->type = $request->type;
+        $post->recordScore = $request->recordScore;
+        $post->proveFile = $request->proveFile;
+        if ($request->hasFile('cover')) {
+            $coverPath = $request->file('cover')->store('covers', 'public');
+            $post->cover = $coverPath;
+        }
 
-        return redirect('/');
-        
+        $post->save();
+
+        return response()->json([
+            'message' => 'Post created successfully!',
+            'code' => 200
+        ]);
+
     }
+    public function showall()
+    {
+        $posts = Post::all();
+        return response()->json($posts);
+    }
+    public function approve(Request $request, $id)
+    {
+        $post = Post::findOrFail($id);
+        $post->ifProved = 'approved';
+        $post->save();
+
+        return response()->json(['message' => 'Post approved successfully']);
+    }
+    public function reject(Request $request, $id)
+    {
+        $post = Post::findOrFail($id);
+        $post->ifProved = 'rejected';
+        $post->save();
+
+        return response()->json(['message' => 'Post rejected successfully']);
+    }
+
 }
