@@ -8,11 +8,11 @@
                 <form>
                     <div class="mt-4 mb-3">
                         <label for="name" class="form-label">姓名：</label>
-                        <input type="text" class="form-control" id="name" v-model="profile.name">
+                        <input type="text" class="form-control" id="name" name="name" v-model="profile.name">
                     </div>
                     <div class="mt-4 mb-3">
                         <label for="gender" class="form-label">性別：</label>
-                        <select class="form-select" id="gender" v-model="profile.gender">
+                        <select class="form-select" id="gender" name="gender" v-model="profile.gender">
                             <option value="男">男</option>
                             <option value="女">女</option>
                             <option value="非二元性別">非二元性別</option>
@@ -21,14 +21,14 @@
                     </div>
                     <div class="mt-4 mb-3">
                         <label for="department" class="form-label">系所：</label>
-                        <input type="text" class="form-control" id="department" v-model="profile.department">
+                        <input type="text" class="form-control" id="department" name="department" v-model="profile.department">
                     </div>
                     <div class="mt-4 mb-3">
                         <p id="email">Email：{{ profile.email }}</p>
                     </div>
                     <div class="mt-4 mb-3">
                         <label for="bio" class="form-label">自我介紹：</label>
-                        <textarea class="form-control" id="bio" style="resize: none;" rows="5" v-model="profile.bio"></textarea>
+                        <textarea class="form-control" id="bio" name="bio" style="resize: none;" rows="5" v-model="profile.bio"></textarea>
                     </div>
                 </form>
             </div>
