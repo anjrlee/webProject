@@ -9,10 +9,12 @@
             <div class="h-[10%] bg-black w-full relative top-[40%]"></div>
             <div class="h-[10%] bg-black w-full relative top-[60%]"></div>
         </div>
-        <div class="absolute top-[15%] right-[2%] transform [-translate-y-1/2]">
-        <button @click="goToProfile" class="text-white">
+        <div class="absolute right-[0%] transform [-translate-y-1/2] w-[10%] h-[60%] top-[20%]">
+          <router-link to="/login" v-if="!ifLogin"><font-awesome-icon :icon="['fas', 'user']" class="h-full w-full text-black" /></router-link>
+          <router-link to="/logout" v-if="ifLogin"><font-awesome-icon :icon="['fas', 'right-from-bracket']" class="h-full w-full text-black" /></router-link>
+        <!--<button @click="goToProfile" class="text-white">
             <img src="/images/index/profile.png" alt="Profile" class="w-[80px] h-auto" />
-        </button>
+        </button>-->
       </div>
         
 
@@ -35,7 +37,7 @@
         </div>
 
         <div class="sideBarWord">
-          <div class="sideBarTitle"><font-awesome-icon :icon="['fas', 'pencil']" class=" mr-[3%]"/><router-link to="/addPost" style="text-decoration: none; color:black;">add my post</router-link></div>
+          <div class="sideBarTitle" v-if="ifLogin"><font-awesome-icon :icon="['fas', 'pencil']" class=" mr-[3%]"/><router-link to="/addPost" style="text-decoration: none; color:black;">add my post</router-link></div>
         </div>
 
         <div class="sideBarWord">
@@ -47,7 +49,7 @@
         
       
         <div class="sideBarWord">
-          <div class="sideBarTitle"  v-if="ifLogin"><font-awesome-icon :icon="['fas', 'user']" class="mr-[3%]" /><router-link to="/profile" style="text-decoration: none; color: white;" >profile</router-link></div>
+          <div class="sideBarTitle"  v-if="ifLogin"><font-awesome-icon :icon="['fas', 'user']" class="mr-[3%]" /><router-link to="/profile" style="text-decoration: none ; color:black;" >profile</router-link></div>
         </div>
 
         
@@ -65,7 +67,7 @@
 import {ref} from 'vue'
 import { useRouter } from 'vue-router';
 const sideBarShow=ref(false);
-var ifLogin=false;
+var ifLogin=true;
 
 const router = useRouter();
 const goToProfile = () => {
