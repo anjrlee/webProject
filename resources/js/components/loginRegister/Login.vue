@@ -45,6 +45,7 @@
 
 <script>
 import axios from 'axios';
+import Swal from 'sweetalert2';
 
 export default {
   data() {
@@ -74,20 +75,20 @@ export default {
             department: this.SignupDepartment,
             _token: csrfToken
         });
-        console.log('註冊成功!', response.data.message);
+        Swal.fire('註冊成功!', response.data.message, 'success');
         this.SignupUsername = '';
         this.SignupEmail = '';
         this.SignupPassword = '';
         this.SignupDepartment = '';
       } catch (error) {
         if (error.response) {
-            console.error('註冊失敗', error.response.data);
+            Swal.fire('註冊失敗', error.response.data.message || '未知錯誤', 'error');
         } else if (error.request) {
-            console.error('註冊失敗', '無法收到響應');
+            Swal.fire('註冊失敗', '無法收到響應', 'error');
         } else if (error.message !== undefined && error.message !== null) {
-            console.error('註冊失敗', error.message);
+            Swal.fire('註冊失敗', error.message, 'error');
         } else {
-            console.error('註冊失敗', '未知錯誤');
+            Swal.fire('註冊失敗', '未知錯誤', 'error');
         }
       }
     },
@@ -103,22 +104,26 @@ export default {
             _token: csrfToken
         });
         if (response.status === 200) {
-          window.location.href = response.data.redirect;
+          Swal.fire({
+            title: '登入成功',
+            text: '您已成功登入',
+            icon: 'success',
+            confirmButtonText: '確定'
+          }).then(() => {
+            window.location.href = response.data.redirect;
+          });
         }
         console.log('登入成功', response.data);
       } catch (error) {
         if (error.response && error.response.data) {
           if (error.response.data.field === 'email') {
             this.emailError = error.response.data.message;
-/*             this.LoginPassword = ''; */
           } else if (error.response.data.field === 'password') {
             this.passwordError = error.response.data.message;
-/*             this.LoginPassword = ''; */
           }
         } else {
-          console.error('登入失敗', error.response ? error.response.data : error);
+          Swal.fire('登入失敗', error.response ? error.response.data.message : '未知錯誤', 'error');
         }
-
       }
     },
 

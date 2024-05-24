@@ -50,7 +50,7 @@ export default {
         async logout() {
             try {
                 await axios.post('/logout'); 
-                window.location.href = '/loginpre';
+                window.location.href = '/login';
             } catch (error) {
                 console.error('Logout failed', error);
             }
