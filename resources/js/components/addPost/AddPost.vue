@@ -119,6 +119,7 @@ export default {
                     });
                     if (response.status === 200) {
                         alert(response.data.message);
+                        window.location.href = '/';
                     }
                 } catch (error) {
                     if (error.response && error.response.status === 422) {
