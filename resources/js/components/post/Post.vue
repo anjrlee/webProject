@@ -1,10 +1,8 @@
 <template>
-  <App class="navbar"></App>
-  
-  <div class="container">
+  <div class="container mt-[100px] z-[0] absolute">
     <div class="title"> 
       <div class="title-background"></div>
-      <h1>{{ recordItem.title }}</h1>
+      <h1 class="title_text">{{ recordItem.title }}</h1>
     </div>
 
     <div class="image-section">
@@ -12,6 +10,9 @@
     </div>
 
     <div class="info-section">
+      <img class="icon" src="/images/post/0.png">
+      <h2>發文者: </h2><br>
+      <p class="info-detail">{{ recordItem.username }}</p><br>
       <img class="icon" src="/images/post/1.png">
       <h2>紀錄保持人: </h2><br>
       <p class="info-detail">{{ recordItem.recorder }}</p><br>
@@ -37,7 +38,7 @@
 <script setup>
 import { useRoute } from 'vue-router'
 import { reactive } from 'vue';
-import App from '../App.vue'; 
+import axios from 'axios';
   
 const route = useRoute()
 const id=route.params.id
@@ -51,24 +52,30 @@ const recordItem = reactive({
   date: "2023/03/02",
   type: "campus",
   awardSpeech: "Hi",
-  email: "user1@gmail.com",
+  username: "ncu111403599",
 })
 
 </script>
   
 <style scoped>
 
-.navbar {
-  height: 120px;
+.container{
+  left: 50%;
+  transform: translate(-50%, 0%);
 }
   
 .title {
   position: relative; /* 使得內容可以相對於標題容器定位 */
   margin-top: 20px;
   margin-bottom: 50px;
-  text-align: center;
   border: 2px solid gray;
   word-wrap: break-word;
+}
+
+.title_text{
+  width: 60%;
+  margin: 0 auto;
+  text-align: center;
 }
   
 .title-background {
@@ -80,7 +87,7 @@ const recordItem = reactive({
   background-image: url('/images/post/title_bk.png'); 
   background-size: cover; /* 自動調整背景圖片大小以填滿容器 */
   background-position: center; 
-  opacity: 0.5; /* 設置背景圖片透明度，根據需要調整 */
+  opacity: 1; /* 設置背景圖片透明度，根據需要調整 */
   z-index: -1; /* 將背景圖片放到標題容器的底層 */
 }
   

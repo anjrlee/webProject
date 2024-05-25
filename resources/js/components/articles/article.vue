@@ -1,10 +1,8 @@
 <template>
-  <App class="navbar"></App>
-  
-  <div class="container">
+  <div class="container mt-[100px] z-[0] absolute">
     <div class="title"> 
       <div class="title-background"></div>
-      <h1>{{ articleItem.title }}</h1>
+      <h1 class="title_text">{{ articleItem.title }}</h1>
     </div>
 
     <p class="info">{{ articleItem.author + " " + articleItem.date }}</p>
@@ -58,8 +56,9 @@ const links = reactive( [ link1, link2, link3 ] );
 
 <style scoped>
 
-.navbar {
-  height: 120px;
+.container{
+  left: 50%;
+  transform: translate(-50%, 0%);
 }
 
 .title {
@@ -69,6 +68,12 @@ const links = reactive( [ link1, link2, link3 ] );
   text-align: center;
   border: 2px solid gray;
   word-wrap: break-word;
+}
+
+.title_text{
+  width: 60%;
+  margin: 0 auto;
+  text-align: center;
 }
 
 .title-background {

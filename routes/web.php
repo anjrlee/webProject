@@ -1,8 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\TokenController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\PHPMailerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -63,9 +65,12 @@ Route::get('/articleRead/{id}', function ($id) {
     return view('articleRead', ['articleReadId' => $id]);
 });
 
+/*
+
 Route::get('/{any}', function () {
     return view('404');
 })->where('any', '.*');
+*/
 
 /* 
 
@@ -76,4 +81,5 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::post('/login', [LoginController::class, 'login']);
 Route::post('/register', [RegisterController::class, 'register']);
 Route::post('/logout', [LoginController::class, 'logout']);
-
+Route::get('send-email', [PHPMailerController::class, 'index'])->name('send.email');
+Route::post('send-email', [PHPMailerController::class, 'store'])->name('send.email.post');
