@@ -18,6 +18,7 @@ class Post extends Model
         'proveFile',
         'awardSpeech',
         'cover',
-        'recordScore'
+        'recordScore',
+        'user_id',
     ];
 }

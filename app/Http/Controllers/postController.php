@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+
+
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
@@ -35,6 +38,7 @@ class PostController extends Controller
         $post->type = $request->type;
         $post->recordScore = $request->recordScore;
         $post->proveFile = $request->proveFile;
+        $post->user_id = auth('api')->user();
         if ($request->hasFile('cover')) {
             $coverPath = $request->file('cover')->store('covers', 'public');
             $post->cover = $coverPath;
