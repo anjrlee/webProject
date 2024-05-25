@@ -61,8 +61,7 @@
       </div>
       <div class="sideBarWord">
         <div class="sideBarTitle" >
-          <!-- //administrator icon -->
-          <font-awesome-icon :icon="['fas', 'user-shield']" class="mr-[3%]" />
+          <font-awesome-icon :icon="['fas', 'key']" style="color: #000000;" class="mr-[3%]" />
           <a href="/verifyredirect" style="text-decoration: none; color: black;" @click="logout">administrator</a>
         </div>
       </div>
