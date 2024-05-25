@@ -65,6 +65,8 @@ Route::get('/articleRead/{id}', function ($id) {
     return view('articleRead', ['articleReadId' => $id]);
 });
 
+Route::get('/verifyEmail/{token}', [RegisterController::class, 'storeData']);
+
 /*
 
 Route::get('/{any}', function () {

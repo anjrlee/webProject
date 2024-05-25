@@ -11,11 +11,35 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
+use Illuminate\Support\Facades\Session;
 
 class RegisterController extends Controller
 {
     use RegistersUsers;
 
+    protected function storeData($token){
+        if(Session::get('token', 'hi')===$token){
+            $user = User::create([
+                'name' => Session::get('token', 'name'),
+                'email' => Session::get('token', 'email'),
+                'password' => Session::get('token', 'password'),
+                'department' => Session::get('token', 'department'), // Save department
+            ]);
+    
+            // Save hashed password to psw table
+            Psw::create([
+                'user_id' => $user->id,
+                'password' => Session::get('token', 'password'),
+            ]);
+            echo "register successfully";
+        }else{
+            echo "false";
+        }
+        echo Session::get('token', 'hi');
+    }
     protected function register(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -28,8 +52,46 @@ class RegisterController extends Controller
         if ($validator->fails()) {
             return response()->json(['errors' => $validator->errors()], 422);
         }
+        $mail = new PHPMailer(true);
+   
+        try {
+   
+            /* Email SMTP Settings */
+            $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
+            $mail->isSMTP();                                            //Send using SMTP
+            $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
+            $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
+            $mail->Username   = env('MAIL_USERNAME');                     //SMTP username
+            $mail->Password   = env('MAIL_PASSWORD');                              //SMTP password
+            $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
+            $mail->Port       = env('MAIL_PORT');  
+            $mail->setFrom(env('MAIL_USERNAME'), env('MAIL_FROM_NAME'));
+            $mail->addAddress($request->email); 
+            $mail->isHTML(true);
+            Session::put('token', $request->email);
+            $mail->Subject = "verify";
+            $mail->Body    = env('webLink')."/verifyEmail"."/".Session::get('token', '');
+            Session::put('name', $request->name);
+            Session::put('email', $request->email);
+            Session::put('password', Hash::make($request->password));
+            Session::put('department', $request->department);
+            Session::save();
+            if( !$mail->send() ) {
+                return response()->json(['error' => $mail->ErrorInfo], 400);
+            }
+              
+            else {
+                return response()->json(['message' => "已寄出驗證信，請前往信箱並點驗證信連結以完成註冊"], 200);
+            }
+            
+            
+   
+        } catch (Exception $e) {
+            return response()->json(['errors' => $e], 422);
+             //return back()->with('error','Message could not be sent.');
+        }
 
-        $user = User::create([
+        /*$user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
@@ -40,7 +102,7 @@ class RegisterController extends Controller
         Psw::create([
             'user_id' => $user->id,
             'password' => Hash::make($request->password),
-        ]);
+        ]);*/
 
         return response()->json(['message' => '後端註冊成功'], 201);
     }
@@ -68,3 +130,5 @@ class RegisterController extends Controller
         return $user;
     }
 }
+
+
