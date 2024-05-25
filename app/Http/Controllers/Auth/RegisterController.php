@@ -21,12 +21,13 @@ class RegisterController extends Controller
     use RegistersUsers;
 
     protected function storeData($token){
+        $returnMessage='';
         if(Session::get('token', 'hi')===$token){
             $user = User::create([
-                'name' => Session::get('token', 'name'),
-                'email' => Session::get('token', 'email'),
-                'password' => Session::get('token', 'password'),
-                'department' => Session::get('token', 'department'), // Save department
+                'name' => Session::get('name'),
+                'email' => Session::get('email'),
+                'password' => Session::get('password'),
+                'department' => Session::get('department'), // Save department
             ]);
     
             // Save hashed password to psw table
@@ -34,11 +35,11 @@ class RegisterController extends Controller
                 'user_id' => $user->id,
                 'password' => Session::get('token', 'password'),
             ]);
-            echo "register successfully";
+            $returnMessage="true";
         }else{
-            echo "false";
+            $returnMessage="false";
         }
-        echo Session::get('token', 'hi');
+        return redirect('/login')->with('message', $returnMessage);
     }
     protected function register(Request $request)
     {
@@ -76,6 +77,8 @@ class RegisterController extends Controller
             Session::put('password', Hash::make($request->password));
             Session::put('department', $request->department);
             Session::save();
+            return response()->json(['message' => "已寄出驗證信，請前往信箱並點驗證信連結以完成註冊"], 200);
+            /*
             if( !$mail->send() ) {
                 return response()->json(['error' => $mail->ErrorInfo], 400);
             }
@@ -83,7 +86,7 @@ class RegisterController extends Controller
             else {
                 return response()->json(['message' => "已寄出驗證信，請前往信箱並點驗證信連結以完成註冊"], 200);
             }
-            
+            */
             
    
         } catch (Exception $e) {

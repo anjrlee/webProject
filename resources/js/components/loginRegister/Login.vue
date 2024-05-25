@@ -46,8 +46,15 @@
 <script>
 import axios from 'axios';
 import Swal from 'sweetalert2';
+import { onMounted } from 'vue';
 
 export default {
+  props: {
+    flashMessage: {
+      type: String,
+      default: ''
+    }
+  },
   data() {
       return {
           SignupUsername: '',
@@ -64,7 +71,22 @@ export default {
           passwordError: ''
       };
   },
+  setup(props) {
+    onMounted(() => {
+      if(props.flashMessage){
+         if(props.flashMessage==="true"){
+          Swal.fire('註冊成功', "請登入", 'success');
+         }else{
+          Swal.fire('驗證碼錯誤', "請點email連結以再次驗證", 'error');
+         }
+      }else{
+        console.log("no");
+      }
+      
+    });
+  },
   methods: {
+
     async handleSignup() {
       try {
         const csrfToken = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content');
@@ -92,7 +114,7 @@ export default {
         }
       }
     },
-
+    
     async handleLogin() {
       this.emailError = '';
       this.passwordError = '';
