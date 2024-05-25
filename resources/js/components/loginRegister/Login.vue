@@ -305,7 +305,7 @@ export default {
 
   .button1{
     position: absolute;
-    top: 125px;
+    top: 175px;
     right: 65px;
     width: 100px;
     text-align: center;
@@ -318,7 +318,7 @@ export default {
 
   .button2{
     position: absolute;
-    top: 125px;
+    top: 175px;
     right: 65px;
     width: 100px;
     text-align: center;
