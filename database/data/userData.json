@@ -1,0 +1,112 @@
+[
+    {
+        "id": 1,
+        "name": "Flyer",
+        "gender": "male",
+        "email": "user1@gmail.com",
+        "department": "資管系",
+        "grade": 4,
+        "bio": "I'm flying~",
+        "salt": ""
+    },
+    {
+        "id": 2,
+        "name": "大阪燒好吃",
+        "gender": "male",
+        "email": "user2@gmail.com",
+        "department": "大氣系",
+        "grade": 4,
+        "bio": "大阪燒真的很好吃",
+        "salt": ""
+    },
+    {
+        "id": 3,
+        "name": "candy",
+        "gender": "female",
+        "email": "user3@gmail.com",
+        "department": "工院學士班",
+        "grade": 1,
+        "bio": "我想轉學",
+        "salt": ""
+    },
+    {
+        "id": 4,
+        "name": "zzaaqq",
+        "gender": "female",
+        "email": "user4@gmail.com",
+        "department": "數學系",
+        "grade": 3,
+        "bio": "高微真的好難...",
+        "salt": ""
+    },
+    {
+        "id": 5,
+        "name": "Steve",
+        "gender": "male",
+        "email": "user5@gmail.com",
+        "department": "經濟學系",
+        "grade": 1,
+        "bio": "老王可以不要當我嗎拜託QQ",
+        "salt": ""
+    },
+    {
+        "id": 6,
+        "name": "番茄差不多是個馬鈴薯",
+        "gender": "male",
+        "email": "user6@gmail.com",
+        "department": "電機系",
+        "grade": 3,
+        "bio": "mato tomato",
+        "salt": ""
+    },
+    {
+        "id": 7,
+        "name": "八卦人",
+        "gender": "male",
+        "email": "user7@gmail.com",
+        "department": "客社系",
+        "grade": 4,
+        "bio": "只聽不說",
+        "salt": ""
+    },
+    {
+        "id": 8,
+        "name": "CEC1",
+        "gender": "female",
+        "email": "user8@gmail.com",
+        "department": "生科系",
+        "grade": 1,
+        "bio": "菜鳥一隻><",
+        "salt": ""
+    },
+    {
+        "id": 9,
+        "name": "不是我想是這樣啦",
+        "gender": "male",
+        "email": "user9@gmail.com",
+        "department": "統計所",
+        "grade": 5,
+        "bio":  "想留學",
+        "salt": ""
+    },
+    {
+        "id": 10,
+        "name": "J",
+        "gender": "male",
+        "email": "user10@gmail.com",
+        "department": "資管系",
+        "grade": 2,
+        "bio": "好想睡覺",
+        "salt": ""
+    },
+    {
+        "id": 11,
+        "name": "pauline",
+        "gender": "female",
+        "email": "user11@gmail.com",
+        "department": "法文系",
+        "grade": 2,
+        "bio": "yee",
+        "salt": ""
+    }
+]
