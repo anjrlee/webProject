@@ -10,6 +10,8 @@ import Verify from './components/verify/Verify.vue';
 import Profile from './components/profile/Profile.vue';
 import Edit from './components/profile/Edit.vue';
 import Post from './components/post/Post.vue';
+import Loginfirst from './components/Loginfirst/Loginfirst.vue';
+import VerifyRedirect from './components/verify/VerifyRedirect.vue';
 
 
 const router = createRouter(
@@ -21,8 +23,7 @@ const router = createRouter(
         { path: '/articles', component: Articles },
         { path: '/login', component: Login },
         { path: '/register', component: Register },
-        { path: '/loginpre', component: Login },
-        { path: '/registerpre', component: Register },
+        { path: '/loginnn', component: Loginfirst },
         { path: '/addpost', component: AddPost },
         { path: '/verify', component: Verify },
         { path: '/profile', component: Profile },
@@ -30,7 +31,8 @@ const router = createRouter(
         component: () => import('./components/profile/Edit.vue')},
         { path: '/post/:id', component: Post, props: true },
         { path: '/articleRead/:id', component: ArticlesRead, props: true },
-        { path: '/:pathMatch(.*)',redirect: '/404'}
+        { path: '/verifyredirect', component: VerifyRedirect},
+        { path: '/:pathMatch(.*)',redirect: '/404'},
         
         // Define your routes here
     ]

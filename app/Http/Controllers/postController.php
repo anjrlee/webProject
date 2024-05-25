@@ -4,9 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Log;
 
-class postController extends Controller
+class PostController extends Controller
 {
     public function addPost(Request $request)
     {
@@ -47,13 +46,19 @@ class postController extends Controller
             'message' => 'Post created successfully!',
             'code' => 200
         ]);
-
     }
-    public function showall()
+
+    public function showall(Request $request)
     {
-        $posts = Post::all();
+        $status = $request->query('status');
+        if ($status) {
+            $posts = Post::where('ifProved', $status)->get();
+        } else {
+            $posts = Post::all();
+        }
         return response()->json($posts);
     }
+
     public function approve(Request $request, $id)
     {
         $post = Post::findOrFail($id);
@@ -62,6 +67,7 @@ class postController extends Controller
 
         return response()->json(['message' => 'Post approved successfully']);
     }
+
     public function reject(Request $request, $id)
     {
         $post = Post::findOrFail($id);
@@ -70,5 +76,4 @@ class postController extends Controller
 
         return response()->json(['message' => 'Post rejected successfully']);
     }
-
 }

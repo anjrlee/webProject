@@ -21,13 +21,20 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::get('/addPost', function () {
-    return view('addPost');
+Route::get('/verifyredirect', function () {
+    return view('verifyredirect');
 });
+Route::get('/verify', function () {
+    return view('verifyredirect');
+})->middleware('check.referer');
+
+Route::get('/addpost', function () {
+    return view('addpost');
+})->middleware('auth');
 
 Route::get('/profile', function () {
     return view('profile');
-});
+})->middleware('auth');
 
 Route::get('/404', function () {
     return view('404');
@@ -37,18 +44,15 @@ Route::get('/login', function () {
     return view('login');
 });
 
-Route::get('/register', function () {
-    return view('register');
-});
-
 Route::get('/article', function () {
     return view('article');
 });
 
-Route::get('/loginpre', function () {
-    return view('login');
-});
-Route::get('/registerpre', function () {
+Route::get('/loginnn', function () {
+    return view('addpost');
+})->name('loginnn');
+
+Route::get('/register', function () {
     return view('register');
 });
 Route::get('/post/{id}', function ($id) {
@@ -68,12 +72,14 @@ Route::get('/{any}', function () {
 })->where('any', '.*');
 */
 
+/* 
 
+Auth::routes(); */
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::post('/login', [LoginController::class, 'login']);
 Route::post('/register', [RegisterController::class, 'register']);
 Route::post('/logout', [LoginController::class, 'logout']);
-Route::get('send-email',[PHPMailerController::class, 'index'])->name('send.email');
-Route::post('send-email',[PHPMailerController::class, 'store'])->name('send.email.post');
+Route::get('send-email', [PHPMailerController::class, 'index'])->name('send.email');
+Route::post('send-email', [PHPMailerController::class, 'store'])->name('send.email.post');
