@@ -78,7 +78,7 @@ export default {
   setup(props) {
     onMounted(() => {
       if(props.msg){
-          //console.log("test:",props.msg);
+          console.log("test:",props.msg);
          if(props.msg==="true"){
           Swal.fire('註冊成功', "請登入", 'success');
          }else{
@@ -90,6 +90,7 @@ export default {
   methods: {
 
     async handleSignup() {
+      Swal.showLoading();
       this.clearErrors();
       try {
         const csrfToken = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content');

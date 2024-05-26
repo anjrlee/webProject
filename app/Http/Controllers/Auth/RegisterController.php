@@ -76,7 +76,6 @@ class RegisterController extends Controller
             
             $mail->Subject = "verify";
             $mail->Body    = env('webLink')."/verifyEmail"."/".Session::get('token', '');
-            Session::put('message', $mail->Body);
             Session::put('name', $request->name);
             Session::put('email', $request->email);
             Session::put('password', Hash::make($request->password));
