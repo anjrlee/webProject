@@ -63,6 +63,12 @@ class PostController extends Controller
         return response()->json($posts);
     }
 
+    public function index(Request $request)
+    {
+        $posts = Post::where('ifProved', 'yes')->get();
+        return response()->json($posts);
+    }
+
     public function approve(Request $request, $id)
     {
         $post = Post::findOrFail($id);
@@ -79,5 +85,11 @@ class PostController extends Controller
         $post->save();
 
         return response()->json(['message' => 'Post rejected successfully']);
+    }
+
+    public function show($id)
+    {
+        $post = Post::findOrFail($id);
+        return response()->json($post);
     }
 }

@@ -12,7 +12,7 @@ import Edit from './components/profile/Edit.vue';
 import Post from './components/post/Post.vue';
 import Loginfirst from './components/Loginfirst/Loginfirst.vue';
 import VerifyRedirect from './components/verify/VerifyRedirect.vue';
-
+import UserProfile from './components/profile/UserProfile';
 
 const router = createRouter(
     {
@@ -33,6 +33,7 @@ const router = createRouter(
         { path: '/articleRead/:id', component: ArticlesRead, props: true },
         { path: '/verifyredirect', component: VerifyRedirect},
         { path: '/:pathMatch(.*)',redirect: '/404'},
+        { path: '/userprofile/:id', name: 'userprofile', component: UserProfile}
         
         // Define your routes here
     ]

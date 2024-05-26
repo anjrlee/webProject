@@ -2,17 +2,20 @@
   <div class="container mt-[100px] z-[0] absolute">
     <div class="title"> 
       <div class="title-background"></div>
-      <h1 class="title_text">{{ recordItem.title }}</h1>
+      <h1 class="title_text">{{ recordItem.title}}</h1>
     </div>
 
     <div class="image-section">
-      <img :src="recordItem.cover" class="image">
+      <img :src= "asset(recordItem.cover)" class="image">
+
     </div>
 
     <div class="info-section">
       <img class="icon" src="/images/post/0.png">
       <h2>發文者: </h2><br>
-      <p class="info-detail">{{ recordItem.username }}</p><br>
+      <router-link to="{ name: '/userprofile', params: { email: recordItem.user_id } }" class="info-detail">
+        <p>{{ recordItem.username }}</p>
+      </router-link><br>
       <img class="icon" src="/images/post/1.png">
       <h2>紀錄保持人: </h2><br>
       <p class="info-detail">{{ recordItem.recorder }}</p><br>
@@ -24,7 +27,7 @@
       <p class="info-detail"> {{ recordItem.date }}</p><br>
       <img class="icon" src="/images/post/4.png">
       <h2>種類: </h2><br>
-      <p class="info-detail">{{ recordItem.type }}</p><br>
+      <p class="info-detail">{{ getTypeLabel(recordItem.type) }}</p><br>
     </div>
 
     <div class="award-section">
@@ -35,26 +38,68 @@
   </div>
 </template>
   
-<script setup>
-import { useRoute } from 'vue-router'
-import { reactive } from 'vue';
+<script>
 import axios from 'axios';
-  
-const route = useRoute()
-const id=route.params.id
-console.log(id);
-  
-const recordItem = reactive({
-  title: "偷腳踏車被公審最多次", 
-  cover: '/images/post/bicycle.jpg',
-  recorder: "王子俊",
-  recordScore: "1次",
-  date: "2023/03/02",
-  type: "campus",
-  awardSpeech: "Hi",
-  username: "ncu111403599",
-})
+import { useRoute } from 'vue-router';
 
+export default {
+  data() {
+    return {
+      recordItem: {
+        title: '',
+        cover: '',
+        recorder: '',
+        recordScore: '',
+        date: '',
+        type: '',
+        awardSpeech: '',
+        user_id: '',
+        username: ''
+      }
+    };
+  },
+  methods: {
+    getTypeLabel(type) {
+      switch (type) {
+        case 'study':
+          return '學術研究類';
+        case 'leisure':
+          return '休閒類';
+        case 'campus':
+          return '校園生活類';
+        default:
+          return '';
+      }
+    },
+    async fetchRecordItem() {
+      const route = useRoute();
+      const id = route.params.id;
+
+      try {
+        const response = await axios.get(`/api/post/${id}`);
+        this.recordItem = response.data;
+
+        // Fetch user's name based on user_id
+        this.fetchUserName(this.recordItem.user_id);
+      } catch (error) {
+        console.error('Failed to fetch record item:', error);
+      }
+    },
+    async fetchUserName(userId) {
+      try {
+        const response = await axios.get(`/api/userprofile/${userId}`);
+        console.log('User profile data:', response.data);
+        this.recordItem.username = response.data.name; // Assign user's name to user_name
+      } catch (error) {
+        console.error('Failed to fetch user name:', error);
+      }
+    }
+  },
+
+  mounted() {
+    this.fetchRecordItem();
+  }
+};
 </script>
   
 <style scoped>
@@ -128,4 +173,3 @@ const recordItem = reactive({
 }
 
 </style>
-  

@@ -26,3 +26,6 @@ Route::get('/posts', [PostController::class, 'showall']);
 Route::post('/posts/{id}/approve', [PostController::class, 'approve']);
 Route::post('/posts/{id}/reject', [PostController::class, 'reject']);
 Route::put('/profile', [ProfileController::class, 'update']);
+Route::get('/post', [postController::class, 'index']);
+Route::get('/post/{id}', [postController::class, 'show']);
+Route::get('/userprofile/{id}', [ProfileController::class, 'getUserProfile']);
