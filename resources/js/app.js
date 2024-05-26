@@ -22,6 +22,7 @@ import Edit from './components/profile/Edit.vue';
 import Post from './components/post/Post.vue';
 import ArticleRead from './components/articles/article.vue';
 import App from './components/App.vue';
+import UserProfile from './components/profile/UserProfile.vue';
 
 
 // Create a new Vue app instance using createApp
@@ -47,6 +48,7 @@ app.component('post', Post);
 app.component('articles', Articles);
 app.component('articleRead', ArticleRead);
 app.component('page404', Page404);
+app.component('UserProfle', UserProfile);
 
 // Use the router with the app
 app.use(router);

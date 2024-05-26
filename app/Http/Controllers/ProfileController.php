@@ -38,4 +38,9 @@ class ProfileController extends Controller
         ]);
 
     }
+    public function getUserProfile($id)
+    {
+        $user = User::where('id', $id)->firstOrFail();
+        return response()->json($user);
+    }
 }
