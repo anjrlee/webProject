@@ -6,7 +6,7 @@
     </div>
 
     <div class="image-section">
-      <img :src= "asset(recordItem.cover)" class="image">
+      <img :src= recordItem.cover class="image">
 
     </div>
 
