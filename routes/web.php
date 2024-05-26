@@ -60,6 +60,10 @@ Route::get('/post/{id}', function ($id) {
     return view('post', ['postId' => $id]);
 });
 
+Route::get('/userprofile/{id}', function($id){
+    return view('userprofile', ['userId' => $id]);
+});
+
 Route::get('/articleRead/{id}', function ($id) {
     // Here you can use the $id parameter to fetch the corresponding post
     return view('articleRead', ['articleReadId' => $id]);

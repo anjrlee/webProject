@@ -6,16 +6,16 @@
     </div>
 
     <div class="image-section">
-      <img :src= recordItem.cover class="image">
+      <img :src= "recordItem.cover" class="image">
 
     </div>
 
     <div class="info-section">
       <img class="icon" src="/images/post/0.png">
       <h2>發文者: </h2><br>
-      <router-link to="{ name: '/userprofile', params: { email: recordItem.user_id } }" class="info-detail">
+      <router-link to="{ name: 'userprofile', params: { id: recordItem.id } }" class="info-detail">
         <p>{{ recordItem.username }}</p>
-      </router-link><br>
+      </router-link>
       <img class="icon" src="/images/post/1.png">
       <h2>紀錄保持人: </h2><br>
       <p class="info-detail">{{ recordItem.recorder }}</p><br>
@@ -54,7 +54,8 @@ export default {
         type: '',
         awardSpeech: '',
         user_id: '',
-        username: ''
+        username: '',
+        id:''
       }
     };
   },
@@ -89,7 +90,8 @@ export default {
       try {
         const response = await axios.get(`/api/userprofile/${userId}`);
         console.log('User profile data:', response.data);
-        this.recordItem.username = response.data.name; // Assign user's name to user_name
+        this.recordItem.username = response.data.name;
+        this.recordItem.id = response.data.user_id;
       } catch (error) {
         console.error('Failed to fetch user name:', error);
       }

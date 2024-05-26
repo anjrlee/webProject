@@ -40,7 +40,14 @@ class ProfileController extends Controller
     }
     public function getUserProfile($id)
     {
-        $user = User::where('id', $id)->firstOrFail();
+        \Log::info("Accessing profile for user ID: $id");
+        $user = User::find($id);
+
+        if (!$user) {
+            return response()->json(['error' => 'User not found'], 404);
+        }
+
         return response()->json($user);
     }
+
 }
