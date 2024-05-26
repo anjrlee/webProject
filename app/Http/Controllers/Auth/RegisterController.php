@@ -15,6 +15,8 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 use Illuminate\Support\Facades\Session;
+use function Amp\delay;
+use function Amp\async;
 
 class RegisterController extends Controller
 {
@@ -69,23 +71,24 @@ class RegisterController extends Controller
             $mail->setFrom(env('MAIL_USERNAME'), env('MAIL_FROM_NAME'));
             $mail->addAddress($request->email); 
             $mail->isHTML(true);
-            $token = str_replace(['+', '/', '='], ['-', '_', ''], Hash::make(time()));
-            Session::put('token', );
+            $token = str_replace(['+', '/', '=','.'], ['-', '_', '',''], Hash::make(time()));
+            Session::put('token', $token);
+            
             $mail->Subject = "verify";
             $mail->Body    = env('webLink')."/verifyEmail"."/".Session::get('token', '');
+            Session::put('message', $mail->Body);
             Session::put('name', $request->name);
             Session::put('email', $request->email);
             Session::put('password', Hash::make($request->password));
             Session::put('department', $request->department);
             Session::save();
-            
-                if(!$mail->send()) {
-                    return response()->json(['error' => $mail->ErrorInfo], 400);
-                } else {
-                    return response()->json(['message' => "請前往信箱並點驗證信連結以完成註冊"], 200);
-                }
-        
-            
+            if(!$mail->send()) {
+                return response()->json(['error' => $mail->ErrorInfo], 400);
+            } else {
+                //return response()->json(['message' => "請前往信箱並點驗證信連結以完成註冊"], 200);
+                //return response()->json(['error' => $mail->Body], 400);
+            }
+            return response()->json(['message' => "good"], 200);
             
    
         } catch (Exception $e) {

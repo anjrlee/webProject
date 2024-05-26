@@ -78,6 +78,7 @@ export default {
   setup(props) {
     onMounted(() => {
       if(props.msg){
+          //console.log("test:",props.msg);
          if(props.msg==="true"){
           Swal.fire('註冊成功', "請登入", 'success');
          }else{
@@ -99,7 +100,8 @@ export default {
           department: this.SignupDepartment,
           _token: csrfToken
         });
-        Swal.fire('註冊成功!', response.data.message, 'success');
+        //Swal.fire('註冊成功!', response.data.message, 'success');
+        Swal.fire('註冊成功!', "請前往信箱並點驗證信連結以完成註冊", 'success');
         this.resetSignupForm();
       } catch (error) {
         if (error.response && error.response.data && error.response.data.errors) {
@@ -110,6 +112,7 @@ export default {
           Swal.fire('註冊失敗', '未知錯誤', 'error');
         }
       }
+
     },
     
     async handleLogin() {
