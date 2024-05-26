@@ -38,7 +38,7 @@ class PostController extends Controller
         $post->type = $request->type;
         $post->recordScore = $request->recordScore;
         $post->proveFile = $request->proveFile;
-        $post->user_id = auth('api')->user();
+        $post->user_id = $request->user_id;
         if ($request->hasFile('cover')) {
             $coverPath = $request->file('cover')->store('covers', 'public');
             $post->cover = $coverPath;

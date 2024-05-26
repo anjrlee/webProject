@@ -7,7 +7,7 @@
     <link href="../css/app.css" rel="stylesheet">
   </head>
   <body>
-    <div id="app">
+    <div id="app" data-user-id="{{ Auth::user() ? Auth::user() -> id: ''}}">
       <App></App>
     </div> 
     

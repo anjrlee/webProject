@@ -81,8 +81,15 @@ export default {
                 proveFile: '',
                 cover: null,
             },
-            errorMessage: ''
+            errorMessage: '',
+            userId: null,
         };
+    },
+    mounted(){
+        const userId = document.getElementById('app').dataset.userId;
+        if(userId){
+            this.userId = userId;
+        }
     },
     methods: {
         handleFileUpload(event) {
@@ -101,6 +108,7 @@ export default {
             const confirmationMessage = `類別：${this.post.type}\n項目名稱：${this.post.title}\n完成紀錄：${this.post.recordScore}\n完成者：${this.post.recorder}\n完成日期：${this.post.date}\n證明檔案：${this.post.proveFile}\n得獎感言：${this.post.awardSpeech}`;
             if (window.confirm(`請檢查您的輸入是否正確。\n\n${confirmationMessage}`)) {
                 const formData = new FormData();
+                formData.append('user_id', this.userId);
                 formData.append('type', this.post.type);
                 formData.append('title', this.post.title);
                 formData.append('recordScore', this.post.recordScore);
