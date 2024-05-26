@@ -24,7 +24,8 @@ class CreatePostsTable extends Migration
             $table->string('ifProved')->default('no');
             $table->longText('awardSpeech')->nullable();
             $table->string('cover')->nullable();
-            $table->foreignId('user_id')->constrained();
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
             /*             $table->timestamps(); */
 
             //到時候要加入email 
