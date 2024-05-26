@@ -13,7 +13,7 @@
     <div class="info-section">
       <img class="icon" src="/images/post/0.png">
       <h2>發文者: </h2><br>
-      <router-link to="{ name: 'userprofile', params: { id: recordItem.id } }" class="info-detail">
+      <router-link :to="'/userprofile/' + recordItem.user_id" class="info-detail">
         <p>{{ recordItem.username }}</p>
       </router-link>
       <img class="icon" src="/images/post/1.png">
