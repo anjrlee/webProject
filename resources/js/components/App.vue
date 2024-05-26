@@ -1,7 +1,7 @@
 <template>
   <div @click="handleOutsideClick">
     <div class="bg"></div>
-    <router-view></router-view>
+    <router-view :msg="msg"></router-view>
     <div class="head h-[100px] w-full fixed text-center flex z-[50] bg-opacity-75 top-0">
       <router-link to="/" class="absolute w-full h-[100px] flex flex-wrap justify-center items-center text-[35px] font-bold " style="color: black; text-decoration: none;">
         央氏世界紀錄
@@ -11,10 +11,9 @@
         <div class="h-[10%] bg-black w-full relative top-[40%]"></div>
         <div class="h-[10%] bg-black w-full relative top-[60%]"></div>
       </div>
-      <div class="absolute top-[15%] right-[2%] transform [-translate-y-1/2]">
-        <a href="/profile" @click="goToProfile" class="text-white">
-          <img src="/images/index/profile.png" alt="Profile" class="w-[80px] h-auto" />
-        </a>
+      <div class="absolute top-[25%] right-[2%] h-[50%] w-[8%]">
+        <router-link to="/login" v-if="!ifLogin" style="text-decoration: none; color: black;" @click="sideBarShowFun"><font-awesome-icon :icon="['fas', 'user']" class="h-full w-full" /></router-link>
+        <router-link to="/logout" v-if="ifLogin" style="text-decoration: none; color: black;" @click="sideBarShowFun"><font-awesome-icon :icon="['fas', 'right-from-bracket']" class="h-full w-full"/></router-link>
       </div>
     </div>
 
@@ -42,7 +41,7 @@
         </div>
       </div>
       <div class="sideBarWord">
-        <div class="sideBarTitle">
+        <div class="sideBarTitle" v-if="ifLogin">
           <font-awesome-icon :icon="['fas', 'pencil']" class="mr-[3%]" />
           <a href="/addpost" style="text-decoration: none; color: black;" @click="sideBarShowFun">add my post</a>
         </div>
@@ -56,7 +55,7 @@
       <div class="sideBarWord">
         <div class="sideBarTitle" v-if="ifLogin">
           <font-awesome-icon :icon="['fas', 'user']" class="mr-[3%]" />
-          <router-link to="/profile" style="text-decoration: none; color: white;" @click="sideBarShowFun">profile</router-link>
+          <router-link to="/profile" style="text-decoration: none; color: black;" @click="sideBarShowFun">profile</router-link>
         </div>
       </div>
       <div class="sideBarWord">
@@ -73,10 +72,15 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue';
 import { useRouter } from 'vue-router';
+import { defineProps } from 'vue';
+
+const props=defineProps({
+  msg: String
+})
 
 const sideBarShow = ref(false);
 const sideBarShowStart = ref(false);
-var ifLogin = false;
+var ifLogin = true;
 
 const router = useRouter();
 

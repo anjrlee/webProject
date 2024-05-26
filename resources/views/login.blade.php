@@ -8,7 +8,8 @@
   </head>
   <body>
     <div id="app">
-      <App></App>
+      <App :msg="{{ json_encode(session('message')) }}"></App>
+      
       
     </div> 
     

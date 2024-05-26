@@ -52,7 +52,7 @@ import { onMounted } from 'vue';
 
 export default {
   props: {
-    flashMessage: {
+    msg: {
       type: String,
       default: ''
     }
@@ -77,16 +77,13 @@ export default {
   },
   setup(props) {
     onMounted(() => {
-      if(props.flashMessage){
-         if(props.flashMessage==="true"){
+      if(props.msg){
+         if(props.msg==="true"){
           Swal.fire('註冊成功', "請登入", 'success');
          }else{
           Swal.fire('驗證碼錯誤', "請點email連結以再次驗證", 'error');
          }
-      }else{
-        console.log("no");
       }
-      
     });
   },
   methods: {
