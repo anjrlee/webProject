@@ -17,12 +17,10 @@ class CreateArticleTable extends Migration
             $table->id();
             $table->string('title');
             $table->string('cover');
-            $table->string('author');
             $table->string('type');
             $table->date('date');
             $table->string('MW');
             $table->longText('content');
-            $table->string('email');
             $table->timestamps();
         });
     }

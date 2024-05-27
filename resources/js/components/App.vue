@@ -3,8 +3,9 @@
     <div class="bg"></div>
     <router-view :msg="msg"></router-view>
     <div class="head h-[100px] w-full fixed text-center flex z-[50] bg-opacity-75 top-0">
-      <router-link to="/" class="absolute w-full h-[100px] flex flex-wrap justify-center items-center text-[35px] font-bold " style="color: black; text-decoration: none;">
-        央氏世界紀錄
+      <router-link to="/" class="absolute w-full h-[100px] flex flex-wrap justify-center items-center text-[35px] font-bold top-[-20%]" style="color: black; text-decoration: none;">
+        <!-- 央氏世界紀錄 -->
+        <img src="images/index/title.png" class=" h-[140%]">
       </router-link>
       <div class="h-[70%] w-[66px] top-[15%] cursor-pointer absolute left-[2%]" @click.stop="sideBarShowFun">
         <div class="h-[10%] bg-black w-full relative top-[20%]"></div>
