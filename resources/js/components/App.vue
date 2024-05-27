@@ -55,13 +55,13 @@
       <div class="sideBarWord">
         <div class="sideBarTitle" v-if="ifLogin">
           <font-awesome-icon :icon="['fas', 'user']" class="mr-[3%]" />
-          <router-link to="/profile" style="text-decoration: none; color: black;" @click="sideBarShowFun">profile</router-link>
+          <a href="/profile" style="text-decoration: none; color: black;" @click="sideBarShowFun">profile</a>
         </div>
       </div>
       <div class="sideBarWord">
         <div class="sideBarTitle" >
           <font-awesome-icon :icon="['fas', 'key']" style="color: #000000;" class="mr-[3%]" />
-          <a href="/verifyredirect" style="text-decoration: none; color: black;" @click="logout">administrator</a>
+          <a href="/verify" style="text-decoration: none; color: black;" @click="logout">administrator</a>
         </div>
       </div>
     </div>

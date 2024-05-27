@@ -4,15 +4,13 @@
       <div class="title-background"></div>
       <h1 class="title_text">{{ recordItem.title}}</h1>
     </div>
-
     <div class="image-section">
-      <img :src= "recordItem.cover" class="image">
-
+      <img :src="recordItem.cover" alt="Cover Image" class="image">
     </div>
 
     <div class="info-section">
       <img class="icon" src="/images/post/0.png">
-      <h2>發文者: </h2><br>
+      <h2>發文者:</h2><br>
       <router-link :to="'/userprofile/' + recordItem.user_id" class="info-detail">
         <p>{{ recordItem.username }}</p>
       </router-link>

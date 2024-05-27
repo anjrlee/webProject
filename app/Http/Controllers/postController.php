@@ -40,15 +40,18 @@ class PostController extends Controller
         $post->proveFile = $request->proveFile;
         $post->user_id = $request->user_id;
         if ($request->hasFile('cover')) {
-            $coverPath = $request->file('cover')->store('covers', 'public');
-            $post->cover = $coverPath;
+            $image = $request->file('cover');
+            $imageName = time() . '.' . $image->getClientOriginalExtension();
+            $image->move(public_path('/images/upload'), $imageName);
+            $post->cover = '/images/upload/' . $imageName;
         }
 
         $post->save();
 
         return response()->json([
-            'message' => 'Post created successfully!',
-            'code' => 200
+            'message' => 'Post has been sent for approval',
+            'code' => 200,
+            'post' => $post
         ]);
     }
 
@@ -65,9 +68,11 @@ class PostController extends Controller
 
     public function index(Request $request)
     {
-        $posts = Post::where('ifProved', 'yes')->get();
+        $posts = Post::where('ifProved', 'approved')->get();
+
         return response()->json($posts);
     }
+
 
     public function approve(Request $request, $id)
     {

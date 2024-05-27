@@ -60,7 +60,7 @@ Route::get('/post/{id}', function ($id) {
     return view('post', ['postId' => $id]);
 });
 
-Route::get('/userprofile/{id}', function($id){
+Route::get('/userprofile/{id}', function ($id) {
     return view('userprofile', ['userId' => $id]);
 });
 
@@ -78,9 +78,16 @@ Route::get('/{any}', function () {
 })->where('any', '.*');
 */
 
-/* 
+Route::post('/set-session', function (Request $request) {
+    session(['verified' => true]);
+    return response()->json(['message' => 'Session set']);
+});
+//remove session
+Route::post('/remove-session', function (Request $request) {
+    session()->forget('verified');
+    return response()->json(['message' => 'Session removed']);
+});
 
-Auth::routes(); */
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
