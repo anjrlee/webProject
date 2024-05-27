@@ -1,6 +1,9 @@
 <template>
     <div class="main-container">
       <div class="container mt-[100px] z-[0] absolute">
+        <div class="logout-button">
+        <button @click="logout" class="button3">登出管理者模式</button>
+      </div>
         <div class="filter-buttons">
           <button @click="filterItems('all')" :class="{ active: filter === 'all' }">所有</button>
           <button @click="filterItems('no')" :class="{ active: filter === 'no' }">待審核</button>
@@ -85,10 +88,25 @@
         this.itemTable = true;
         this.selectItem = null;
       },
+      logout() {
+        axios.post('/remove-session')
+              .then(response => {
+                console.log('Session removed response:', response.data);
+                window.location.href = "/verify"; 
+              })
+              .catch(error => {
+                Swal.showValidationMessage("請求失敗: " + error);
+              });
+    },
       async approve(id) {
         try {
-          const response = await axios.post(`/api/posts/${id}/approve`);
+          const response = await axios.post(`/api/posts/${id}/approve`,{},{
+            headers:{
+              'x-Verified':sessionStorage.getItem('verified')
+            }
+          });
           console.log(response.data);
+          console.log(sessionStorage.getItem('verified'));
           this.fetchPosts();
         } catch (error) {
           console.error('Error approving post:', error);
@@ -96,7 +114,12 @@
       },
       async reject(id) {
         try {
-          const response = await axios.post(`/api/posts/${id}/reject`);
+          const response = await axios.post(`/api/posts/${id}/reject`,{},{
+            headers:{
+              'x-Verified':sessionStorage.getItem('verified')
+            }
+          
+          });
           console.log(response.data);
           this.fetchPosts();
         } catch (error) {
