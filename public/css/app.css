@@ -570,6 +570,9 @@ video {
 .top-0 {
   top: 0px;
 }
+.top-\[-20\%\] {
+  top: -20%;
+}
 .top-\[15\%\] {
   top: 15%;
 }
@@ -732,6 +735,9 @@ video {
 }
 .h-\[100px\] {
   height: 100px;
+}
+.h-\[140\%\] {
+  height: 140%;
 }
 .h-\[250px\] {
   height: 250px;
