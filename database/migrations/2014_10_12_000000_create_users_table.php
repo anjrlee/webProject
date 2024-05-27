@@ -17,7 +17,6 @@ class CreateUsersTable extends Migration
             $table->id();
             $table->string('name', 20)->unique();
             $table->string('gender')->nullable()->default('not specified');
-            $table->string('type')->default('normal');
             $table->string('email')->unique();
             $table->string('department');
             $table->text('bio')->nullable();

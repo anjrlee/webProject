@@ -128,7 +128,7 @@
       },
       async fetchPosts() {
         try {
-          const response = await axios.get('/api/posts');
+          const response = await axios.get('/api/verification');
           this.items = response.data;
         } catch (error) {
           console.error('Error fetching posts:', error);

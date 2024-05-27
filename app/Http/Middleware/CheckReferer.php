@@ -22,7 +22,7 @@ class CheckReferer
         Log::info('Verified: ' . var_export($verified, true));
 
         if ($path === 'verify') {
-            if (!$verified) {
+            if ($verified !== true) {
                 return redirect('/verifyredirect');
             }
         }
