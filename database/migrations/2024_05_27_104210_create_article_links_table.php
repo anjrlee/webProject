@@ -18,7 +18,6 @@ class CreateArticleLinksTable extends Migration
             $table->unsignedBigInteger('article_id');
             $table->foreign('article_id')->references('id')->on('article');
             $table->string('link');
-            $table->timestamps();
         });
     }
 

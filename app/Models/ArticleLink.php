@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class ArticleLink extends Model
 {
     use HasFactory;
-
+    public $timestamps = false;
     protected $fillable = [
         'article_id',
         'link',
