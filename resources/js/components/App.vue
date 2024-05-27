@@ -61,7 +61,7 @@
       <div class="sideBarWord">
         <div class="sideBarTitle" >
           <font-awesome-icon :icon="['fas', 'key']" style="color: #000000;" class="mr-[3%]" />
-          <a href="/verify" style="text-decoration: none; color: black;" @click="logout">administrator</a>
+          <a href="/verify" style="text-decoration: none; color: black;" >administrator</a>
         </div>
       </div>
     </div>
