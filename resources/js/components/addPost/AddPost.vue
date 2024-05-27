@@ -118,7 +118,7 @@ export default {
             } else {
                 this.similarTitles = [];
             }
-        }, 100);
+        }, 200);
         },
         selectTitle(title) {
             this.post.title = title;
