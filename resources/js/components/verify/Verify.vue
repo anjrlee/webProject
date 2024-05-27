@@ -1,9 +1,12 @@
 <template>
     <div class="main-container">
-      <div class="container mt-[100px] z-[0] absolute">
-        <div class="logout-button">
+
         <button @click="logout" class="button3">登出管理者模式</button>
-      </div>
+      
+        <button @click="goback" class="">
+              <img src="/images/verify/verify_back.png" alt="返回" class="back" />
+        </button>
+
         <div class="filter-buttons">
           <button @click="filterItems('all')" :class="{ active: filter === 'all' }">所有</button>
           <button @click="filterItems('no')" :class="{ active: filter === 'no' }">待審核</button>
@@ -35,9 +38,6 @@
         <div class="Itemcontent" v-if="selectItem">
           <div class="header-row">
             <p class="form__title"><strong>審核列表</strong></p>
-            <button @click="goback" class="button3">
-              <img src="/images/verify/verify_back.png" alt="返回" class="button3-image" />
-            </button>
           </div>
           <hr class="form--separator mt-1 mb-4">
           <form class="mt-4">
@@ -48,11 +48,15 @@
               <p class="label"><strong>完成日期: </strong>{{ selectItem.date }}</p>
               <p class="label"><strong>證明檔案: </strong>{{ selectItem.proveFile }}</p>
             </div>
-            <button @click="approve(selectItem.id)" class="button1">許可</button>
-            <button @click="reject(selectItem.id)" class="button2">拒絕</button>
+
           </form>
         </div>
-      </div>
+      
+        
+        <div class="twobuttons"  v-if="selectItem">
+              <button @click="approve(selectItem.id)" class="button1">許可</button>
+            <button @click="reject(selectItem.id)" class="button2">拒絕</button>
+        </div>
     </div>
   </template>
   
@@ -146,8 +150,16 @@
 .filter-buttons {
   display: flex;
   justify-content: center;
-  margin-bottom: 20px;
-  margin-top: 20px;
+  margin-bottom: 50px;
+  position: absolute;
+  top: 150px;
+}
+
+.twobuttons {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  bottom: 80px;
 
 }
 
@@ -159,12 +171,23 @@
   cursor: pointer;
   transition: background-color 0.3s, transform 0.3s;
   border-radius: 20px;
+  font-size: 20px;
+  transform: scaleX(1.1);
 }
 
+.twobuttons button {
+  margin: 0 25px;
+  padding: 5px 20px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+  transform: scaleX(1.05);
+}
 .filter-buttons button.active {
   background-color: #f0c575;
   color: #fff;
   transform: scale(1.1);
+  width: 150px;
 }
 
 .filter-buttons button:hover {
@@ -180,7 +203,7 @@
 }
 
 .form__title{
-    font-size: 40px;
+    font-size: 30px;
     margin-bottom: 15px;
 }
 
@@ -210,7 +233,7 @@
 .table__title{
     display: table-header-group;
     font-weight: bold;
-    font-size: 30px;
+    font-size: 25px;
 }
 
 .table-row{
@@ -240,47 +263,57 @@
 }
 
 .label{
-    font-size: 30px;
+    font-size: 25px;
     margin-left: 12%;
 }
 
 .button1{
-    position: absolute;
-    top: 550px;
-    left: 400px;
-    width: 130px;
     text-align: center;
-    font-size: 30px;
+    font-size: 20px;
     color: white;
     background: #6FD586;
     border-radius: 15px;
 }
-
+.button1:hover {
+  background: #57b86f;
+  transform: scale(1.05);
+}
 .button2{
-    position: absolute;
-    top: 550px;
-    left: 700px;
-    width: 130px;
     text-align: center;
-    font-size: 30px;
+    font-size: 20px;
     color: white;
     background: #E64C4C;
     border-radius: 15px;
 }
-
-.button3{
-    width: 50px;
-    text-align: center;
-    opacity: 0.7;
+.button2:hover {
+  background: #c43d3d;
+  transform: scale(1.05);
+}
+.button3, .back{
     border: none;
     cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    position: absolute;
 }
 
-.button3-image{
+.button3{
+  background-color: rgb(128, 109, 81);
+  top: 150px;
+  right: 150px;
+  border-radius: 10px;
+  padding: 10px 20px;
+  color: white;
+}
+.back{
   width: 50px;
   height: 50px;
+  top: 150px;
+  right: 100px;
+
+}
+.showable, .Itemcontent{
+  width: 60vw;
+  position: absolute;
+  top: 200px;
+  height: 65vh;
 }
 </style>
