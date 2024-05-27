@@ -30,17 +30,7 @@ class LoginController extends Controller
             return response()->json(['message' => '帳號不存在，請先註冊', 'field' => 'email'], 401);
         }
 
-        // Find the hashed password in the psw table
-        if ($request->password === '123456') {
-            Auth::login($user);
-            Log::info('User logged in: ' . Auth::id());
-            return response()->json([
-                'message' => '登入成功',
-                'user' => $user,
-                'redirect' => $this->redirectPath()
-            ], 200);
-        }
-        /*         $psw = Psw::where('user_id', $user->id)->first();
+                 $psw = Psw::where('user_id', $user->id)->first();
 
                 if (!$psw) {
                     return response()->json(['message' => '密碼不正確，請重試', 'field' => 'password'], 401);
@@ -57,7 +47,7 @@ class LoginController extends Controller
                 } else {
                     // Password did not match
                     return response()->json(['message' => '密碼不正確，請重試', 'field' => 'password'], 401);
-                } */
+                } 
     }
 
 
