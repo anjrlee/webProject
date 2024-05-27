@@ -57,7 +57,7 @@ class PostController extends Controller
 
     public function showall(Request $request)
     {
-        $query = Post::where('ifProved', 'yes');
+        $query = Post::where('ifProved', 'approved');
 
         $type = $request->query('type');
         if ($type) {
@@ -67,7 +67,17 @@ class PostController extends Controller
         $posts = $query->get();
         return response()->json($posts);
     }
-    
+
+    public function verifyPosts(Request $request)
+    {
+        $status = $request->query('status');
+        if ($status) {
+            $posts = Post::where('ifProved', $status)->get();
+        } else {
+            $posts = Post::all();
+        }
+        return response()->json($posts);
+    }
 
     public function index(Request $request)
     {
