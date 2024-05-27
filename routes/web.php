@@ -30,7 +30,7 @@ Route::get('/verify', function () {
 
 Route::get('/addpost', function () {
     return view('addpost');
-})->middleware('auth');
+});//->middleware('auth')//
 
 Route::get('/profile', function () {
     return view('profile');
