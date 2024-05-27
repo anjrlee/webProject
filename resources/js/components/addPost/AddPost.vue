@@ -15,7 +15,11 @@
                     </div>
                     <div class="mb-3">
                         <label for="title" class="form-label"><p class="require">*</p>項目名稱：</label>
-                        <input type="text" class="form-control" id="title" name="title" v-model="post.title" placeholder="丟松果最快速" required>
+                        <input type="text" class="form-control" id="title" name="title" v-model="post.title" @input="fetchSimilarTitles" placeholder="丟松果最快速" required>
+                        <ul v-if="similarTitles.length" class="form-control suggestion-list">
+                            <p>相似項目：</p>
+                            <li v-for="title in similarTitles" :key="title" @click="selectTitle(title)" class="form-control">{{ title }}</li>
+                        </ul>
                     </div>
                     <div class="mb-3">
                         <label for="recordScore" class="form-label"><p class="require">*</p>完成紀錄：</label>
@@ -81,6 +85,7 @@ export default {
                 proveFile: '',
                 cover: null,
             },
+            similarTitles: [],
             errorMessage: '',
             userId: null,
         };
@@ -95,7 +100,26 @@ export default {
         handleFileUpload(event) {
             this.post.cover = event.target.files[0];
         },
-
+        async fetchSimilarTitles() {
+            if (this.post.title.length) {
+                try {
+                    const response = await axios.get(`http://127.0.0.1:8000/api/similar-titles`, {
+                        data: {
+                            title: this.post.title
+                        }
+                    });
+                    this.similarTitles = response.data;
+                } catch (error) {
+                    console.error('Error fetching similar titles:', error);
+                }
+            } else {
+                this.similarTitles = [];
+            }
+        },
+        selectTitle(title) {
+            this.post.title = title;
+            this.similarTitles = [];
+        },
         async showConfirmation() {
             if (this.post.cover) {
                 if (this.post.cover.type !== 'image/png' && 
@@ -158,7 +182,7 @@ form,
 input,
 textarea,
 button,
-select {
+select{
     font-size: 1.5rem;
 }
 
@@ -181,5 +205,22 @@ small{
 
 .btn-black:hover {
     background-color: #2f2f2f;
+}
+
+.suggestion-list {
+    border: 1px solid #ccc;
+    max-height: 150px;
+    overflow-y: auto;
+}
+
+.suggestion-list li {
+    cursor: pointer;
+    background: #f8f8f8;
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 3px;
+}
+
+.suggestion-list li:hover {
+    background: #ececec;
 }
 </style>

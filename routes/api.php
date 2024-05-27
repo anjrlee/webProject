@@ -26,6 +26,7 @@ Route::middleware('auth:api')->get('/user/profile', function (Request $request) 
 
 
 Route::post('add-post', [postController::class, 'addPost']);
+Route::get('/similar-titles', [PostController::class, 'getSimilarTitles']);
 Route::get('/posts', [PostController::class, 'showall']);
 Route::get('/verification', [PostController::class, 'verifyPosts']);
 Route::post('/posts/{id}/approve', [PostController::class, 'approve']);
