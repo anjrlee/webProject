@@ -40,7 +40,7 @@ class ProfileController extends Controller
     }
     public function getUserProfile($id)
     {
-        \Log::info("Accessing profile for user ID: $id");
+        Log::info("Accessing profile for user ID: $id");
         $user = User::find($id);
 
         if (!$user) {

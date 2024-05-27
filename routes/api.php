@@ -21,6 +21,10 @@ Route::middleware('auth:api')->get('/user/profile', function (Request $request) 
     return response()->json($request->user());
 });
 
+
+
+
+
 Route::post('add-post', [postController::class, 'addPost']);
 Route::get('/posts', [PostController::class, 'showall']);
 Route::get('/verification', [PostController::class, 'verifyPosts']);

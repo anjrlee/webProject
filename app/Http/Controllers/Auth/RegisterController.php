@@ -35,7 +35,7 @@ class RegisterController extends Controller
             // Save hashed password to psw table
             Psw::create([
                 'user_id' => $user->id,
-                'password' => Session::get('token', 'password'),
+                'password' => Session::get('password'),
             ]);
             $returnMessage="true";
         }else{
