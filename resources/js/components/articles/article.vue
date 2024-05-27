@@ -15,41 +15,60 @@
     <p>{{ articleItem.content }}</p><br><hr><br>
     
     <h2>相關連結:</h2>
-    <div v-for="i in links">
-      <a :href="i">{{ i }}</a><br> 
-    </div>       
-        
+    <div v-if="articleItem.links && articleItem.links.length">
+      <div v-for="link in articleItem.links" :key="link.id">
+        <a :href="link.link">{{ link.link }}</a><br> 
+      </div>       
+    </div>
+    <div v-else>
+      <p>No related links</p>
+    </div>
   </div>
 </template>
 
 <script setup>
-import { reactive } from 'vue';
-import { useRoute } from 'vue-router'
-const route = useRoute()
-const id=route.params.id
-console.log(id);
+import { reactive, onMounted } from 'vue';
+import { useRoute } from 'vue-router';
+import axios from 'axios';
 
-const link1 = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
-const link2 = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
-const link3 = "https://cn.vuejs.org/guide/essentials/reactivity-fundamentals.html";
-
-
+const route = useRoute();
+const id = route.params.id;
 
 const articleItem = reactive({
-    email: "user1@gmail.com",
-    title: "研究室周刊-xxx老師的研究室在幹嘛?",
-    cover: "/images/post/bk_test3.jpg",
-    author: "王小名",
-    type: "歷史",
-    date: "2024/5/15",
-    content: "有一個關於羅馬帝國的有趣趣聞是關於凱撒大帝的狂妄與機智。據說，在公元前47年，凱撒大帝與埃及的執政官克雷奧帕特拉七世發生了一段奇妙的故事。當時，凱撒大帝在埃及遇到了困境，他被包圍在亞歷山大港。克雷奧帕特拉七世是埃及最後一位法老女王，她決定與凱撒合作。凱撒大帝聽說了一種被稱為“神秘的埃及方法”的奇特計畫。克雷奧帕特拉七世命令將她裝在一個捲起來的地毯裡，然後送給凱撒作為禮物。凱撒大帝好奇地打開地毯，只見一個美麗的女子出現在他面前。這一計策讓凱撒大帝異想天開，他對克雷奧帕特拉七世深感興趣，並最終與她建立了密切的關係。這個趣聞揭示了古代羅馬的政治和外交手段，以及凱撒大帝在面對困境時的機智和決斷力。"
-})
+    email: "",
+    title: "",
+    cover: "",
+    author: "",
+    type: "",
+    date: "",
+    content: "",
+    links: []
+});
 
-const links = reactive( [ link1, link2, link3 ] );
+// Function to fetch the article by ID
+const fetchArticle = async () => {
+    try {
+        const response = await axios.get(`/api/articles/${id}`);
+        const article = response.data;
 
+        // Update articleItem with data from the response
+        articleItem.email = article.email;
+        articleItem.title = article.title;
+        articleItem.cover = article.cover;
+        articleItem.author = article.author;
+        articleItem.type = article.type;
+        articleItem.date = article.date;
+        articleItem.content = article.content;
+        articleItem.links = article.links ? article.links : [];
+    } catch (error) {
+        console.error('Failed to fetch article:', error);
+    }
+};
 
-
+onMounted(fetchArticle);
 </script>
+
+
 
 
 

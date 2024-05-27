@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -30,3 +31,5 @@ Route::put('/profile', [ProfileController::class, 'update']);
 Route::get('/post', [postController::class, 'index']);
 Route::get('/post/{id}', [postController::class, 'show']);
 Route::get('/userprofile/{id}', [ProfileController::class, 'getUserProfile']);
+Route::get('/articles', [ArticleController::class, 'showArticle']);
+Route::get('/articles/{id}', [ArticleController::class, 'getArticle']);
