@@ -5,14 +5,14 @@
         <h2 class="form__title"><strong>註冊</strong></h2>
         <hr class="form--separator">
         <label for="username">用戶名</label>
-        <input type="text" class="input" v-model="SignupUsername" />
+        <input type="text" class="input" placeholder="名字需小於20個字元" v-model="SignupUsername" />
         <span v-if="usernameError" class="error-message">{{ usernameError }}</span>
         <label for="email">電子郵件</label>
-        <input type="email" class="input" v-model="SignupEmail" />
-        <label for="department">系級(例:資管二)</label>
-        <input type="text" class="input" v-model="SignupDepartment" />
+        <input type="email" class="input" v-model="SignupEmail" placeholder="xxx@gmail.com"/>
+        <label for="department">系級</label>
+        <input type="text" class="input" placeholder="例:資管二" v-model="SignupDepartment" />
         <label for="password">密碼</label>
-        <input type="password" class="input" v-model="SignupPassword" />
+        <input type="password" class="input" placeholder="密碼需大於6個字元" v-model="SignupPassword" />
         <span v-if="passwordError" class="error-message">{{ passwordError }}</span>
         <button type="submit" class="button3">註冊</button>
       </form>
@@ -251,7 +251,7 @@ export default {
     background-color: #eee;
     opacity: 0.8;
     float: right;
-    margin-top: 190px;
+    margin-top: 150px;
     border-radius: 20px;
     position: absolute;
   }
@@ -287,7 +287,7 @@ export default {
     background-color: #eee;
     opacity: 0.75;
     float: right;
-    margin-top: 190px;
+    margin-top: 150px;
     border-radius: 20px;
     position: absolute;
   }

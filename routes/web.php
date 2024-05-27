@@ -5,6 +5,8 @@ use App\Http\Controllers\TokenController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\PHPMailerController;
+use App\Http\Controllers\UserController;
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,7 +32,7 @@ Route::get('/verify', function () {
 
 Route::get('/addpost', function () {
     return view('addpost');
-})->middleware('auth');
+});//->middleware('auth')//
 
 Route::get('/profile', function () {
     return view('profile');
@@ -71,6 +73,7 @@ Route::get('/articleRead/{id}', function ($id) {
 
 Route::get('/verifyEmail/{token}', [RegisterController::class, 'storeData']);
 
+
 /*
 
 Route::get('/{any}', function () {
@@ -92,6 +95,7 @@ Route::post('/remove-session', function (Request $request) {
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::post('/login', [LoginController::class, 'login']);
+Route::post('/ifLogin', [UserController::class, 'getUserProfile']);
 Route::post('/register', [RegisterController::class, 'register']);
 Route::post('/logout', [LoginController::class, 'logout']);
 Route::get('send-email', [PHPMailerController::class, 'index'])->name('send.email');

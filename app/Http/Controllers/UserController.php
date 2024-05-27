@@ -5,11 +5,15 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 
+
 class UserController extends Controller
 {
-    public function getUserProfile($id)
+    public function getUserProfile()
     {
-        $user = User::findOrFail($id);
-        return response()->json(['name' => $user->name]);
+        if (auth()->check()) {
+            return response()->json(['msg' => true]);
+        } else {
+            return response()->json(['msg' => false]);
+        }
     }
 }

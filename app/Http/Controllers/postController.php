@@ -110,4 +110,15 @@ class PostController extends Controller
         $post = Post::findOrFail($id);
         return response()->json($post);
     }
+
+    public function getSimilarTitles(Request $request)
+    {
+        $title = $request->query('title');
+        if (!$title) {
+            return response()->json([]);
+        }
+
+        $similarTitles = Post::where('title', 'LIKE', '%' . $title . '%')->pluck('title');
+        return response()->json($similarTitles);
+    }
 }
