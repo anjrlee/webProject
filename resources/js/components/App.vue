@@ -73,6 +73,7 @@
 import { ref, onMounted, onUnmounted } from 'vue';
 import { useRouter } from 'vue-router';
 import { defineProps } from 'vue';
+import axios from 'axios';
 
 const props=defineProps({
   msg: String
@@ -80,7 +81,19 @@ const props=defineProps({
 
 const sideBarShow = ref(false);
 const sideBarShowStart = ref(false);
-var ifLogin = true;
+var ifLogin = ref(false);
+const checkAuthentication = async () => {
+  try {
+    const response = await axios.post('/ifLogin');
+    ifLogin.value=response.data.msg;
+  } catch (error) {
+    console.error('Error checking authentication status:', error);
+  }
+};
+
+onMounted(()=>{
+    checkAuthentication();  
+})
 
 const router = useRouter();
 
