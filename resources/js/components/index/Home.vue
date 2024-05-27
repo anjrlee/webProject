@@ -25,16 +25,17 @@ const data = ref([]);
 
 async function fetchData() {
   try {
-    const response = await axios.get('/api/post');
-    if (category.value) {
-      data.value = response.data.filter((record) => record.type == category.value);
-    } else {
-      data.value = response.data;
-    }
+    const response = await axios.get('/api/posts', {
+      params: {
+        type: category.value,
+      },
+    });
+    data.value = response.data;
   } catch (error) {
     console.error('Failed to fetch data:', error);
   }
 }
+
 
 function go(pass) {
   window.location.href = `./post/${pass}`;

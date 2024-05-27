@@ -25,10 +25,10 @@
           <router-link to="/" style="text-decoration: none; color: black;" @click="sideBarShowFun">post</router-link>
         </div>
         <div class="sideBarLink">
-          <router-link to="/?id=relax" style="text-decoration: none; color: black;" @click="sideBarShowFun">休閒類</router-link>
+          <router-link to="/?id=leisure" style="text-decoration: none; color: black;" @click="sideBarShowFun">休閒類</router-link>
         </div>
         <div class="sideBarLink">
-          <router-link to="/?id=academic" style="text-decoration: none; color: black;" @click="sideBarShowFun">學術研究類</router-link>
+          <router-link to="/?id=study" style="text-decoration: none; color: black;" @click="sideBarShowFun">學術研究類</router-link>
         </div>
         <div class="sideBarLink">
           <router-link to="/?id=campus" style="text-decoration: none; color: black;" @click="sideBarShowFun">校園生活類</router-link>
