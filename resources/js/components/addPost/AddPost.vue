@@ -16,7 +16,7 @@
                     <div class="mb-3">
                         <label for="title" class="form-label"><p class="require">*</p>項目名稱：</label>
                         <input type="text" class="form-control" id="title" name="title" v-model="post.title" @input="fetchSimilarTitles" placeholder="丟松果最快速" required>
-                        <ul v-if="similarTitles.length" class="form-control suggestion-list">
+                        <ul v-if="similarTitles.length && post.title" class="form-control suggestion-list">
                             <p>相似項目：</p>
                             <li v-for="title in similarTitles" :key="title" @click="selectTitle(title)" class="form-control">{{ title }}</li>
                         </ul>
@@ -88,6 +88,7 @@ export default {
             similarTitles: [],
             errorMessage: '',
             userId: null,
+            cancelTokenSource: null,
         };
     },
     mounted(){
@@ -100,11 +101,13 @@ export default {
         handleFileUpload(event) {
             this.post.cover = event.target.files[0];
         },
-        async fetchSimilarTitles() {
-            if (this.post.title.length) {
+        fetchSimilarTitles() {
+            clearTimeout(this.timer);
+            this.timer = setTimeout(async () => {
+            if (this.post.title.length > 0) {
                 try {
-                    const response = await axios.get(`http://127.0.0.1:8000/api/similar-titles`, {
-                        data: {
+                    const response = await axios.get(`api/similar-titles`, {
+                        params: {
                             title: this.post.title
                         }
                     });
@@ -115,6 +118,7 @@ export default {
             } else {
                 this.similarTitles = [];
             }
+        }, 100);
         },
         selectTitle(title) {
             this.post.title = title;
@@ -168,6 +172,9 @@ export default {
 </script>
 
 <style scoped>
+/* input::selection {
+    background: none;
+} */
 .container{
   left: 50%;
   transform: translate(-50%, 0%);
