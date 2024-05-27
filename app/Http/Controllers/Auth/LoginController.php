@@ -54,7 +54,8 @@ class LoginController extends Controller
     public function logout()
     {
         Auth::logout();
-        return response()->json(['message' => '登出成功'], 200);
+       // return response()->json(['message' => '登出成功'], 200);
+        return redirect('/')->with('message', '登出成功');
     }
 
     /**

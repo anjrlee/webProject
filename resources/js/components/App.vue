@@ -11,9 +11,9 @@
         <div class="h-[10%] bg-black w-full relative top-[40%]"></div>
         <div class="h-[10%] bg-black w-full relative top-[60%]"></div>
       </div>
-      <div class="absolute top-[25%] right-[2%] h-[50%] w-[8%]">
+      <div class="absolute top-[25%] right-[2%] h-[50%] w-[8%] ">
         <router-link to="/login" v-if="!ifLogin" style="text-decoration: none; color: black;" @click="sideBarShowFun"><font-awesome-icon :icon="['fas', 'user']" class="h-full w-full" /></router-link>
-        <router-link to="/logout" v-if="ifLogin" style="text-decoration: none; color: black;" @click="sideBarShowFun"><font-awesome-icon :icon="['fas', 'right-from-bracket']" class="h-full w-full"/></router-link>
+        <router-link to="/" v-if="ifLogin" style="text-decoration: none; color: black;" @click="logout"><font-awesome-icon :icon="['fas', 'right-from-bracket']"  class="h-full w-full"/></router-link>
       </div>
     </div>
 
@@ -96,6 +96,17 @@ onMounted(()=>{
 })
 
 const router = useRouter();
+
+async function logout(){
+  console.log("click")
+  try{
+    await axios.post("/logout");
+    window.location.reload();
+  }catch(e){
+    console.log(e);
+  }
+  
+}
 
 function sideBarShowFun() {
   sideBarShowStart.value = true;
