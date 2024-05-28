@@ -30,31 +30,31 @@ class LoginController extends Controller
             return response()->json(['message' => '帳號不存在，請先註冊', 'field' => 'email'], 401);
         }
 
-                 $psw = Psw::where('user_id', $user->id)->first();
+        $psw = Psw::where('user_id', $user->id)->first();
 
-                if (!$psw) {
-                    return response()->json(['message' => '密碼不正確，請重試', 'field' => 'password'], 401);
-                }
+        if (!$psw) {
+            return response()->json(['message' => '密碼不正確，請重試', 'field' => 'password'], 401);
+        }
 
-                // Check if the provided password matches the hashed password
-                if (Hash::check($request->password, $psw->password)) {
-                    Auth::login($user);
-                    return response()->json([
-                        'message' => '登入成功',
-                        'user' => $user,
-                        'redirect' => $this->redirectPath()
-                    ], 200);
-                } else {
-                    // Password did not match
-                    return response()->json(['message' => '密碼不正確，請重試', 'field' => 'password'], 401);
-                } 
+        // Check if the provided password matches the hashed password
+        if (Hash::check($request->password, $psw->password)) {
+            Auth::login($user);
+            return response()->json([
+                'message' => '登入成功',
+                'user' => $user,
+                'redirect' => $this->redirectPath()
+            ], 200);
+        } else {
+            // Password did not match
+            return response()->json(['message' => '密碼不正確，請重試', 'field' => 'password'], 401);
+        }
     }
 
 
     public function logout()
     {
         Auth::logout();
-       // return response()->json(['message' => '登出成功'], 200);
+        // return response()->json(['message' => '登出成功'], 200);
         return redirect('/')->with('message', '登出成功');
     }
 
