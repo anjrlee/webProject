@@ -5,7 +5,7 @@
 
         <button @click="logout" class="button3">登出管理者模式</button>
       
-        <button @click="goback" class="">
+        <button @click="goback" v-show="!itemTable" class="">
               <img src="/images/verify/verify_back.png" alt="返回" class="back" />
         </button>
 
@@ -48,7 +48,11 @@
               <p class="label"><strong>完成紀錄: </strong>{{ selectItem.recordScore }}</p>
               <p class="label"><strong>完成者: </strong>{{ selectItem.recorder }}</p>
               <p class="label"><strong>完成日期: </strong>{{ selectItem.date }}</p>
-              <p class="label"><strong>證明檔案: </strong>{{ selectItem.proveFile }}</p>
+              <p class="label"><strong>證明檔案: </strong>
+                <a :href="selectItem.proveFile" target="_blank">
+                  <span class="small-text">{{ selectItem.proveFile }}</span>
+                </a>
+              </p>
             </div>
 
           </form>
@@ -117,6 +121,10 @@
               message: 'Post approved successfully!',
               type: 'success',
           });
+
+          this.itemTable = true;
+          this.selectItem = null;
+
         } catch (error) {
           console.error('Error approving post:', error);
         }
@@ -132,7 +140,12 @@
           console.log(response.data);
           this.goback();
           this.fetchPosts();
+
           ElMessage.error('Post rejected successfully!')
+
+          this.itemTable = true;
+          this.selectItem = null;
+
         } catch (error) {
           console.error('Error rejecting post:', error);
         }
@@ -270,6 +283,10 @@
 .label{
     font-size: 25px;
     margin-left: 12%;
+}
+
+.small-text{
+    font-size: 15px;
 }
 
 .button1{
