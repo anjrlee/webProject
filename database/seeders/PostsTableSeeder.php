@@ -47,7 +47,7 @@ class PostsTableSeeder extends Seeder
                 'proveFile' => 'https://drive.google.com/drive/folders/1HFNvrMiFao84oVqCWdEHGND-sG67n2qV?usp=sharing',
                 'ifProved' => 'approved',
                 'awardSpeech' => '我沒有偷，我只是借，讀...讀書人的事，能叫偷嗎',
-                'cover' => '/images/recordImg/default.jpg',
+                'cover' => '/images/recordImg/6.jpg',
                 'user_id' => 1,
             ],
             [
@@ -73,7 +73,7 @@ class PostsTableSeeder extends Seeder
                 'proveFile' => 'https://drive.google.com/drive/folders/1HFNvrMiFao84oVqCWdEHGND-sG67n2qV?usp=sharing',
                 'ifProved' => 'no',
                 'awardSpeech' => '我快死了22222',
-                'cover' => '/images/recordImg/default.jpg',
+                'cover' => '/images/recordImg/6.jpg',
                 'user_id' => 1,
             ],
             [
@@ -86,7 +86,7 @@ class PostsTableSeeder extends Seeder
                 'proveFile' => 'https://drive.google.com/drive/folders/1HFNvrMiFao84oVqCWdEHGND-sG67n2qV?usp=sharing',
                 'ifProved' => 'approved',
                 'awardSpeech' => '9人倖存',
-                'cover' => '/images/recordImg/6.jpg',
+                'cover' => '/images/recordImg/default.jpg',
                 'user_id' => 1,
             ],
             [
@@ -112,7 +112,7 @@ class PostsTableSeeder extends Seeder
                 'proveFile' => 'https://drive.google.com/drive/folders/1HFNvrMiFao84oVqCWdEHGND-sG67n2qV?usp=sharing',
                 'ifProved' => 'approved',
                 'awardSpeech' => '老闆說沒飯了',
-                'cover' => '/images/recordImg/default.jpg',
+                'cover' => '/images/recordImg/1.jpg',
                 'user_id' => 1,
             ],
             [
@@ -125,7 +125,7 @@ class PostsTableSeeder extends Seeder
                 'proveFile' => 'https://drive.google.com/drive/folders/1HFNvrMiFao84oVqCWdEHGND-sG67n2qV?usp=sharing',
                 'ifProved' => 'no',
                 'awardSpeech' => '不可能再碰',
-                'cover' => '/images/recordImg/default.jpg',
+                'cover' => '/images/recordImg/6.jpg',
                 'user_id' => 1,
             ],
             [
