@@ -20,7 +20,7 @@
                         </select>
                     </div>
                     <div class="mt-4 mb-3">
-                        <label for="department" class="form-label">系所：</label>
+                        <label for="department" class="form-label">系級：</label>
                         <input type="text" class="form-control" id="department" name="department" v-model="profile.department">
                     </div>
                     <div class="mt-4 mb-3">
