@@ -9,7 +9,7 @@
     <p class="info">{{ articleItem.type }}</p>
 
     <div class="image-section">
-      <img :src="articleItem.cover" class="image">
+      <img :src="articleItem.cover || '/images/articleImg/default.jpg'" class="image">
     </div>
 
     <p>{{ articleItem.content }}</p><br><hr><br>
@@ -67,6 +67,7 @@ const fetchArticle = async () => {
 
 onMounted(fetchArticle);
 </script>
+
 
 
 
