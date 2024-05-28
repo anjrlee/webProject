@@ -16,7 +16,7 @@ class CreateUsersTable extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('name', 20)->unique();
-            $table->string('gender')->nullable()->default('not specified');
+            $table->string('gender')->nullable()->default('不願意透露');
             $table->string('email')->unique();
             $table->string('department');
             $table->text('bio')->nullable();
