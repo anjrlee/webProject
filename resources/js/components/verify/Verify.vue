@@ -69,6 +69,7 @@
   <script>
   import axios from 'axios';
   import { ElMessage } from 'element-plus';
+import { offset } from '@popperjs/core';
   export default {
     data() {
       return {
@@ -120,6 +121,7 @@
           ElMessage({
               message: 'Post approved successfully!',
               type: 'success',
+              offset: 100
           });
 
           this.itemTable = true;
@@ -140,9 +142,10 @@
           console.log(response.data);
           this.goback();
           this.fetchPosts();
-
-          ElMessage.error('Post rejected successfully!')
-
+          ElMessage.error({
+              message: 'Post has been rejected',
+              offset: 100,
+          })
           this.itemTable = true;
           this.selectItem = null;
 

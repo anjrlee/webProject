@@ -2,7 +2,7 @@ import { createApp } from 'vue'; // Import createApp function from Vue 3
 import router from './router.js'; // Import your router configuration
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import { faUser,faNewspaper,faPencil,faGlasses,faSchool,faGraduationCap,faRightFromBracket,faKey, faK} from '@fortawesome/free-solid-svg-icons'
+import { faUser,faNewspaper,faPencil,faGlasses,faSchool,faGraduationCap,faRightFromBracket,faKey, faK,faAnglesUp} from '@fortawesome/free-solid-svg-icons'
 import { faReadme} from '@fortawesome/free-brands-svg-icons'
 import './bootstrap.js'; // Import bootstrap or any other dependencies
 import ElementPlus from 'element-plus';
@@ -33,7 +33,7 @@ const app = createApp({
 });
 
 library.add(
-    faUser,faNewspaper,faPencil,faGlasses,faSchool,faReadme,faGraduationCap,faRightFromBracket,faKey
+    faUser,faNewspaper,faPencil,faGlasses,faSchool,faReadme,faGraduationCap,faRightFromBracket,faKey,faK,faAnglesUp
 )
 // Register your components using the component method
 

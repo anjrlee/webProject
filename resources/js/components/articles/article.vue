@@ -9,27 +9,40 @@
     <p class="info">{{ articleItem.type }}</p>
 
     <div class="image-section">
-      <img :src="articleItem.cover || '/images/articleImg/default.jpg'" class="image">
+      <img :src="articleItem.cover" class="image">
     </div>
 
     <p>{{ articleItem.content }}</p><br><hr><br>
     
     <h2>相關連結:</h2>
     <div v-if="articleItem.links && articleItem.links.length">
-      <div v-for="link in articleItem.links" :key="link.id">
-        <a :href="link.link">{{ link.link }}</a><br> 
+      <div v-for="link in articleItem.links" :key="link.id" style="margin-bottom: 50px;">
+        <a :href="link.link" >{{ link.link }}</a><br> 
       </div>       
     </div>
     <div v-else>
       <p>No related links</p>
     </div>
   </div>
+  <el-backtop :bottom="50" style="width: 70px; height:70px;">
+    <div
+      style="
+        background-color: white;
+        text-align: center;
+        color: rgb(62, 44, 26);
+        border-radius: 20px;
+      "
+    >
+    <font-awesome-icon :icon="['fas', 'angles-up']" style="width: 50px;" />
+    </div>
+  </el-backtop>
 </template>
 
 <script setup>
 import { reactive, onMounted } from 'vue';
 import { useRoute } from 'vue-router';
 import axios from 'axios';
+import { ElBacktop } from 'element-plus';
 
 const route = useRoute();
 const id = route.params.id;
@@ -54,7 +67,7 @@ const fetchArticle = async () => {
         // Update articleItem with data from the response
         articleItem.email = article.email;
         articleItem.title = article.title;
-        articleItem.cover = article.cover;
+        articleItem.cover = article.cover || '/images/articleImg/default.jpg';
         articleItem.author = article.author;
         articleItem.type = article.type;
         articleItem.date = article.date;
