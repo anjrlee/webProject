@@ -148,7 +148,7 @@ export default {
                     formData.append('cover', this.post.cover);
                 }
                 try {
-                    const response = await axios.post("http://127.0.0.1:8000/api/add-post", formData, {
+                    const response = await axios.post("/api/add-post", formData, {
                         headers: {
                             'Content-Type': 'multipart/form-data'
                         }
