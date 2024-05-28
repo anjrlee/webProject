@@ -18,7 +18,7 @@ class ArticleSeeder extends Seeder
             [
                 'id' => 1,
                 'title' => '研究室月刊-陳志文老師的研究室在幹嘛?',
-                'cover' => 'images/aritcleImg/1.png',
+                'cover' => '/images/articleImg/1.png',
                 'type' => '學術研究類',
                 'date' => '2024-02-18',
                 'MW' => 'month',
@@ -27,7 +27,7 @@ class ArticleSeeder extends Seeder
             [
                 'id' => 2,
                 'title' => '校園月刊-教務處都在忙些甚麼?',
-                'cover' => 'images/aritcleImg/2.jpg',
+                'cover' => '/images/articleImg/2.jpg',
                 'type' => '校園生活類',
                 'date' => '2024-03-03',
                 'MW' => 'month',
@@ -36,7 +36,7 @@ class ArticleSeeder extends Seeder
             [
                 'id' => 3,
                 'title' => '研究室月刊-張建國老師的研究室在幹嘛?',
-                'cover' => 'images/aritcleImg/3.png',
+                'cover' => '/images/articleImg/3.png',
                 'type' => '學術研究類',
                 'date' => '2024-03-17',
                 'MW' => 'month',
@@ -45,7 +45,7 @@ class ArticleSeeder extends Seeder
             [
                 'id' => 4,
                 'title' => '校園月刊-秘書室都在忙些甚麼?',
-                'cover' => 'images/aritcleImg/4.jpg',
+                'cover' => '/images/articleImg/4.jpg',
                 'type' => '校園生活類',
                 'date' => '2024-04-07',
                 'MW' => 'month',
@@ -54,7 +54,7 @@ class ArticleSeeder extends Seeder
             [
                 'id' => 5,
                 'title' => '研究室月刊-王榮煌老師的研究室在幹嘛?',
-                'cover' => 'images/aritcleImg/5.png',
+                'cover' => '/images/articleImg/5.png',
                 'type' => '學術研究類',
                 'date' => '2024-04-14',
                 'MW' => 'month',
@@ -63,7 +63,7 @@ class ArticleSeeder extends Seeder
             [
                 'id' => 6,
                 'title' => '活動周刊第1期',
-                'cover' => 'images/aritcleImg/defalut.jpg',
+                'cover' => '/images/articleImg/default.jpg',
                 'type' => '校園生活類',
                 'date' => '2024-05-23',
                 'MW' => 'week',
@@ -72,7 +72,7 @@ class ArticleSeeder extends Seeder
             [
                 'id' => 7,
                 'title' => '活動周刊第2期',
-                'cover' => 'images/aritcleImg/defalut.jpg',
+                'cover' => '/images/articleImg/default.jpg',
                 'type' => '校園生活類',
                 'date' => '2024-05-30',
                 'MW' => 'week',

@@ -5,6 +5,8 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { faUser,faNewspaper,faPencil,faGlasses,faSchool,faGraduationCap,faRightFromBracket,faKey, faK} from '@fortawesome/free-solid-svg-icons'
 import { faReadme} from '@fortawesome/free-brands-svg-icons'
 import './bootstrap.js'; // Import bootstrap or any other dependencies
+import ElementPlus from 'element-plus';
+import 'element-plus/dist/index.css';
 
 // Remove this line as it's not needed in Vue 3
 // window.Vue = require('vue').default;
@@ -52,6 +54,8 @@ app.component('UserProfle', UserProfile);
 
 // Use the router with the app
 app.use(router);
+app.use(ElementPlus);
 
 // Mount the app to the element with id 'app'
 app.mount('#app');
+

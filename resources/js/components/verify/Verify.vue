@@ -1,4 +1,6 @@
 <template>
+    <el-button :plain="true" @click="open2">Success</el-button>
+  <el-button :plain="true" @click="open3">Warning</el-button>
     <div class="main-container">
 
         <button @click="logout" class="button3">登出管理者模式</button>
@@ -54,22 +56,22 @@
       
         
         <div class="twobuttons"  v-if="selectItem">
-              <button @click="approve(selectItem.id)" class="button1">許可</button>
-            <button @click="reject(selectItem.id)" class="button2">拒絕</button>
+            <el-button  @click="approve(selectItem.id)" class="button1">許可</el-button>
+            <el-button @click="reject(selectItem.id)" class="button2">拒絕</el-button>
         </div>
     </div>
   </template>
   
   <script>
   import axios from 'axios';
-  
+  import { ElMessage } from 'element-plus';
   export default {
     data() {
       return {
         items: [],
         selectItem: null,
         itemTable: true,
-        filter: 'all',
+        filter: 'no',
       };
     },
     computed: {
@@ -96,7 +98,7 @@
         axios.post('/remove-session')
               .then(response => {
                 console.log('Session removed response:', response.data);
-                window.location.href = "/verify"; 
+                window.location.href = "/"; 
               })
               .catch(error => {
                 Swal.showValidationMessage("請求失敗: " + error);
@@ -109,9 +111,12 @@
               'x-Verified':sessionStorage.getItem('verified')
             }
           });
-          console.log(response.data);
-          console.log(sessionStorage.getItem('verified'));
+          this.goback();
           this.fetchPosts();
+          ElMessage({
+              message: 'Post approved successfully!',
+              type: 'success',
+          });
         } catch (error) {
           console.error('Error approving post:', error);
         }
@@ -125,7 +130,9 @@
           
           });
           console.log(response.data);
+          this.goback();
           this.fetchPosts();
+          ElMessage.error('Post rejected successfully!')
         } catch (error) {
           console.error('Error rejecting post:', error);
         }
@@ -159,8 +166,7 @@
   display: flex;
   justify-content: center;
   position: absolute;
-  bottom: 80px;
-
+  bottom: 10vh;
 }
 
 .filter-buttons button {
@@ -169,10 +175,9 @@
   border: none;
   background-color: #f0f0f0;
   cursor: pointer;
-  transition: background-color 0.3s, transform 0.3s;
+  transition: transform 0.3s;
   border-radius: 20px;
   font-size: 20px;
-  transform: scaleX(1.1);
 }
 
 .twobuttons button {
@@ -184,16 +189,16 @@
   transform: scaleX(1.05);
 }
 .filter-buttons button.active {
-  background-color: #f0c575;
+  background-color: #fbc531;
   color: #fff;
   transform: scale(1.1);
-  width: 150px;
+  width: 130px;
 }
 
 .filter-buttons button:hover {
-  background-color: #ffc115;
+  background-color: #f0c575;
   color: #fff;
-  transform: scale(1.05);
+  transform: scale(1.15);
 }
 
 .main-container{
@@ -276,7 +281,8 @@
 }
 .button1:hover {
   background: #57b86f;
-  transform: scale(1.05);
+  transform: scale(1.2);
+  color: white;
 }
 .button2{
     text-align: center;
@@ -287,7 +293,8 @@
 }
 .button2:hover {
   background: #c43d3d;
-  transform: scale(1.05);
+  transform: scale(1.2);
+  color: white;
 }
 .button3, .back{
     border: none;
@@ -298,17 +305,25 @@
 .button3{
   background-color: rgb(128, 109, 81);
   top: 150px;
-  right: 150px;
+  right: 10%;
   border-radius: 10px;
   padding: 10px 20px;
   color: white;
+  transition: transform 0.3s ease-in-out;
+}
+.button3:hover{
+  background-color: rgb(62, 44, 26);
+  transform: scale(1.1);
 }
 .back{
   width: 50px;
   height: 50px;
-  top: 150px;
-  right: 100px;
-
+  top: 140px;
+  left: 10%;
+  transition: left 0.3s ease-in-out;
+}
+.back:hover{
+  left: 9%;
 }
 .showable, .Itemcontent{
   width: 60vw;
@@ -317,3 +332,4 @@
   height: 65vh;
 }
 </style>
+

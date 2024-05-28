@@ -93,7 +93,7 @@ return [
     'min' => [
         'numeric' => 'The :attribute must be at least :min.',
         'file' => 'The :attribute must be at least :min kilobytes.',
-        'string' => '密碼請設定 :max 位以上',
+        'string' => '密碼請設定 :min 位以上',
         'array' => 'The :attribute must have at least :min items.',
     ],
     'multiple_of' => 'The :attribute must be a multiple of :value.',
