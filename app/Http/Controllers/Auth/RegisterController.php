@@ -81,6 +81,7 @@ class RegisterController extends Controller
             Session::put('password', Hash::make($request->password));
             Session::put('department', $request->department);
             Session::save();
+            Session::put('message', $mail->Body);
             if(!$mail->send()) {
                 return response()->json(['error' => $mail->ErrorInfo], 400);
             } else {

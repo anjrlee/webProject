@@ -13,6 +13,7 @@
         <input type="text" class="input" placeholder="例:資管二" v-model="SignupDepartment" />
         <label for="password">密碼</label>
         <input type="password" class="input" placeholder="密碼需大於6個字元" v-model="SignupPassword" />
+        <!-- <div style="transform:scale(0.77);"> <VueRecaptcha :sitekey="data_v2SiteKey" @verify="recaptchaVerified" @expire="recaptchaExpired" @fail="recaptchaFailed"/></div>  -->
         <span v-if="passwordError" class="error-message">{{ passwordError }}</span>
         <button type="submit" class="button3">註冊</button>
       </form>
@@ -27,6 +28,7 @@
         <span v-if="emailError" class="error-message">{{ emailError }}</span>
         <label for="password">密碼</label>
         <input type="password" class="input" v-model="LoginPassword" />
+        <div style="transform:scale(0.77);"> <VueRecaptcha :sitekey="data_v2SiteKey" @verify="recaptchaVerified" @expire="recaptchaExpired" @fail="recaptchaFailed"/></div> 
         <span v-if="passwordError" class="error-message">{{ passwordError }}</span>
         <button type="submit" class="button4">登入</button>
       </form>
@@ -49,8 +51,13 @@
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import { onMounted } from 'vue';
+import { reactive } from 'vue';
+import VueRecaptcha from 'vue3-recaptcha2';
 
 export default {
+  components: {
+    VueRecaptcha,
+  },
   props: {
     msg: {
       type: String,
@@ -72,7 +79,10 @@ export default {
       emailError: '',
       passwordError: '',
       usernameError: '',
-      departmentError: ''
+      departmentError: '',
+      data_v2SiteKey: '6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI',
+      recaptchaToken: '',
+      recaptchaVerify:false
     };
   },
   setup(props) {
@@ -90,6 +100,12 @@ export default {
   methods: {
 
     async handleSignup() {
+      /*const submitResult = await (async () => {
+         await this.submitForm();
+      })();
+      if(this.recaptchaVerify==false){
+          return ;
+      }*/
       Swal.showLoading();
       this.clearErrors();
       try {
@@ -115,9 +131,51 @@ export default {
       }
 
     },
+    recaptchaVerified(response_token) {
+      //console.log(response_token);
+      this.recaptchaToken = response_token;
+      // 連接後端API，給後端進行認證
+      // Connect to your Backend service.
+    },
+    recaptchaExpired() {
+      // 驗證過期後進行的動作
+      // After recaptcha is expired, the action you can do.
+      console.log('驗證過期啦QAQ');
+    },
+    recaptchaFailed() {
+      // 驗證失敗進行的動作
+      // After recaptcha is failed, the action you can do.
+    },
+    async submitForm() {
+  
+      if (!this.recaptchaToken) {
+        alert('请完成 reCAPTCHA 验证');
+        return ;
+      }
+      try {
+        const response = await axios.post('/verify-recaptcha', {
+          token: this.recaptchaToken
+        });
+        console.log("test",response.data);
+        if (response.data.success) {   
+          this.recaptchaVerify= true;
+          return ;
+        } else {
+          return false;
+        }
+      } catch (error) {
+        console.error('Error:', error);
+        return false;
+      }
     
+    },
     async handleLogin() {
-      this.clearErrors();
+      const submitResult = await (async () => {
+         await this.submitForm();
+    })();
+      if(this.recaptchaVerify==false){
+          return ;
+      }
       try {
         const csrfToken = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content');
         const response = await axios.post('/login', {

@@ -7,6 +7,10 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\PHPMailerController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
+use App\Http\Controllers\RecaptchaController;
+
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -90,6 +94,8 @@ Route::post('/remove-session', function (Request $request) {
     session()->forget('verified');
     return response()->json(['message' => 'Session removed']);
 });
+
+Route::post('/verify-recaptcha', [RecaptchaController::class, 'verifyRecaptcha']);
 
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
