@@ -25,7 +25,7 @@
       <p class="info-detail"> {{ recordItem.date }}</p><br>
       <img class="icon" src="/images/post/4.png">
       <h2>種類: </h2><br>
-      <p class="info-detail">{{ getTypeLabel(recordItem.type) }}</p><br>
+      <p class="info-detail">{{ recordItem.type }}</p><br>
     </div>
 
     <div class="award-section">

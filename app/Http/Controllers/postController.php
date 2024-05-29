@@ -8,6 +8,8 @@ use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
+use function PHPSTORM_META\type;
+
 class PostController extends Controller
 {
     public function addPost(Request $request)
@@ -61,6 +63,9 @@ class PostController extends Controller
 
         $type = $request->query('type');
         if ($type) {
+            if($type == "leisure") $type = "休閒類";
+            elseif($type == "study") $type = "學術研究類";
+            elseif($type == "campus") $type =  "校園生活類";
             $query->where('type', $type);
         }
 
