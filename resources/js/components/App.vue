@@ -38,13 +38,13 @@
       <div class="sideBarWord">
         <div class="sideBarTitle">
           <font-awesome-icon :icon="['fas', 'newspaper']" class="mr-[3%]" />
-          <router-link to="/article" style="text-decoration: none; color: black;" @click="sideBarShowFun">article</router-link>
+          <router-link to="/article" style="text-decoration: none; color: black;" @click="sideBarShowFun">Article</router-link>
         </div>
       </div>
       <div class="sideBarWord">
         <div class="sideBarTitle" v-if="ifLogin">
           <font-awesome-icon :icon="['fas', 'pencil']" class="mr-[3%]" />
-          <a href="/addpost" style="text-decoration: none; color: black;" @click="sideBarShowFun">add my post</a>
+          <a href="/addpost" style="text-decoration: none; color: black;" @click="sideBarShowFun">Add my post</a>
         </div>
       </div>
       <div class="sideBarWord">
@@ -56,11 +56,11 @@
       <div class="sideBarWord">
         <div class="sideBarTitle" v-if="ifLogin">
           <font-awesome-icon :icon="['fas', 'user']" class="mr-[3%]" />
-          <a href="/profile" style="text-decoration: none; color: black;" @click="sideBarShowFun">profile</a>
+          <a href="/profile" style="text-decoration: none; color: black;" @click="sideBarShowFun">Profile</a>
         </div>
       </div>
       <div class="sideBarWord">
-        <div class="sideBarTitle" >
+        <div class="sideBarTitle" v-if="email === 'admin@example.com'" >
           <font-awesome-icon :icon="['fas', 'key']" style="color: #000000;" class="mr-[3%]" />
           <a href="/verify" style="text-decoration: none; color: black;" >Administrator</a>
         </div>
@@ -83,10 +83,10 @@ const props=defineProps({
 const sideBarShow = ref(false);
 const sideBarShowStart = ref(false);
 var ifLogin = ref(false);
+var email = ref('');
 const checkAuthentication = async () => {
   try {
-    const response = await axios.post('/ifLogin');
-    ifLogin.value=response.data.msg;
+    email.value=localStorage.getItem('userEmail');
   } catch (error) {
     console.error('Error checking authentication status:', error);
   }
