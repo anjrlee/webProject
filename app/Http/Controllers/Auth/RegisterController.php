@@ -75,7 +75,7 @@ class RegisterController extends Controller
             Session::put('token', $token);
             
             $mail->Subject = "verify";
-            $mail->Body    = env('webLink')."/verifyEmail"."/".Session::get('token', '');
+            $mail->Body    = "<h5>請點以下連結以完成央氏世界紀錄之註冊，謝謝</h5><br>".env('webLink')."/verifyEmail"."/".Session::get('token', '');
             Session::put('name', $request->name);
             Session::put('email', $request->email);
             Session::put('password', Hash::make($request->password));
@@ -84,9 +84,6 @@ class RegisterController extends Controller
            // Session::put('message', $mail->Body);
             if(!$mail->send()) {
                 return response()->json(['error' => $mail->ErrorInfo], 400);
-            } else {
-                //return response()->json(['message' => "請前往信箱並點驗證信連結以完成註冊"], 200);
-                //return response()->json(['error' => $mail->Body], 400);
             }
             return response()->json(['message' => "good"], 200);
             

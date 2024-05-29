@@ -38,7 +38,7 @@
       <div class="sideBarWord">
         <div class="sideBarTitle">
           <font-awesome-icon :icon="['fas', 'newspaper']" class="mr-[3%]" />
-          <router-link to="/articles" style="text-decoration: none; color: black;" @click="sideBarShowFun">article</router-link>
+          <router-link to="/article" style="text-decoration: none; color: black;" @click="sideBarShowFun">article</router-link>
         </div>
       </div>
       <div class="sideBarWord">

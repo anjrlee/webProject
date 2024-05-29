@@ -6,7 +6,7 @@
         @click="go(i.id)">
         <posts class="bg-white h-4/5 w-full relative" :data="i" />
         <div class="w-full h-1/5 relative text-[20px] flex items-center justify-center">
-          {{ i.title }}
+          <div v-if="i.title.length>20">{{ i.title.substr(0,20)+"..." }}</div><div v-else>{{ i.title }}</div>
         </div>
       </div>
     </div>

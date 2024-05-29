@@ -28,7 +28,7 @@
         <span v-if="emailError" class="error-message">{{ emailError }}</span>
         <label for="password">密碼</label>
         <input type="password" class="input" v-model="LoginPassword" />
-        <div style="transform:scale(0.77);"> <VueRecaptcha :sitekey="data_v2SiteKey" @verify="recaptchaVerified" @expire="recaptchaExpired" @fail="recaptchaFailed"/></div> 
+        <div style="transform:scale(0.70);"> <VueRecaptcha :sitekey="data_v2SiteKey" @verify="recaptchaVerified" @expire="recaptchaExpired" @fail="recaptchaFailed"/></div> 
         <span v-if="passwordError" class="error-message">{{ passwordError }}</span>
         <button type="submit" class="button4">登入</button>
       </form>

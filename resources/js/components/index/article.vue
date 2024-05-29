@@ -1,15 +1,15 @@
 <template>
     <div class="container">
-      <div class="w-[85%] absolute left-[7.5%] top-[18%] flex-wrap">
-        <div class="h-2/5 relative mb-[5%]">
+      <div class="w-[85%] absolute left-[7.5%] flex-wrap">
+        <div class="h-2/5 relative mb-[3%]">
           <div class="w-1/5 left-[5%] h-1/5 relative mb-[2%] flex mt-[5%]">
             <div class="text-[2vw]">周刊</div>
             <div class="ml-[3%] text-[1.2vw] flex items-end cursor-pointer" @click="readMore('week')">{{ readMoreLess[MWData.week.readMoreLess] }}</div>
           </div>
           <div class="flex flex-wrap">
-            <div class="relative h-[250px] w-[300px] ml-[4%] cursor-pointer" v-for="i in Wdata.slice(0, MWData.week.dataSlices)" :key="i.id" @click="go(i.id)">
+            <div class="relative h-[250px] w-[300px] ml-[4%] cursor-pointer mb-[5%]" v-for="i in Wdata.slice(0, MWData.week.dataSlices)" :key="i.id" @click="go(i.id)">
               <posts class="h-4/5 w-full relative" :data="i"/>
-              <div class="w-full h-1/5 relative text-[1.3vw] flex items-center justify-center">{{ i.title }}</div>
+              <div class="w-full h-1/5 relative text-[1.3vw] flex items-center justify-center top-[10%]">{{ i.title }}</div>
             </div>
           </div>
         </div>
@@ -20,9 +20,9 @@
             <div class="ml-[3%] text-[1.2vw] flex items-end cursor-pointer" @click="readMore('month')">{{ readMoreLess[MWData.month.readMoreLess] }}</div>
           </div>
           <div class="flex flex-wrap">
-            <div class="relative h-[250px] w-[300px] ml-[4%] cursor-pointer" v-for="i in Mdata.slice(0, MWData.month.dataSlices)" :key="i.id" @click="go(i.id)">
+            <div class="relative h-[250px] w-[300px] ml-[4%] cursor-pointer mb-[5%]" v-for="i in Mdata.slice(0, MWData.month.dataSlices)" :key="i.id" @click="go(i.id)">
               <posts class="h-4/5 w-full relative" :data="i"/>
-              <div class="w-full h-1/5 relative text-[1.3vw] flex items-center justify-center">{{ i.title }}</div>
+              <div class="w-full h-1/5 relative text-[1.3vw] flex items-center justify-center top-[10%] " ><div v-if="i.title.length>20">{{ i.title.substr(0,20)+"..." }}</div><div v-else>{{ i.title }}</div></div>
             </div>
           </div>
         </div>

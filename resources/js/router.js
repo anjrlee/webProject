@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory,VueRouter  } from 'vue-router';
 import Home from './components/index/Home.vue';
 import page404 from './components/index/page404.vue';
-import Articles from './components/index/articles.vue';
+import Articles from './components/index/article.vue';
 import ArticlesRead from './components/articles/article.vue';
 import Login from './components/loginRegister/Login.vue';
 import Register from './components/loginRegister/Register.vue';
@@ -20,7 +20,7 @@ const router = createRouter(
     routes: [
         { path: '/', component: Home },
         { path: '/404', component: page404 },
-        { path: '/articles', component: Articles },
+        { path: '/article', component: Articles },
         { path: '/login', component: Login },
         { path: '/register', component: Register },
         { path: '/loginnn', component: Loginfirst },

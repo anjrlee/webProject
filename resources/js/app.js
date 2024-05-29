@@ -14,7 +14,7 @@ import 'element-plus/dist/index.css';
 // Import your Vue components without the .default suffix
 import Page404 from './components/index/page404.vue';
 import Home from './components/index/Home.vue';
-import Articles from './components/index/articles.vue';
+import Articles from './components/index/article.vue';
 import Login from './components/loginRegister/Login.vue';
 import Register from './components/loginRegister/Register.vue';
 import AddPost from './components/addPost/AddPost.vue';
