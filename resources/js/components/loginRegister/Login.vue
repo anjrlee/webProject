@@ -82,7 +82,7 @@ export default {
       departmentError: '',
       data_v2SiteKey: '6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI',
       recaptchaToken: '',
-      recaptchaVerify:false
+      recaptchaVerify:true
     };
   },
   setup(props) {
@@ -184,6 +184,8 @@ export default {
           _token: csrfToken
         });
         if (response.status === 200) {
+            localStorage.setItem('userEmail', response.data.user.email);
+            router.push('/');
           Swal.fire({
             title: '登入成功',
             text: '您已成功登入',

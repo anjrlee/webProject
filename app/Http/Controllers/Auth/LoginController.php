@@ -42,6 +42,7 @@ class LoginController extends Controller
             return response()->json([
                 'message' => '登入成功',
                 'user' => $user,
+                'email' => $user->email,
                 'redirect' => $this->redirectPath()
             ], 200);
         } else {
@@ -49,6 +50,7 @@ class LoginController extends Controller
             return response()->json(['message' => '密碼不正確，請重試', 'field' => 'password'], 401);
         }
     }
+
 
 
     public function logout()
