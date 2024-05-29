@@ -71,21 +71,21 @@ export default {
       }
     },
     async fetchRecordItem() {
-      const route = useRoute();
-      const id = route.params.id;
+      const id = this.$route.params.id;
 
       try {
         const response = await axios.get(`/api/post/${id}`);
-        const record= response.data;
+        const record = response.data;
         this.recordItem = response.data;
         this.recordItem.cover = record.cover || '/images/recordImg/default.jpg';
-        console.log(recordItem.cover);
         // Fetch user's name based on user_id
         this.fetchUserName(this.recordItem.user_id);
       } catch (error) {
         console.error('Failed to fetch record item:', error);
       }
-    },
+},
+
+
     async fetchUserName(userId) {
       try {
         const response = await axios.get(`/api/userprofile/${userId}`);
