@@ -82,7 +82,7 @@ export default {
       departmentError: '',
       data_v2SiteKey: '6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI',
       recaptchaToken: '',
-      recaptchaVerify:true
+      recaptchaVerify:false
     };
   },
   setup(props) {
