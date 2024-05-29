@@ -5,7 +5,7 @@
       <h1 class="title_text">{{ articleItem.title }}</h1>
     </div>
 
-    <p class="info">{{ articleItem.author + " " + articleItem.date }}</p>
+    <p class="info">{{ articleItem.date }}</p>
     <p class="info">{{ articleItem.type }}</p>
 
     <div class="image-section">
