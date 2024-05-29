@@ -86,6 +86,8 @@ var ifLogin = ref(false);
 var email = ref('');
 const checkAuthentication = async () => {
   try {
+    const response = await axios.post('/ifLogin');
+    ifLogin.value=response.data.msg;
     email.value=localStorage.getItem('userEmail');
   } catch (error) {
     console.error('Error checking authentication status:', error);

@@ -185,7 +185,6 @@ export default {
         });
         if (response.status === 200) {
             localStorage.setItem('userEmail', response.data.user.email);
-            router.push('/');
           Swal.fire({
             title: '登入成功',
             text: '您已成功登入',
