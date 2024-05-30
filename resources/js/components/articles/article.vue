@@ -12,7 +12,10 @@
       <img :src="articleItem.cover" class="image">
     </div>
 
-    <p>{{ articleItem.content }}</p><br><hr><br>
+    <div v-for="(paragraph, index) in articleItem.content" :key="index">
+      <p>{{ paragraph }}</p>
+    </div>
+    <br><hr><br>
     
     <h2>相關連結:</h2>
     <div v-if="articleItem.links && articleItem.links.length">
@@ -54,7 +57,7 @@ const articleItem = reactive({
     author: "",
     type: "",
     date: "",
-    content: "",
+    content: [],
     links: []
 });
 
@@ -71,7 +74,7 @@ const fetchArticle = async () => {
         articleItem.author = article.author;
         articleItem.type = article.type;
         articleItem.date = article.date;
-        articleItem.content = article.content;
+        articleItem.content = article.content.split('\\n\\n');
         articleItem.links = article.links ? article.links : [];
     } catch (error) {
         console.error('Failed to fetch article:', error);

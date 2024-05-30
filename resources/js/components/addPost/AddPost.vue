@@ -8,9 +8,9 @@
                     <div class="mb-3">
                         <label for="type" class="form-label"><p class="require">*</p>類別：</label>
                         <select class="form-select" id="type" name="type" v-model="post.type" required>
-                            <option value="leisure">休閒類</option>
-                            <option value="study">學術研究類</option>
-                            <option value="campus">校園生活類</option>
+                            <option value="休閒類">休閒類</option>
+                            <option value="學術研究類">學術研究類</option>
+                            <option value="校園生活類">校園生活類</option>
                         </select>
                     </div>
                     <div class="mb-3">
