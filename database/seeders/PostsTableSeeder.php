@@ -22,7 +22,7 @@ class PostsTableSeeder extends Seeder
                 'ifProved' => 'no',
                 'awardSpeech' => '等等續攤',
                 'cover' => '/images/recordImg/1.jpg',
-                'user_id' => 1,
+                'user_id' => 3,
             ],
             [
                 'id' => 2,
@@ -48,7 +48,7 @@ class PostsTableSeeder extends Seeder
                 'ifProved' => 'approved',
                 'awardSpeech' => '我沒有偷，我只是借，讀...讀書人的事，能叫偷嗎',
                 'cover' => '/images/recordImg/default.jpg',
-                'user_id' => 1,
+                'user_id' => 11,
             ],
             [
                 'id' => 4,
@@ -61,7 +61,7 @@ class PostsTableSeeder extends Seeder
                 'ifProved' => 'no',
                 'awardSpeech' => '大一周會就是浪費時間',
                 'cover' => '/images/recordImg/4.jpg',
-                'user_id' => 1,
+                'user_id' => 8,
             ],
             [
                 'id' => 5,
@@ -74,7 +74,7 @@ class PostsTableSeeder extends Seeder
                 'ifProved' => 'no',
                 'awardSpeech' => '我快死了22222',
                 'cover' => '/images/recordImg/default.jpg',
-                'user_id' => 1,
+                'user_id' => 7,
             ],
             [
                 'id' => 6,
@@ -87,7 +87,7 @@ class PostsTableSeeder extends Seeder
                 'ifProved' => 'approved',
                 'awardSpeech' => '9人倖存',
                 'cover' => '/images/recordImg/6.jpg',
-                'user_id' => 1,
+                'user_id' => 6,
             ],
             [
                 'id' => 7,
@@ -100,7 +100,7 @@ class PostsTableSeeder extends Seeder
                 'ifProved' => 'no',
                 'awardSpeech' => '人山人海',
                 'cover' => '/images/recordImg/7.jpg',
-                'user_id' => 1,
+                'user_id' => 12,
             ],
             [
                 'id' => 8,
@@ -113,7 +113,7 @@ class PostsTableSeeder extends Seeder
                 'ifProved' => 'approved',
                 'awardSpeech' => '老闆說沒飯了',
                 'cover' => '/images/recordImg/default.jpg',
-                'user_id' => 1,
+                'user_id' => 10,
             ],
             [
                 'id' => 9,
@@ -126,7 +126,7 @@ class PostsTableSeeder extends Seeder
                 'ifProved' => 'no',
                 'awardSpeech' => '不可能再碰',
                 'cover' => '/images/recordImg/default.jpg',
-                'user_id' => 1,
+                'user_id' => 5,
             ],
             [
                 'id' => 10,
@@ -139,7 +139,7 @@ class PostsTableSeeder extends Seeder
                 'ifProved' => 'approved',
                 'awardSpeech' => '吃著火鍋唱著歌，突然就拿獎了',
                 'cover' => '/images/recordImg/10.jpg',
-                'user_id' => 1,
+                'user_id' => 2,
             ],
             [
                 'id' => 11,
@@ -152,7 +152,7 @@ class PostsTableSeeder extends Seeder
                 'ifProved' => 'approved',
                 'awardSpeech' => '我是真的沒讀書',
                 'cover' => '/images/recordImg/11.jpg',
-                'user_id' => 1,
+                'user_id' => 2,
             ],
         ]);
     }

@@ -27,8 +27,9 @@
       <p class="info-detail">{{ recordItem.type }}</p><br>
     </div>
     <div class="award-section">
-      <h2>得獎感言: </h2><br>
-      <p>{{ recordItem.awardSpeech }}</p><br>
+      <img class="award-icon" src="/images/post/5.png">
+      <h2>得獎感言 </h2><br>
+      <p style="margin-left:40px ; font-size: 20px;">{{ recordItem.awardSpeech }}</p><br>
     </div>
   
   </div>
@@ -55,18 +56,6 @@ export default {
     };
   },
   methods: {
-    getTypeLabel(type) {
-      switch (type) {
-        case 'study':
-          return '學術研究類';
-        case 'leisure':
-          return '休閒類';
-        case 'campus':
-          return '校園生活類';
-        default:
-          return '';
-       }
-     },
      async fetchRecordItem() {
        const id = this.$route.params.id;
        try {
@@ -162,5 +151,14 @@ export default {
 }
 .info-detail{
   text-align: center;
+  color: black;
+  font-size: 25px;
 }
+.award-icon{
+  max-width: 40px;
+  height: auto;
+  float: left;
+  
+}
+
 </style>
