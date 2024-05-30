@@ -27,11 +27,11 @@
                 <div class="table-cell">發表時間</div>
                 <div class="table-cell">狀態</div>
               </div>
-              <div v-for="item in filteredItems" :key="item.id" class="table-row" @click="showItemcontent(item)">
+              <div v-for="item in sortedFilteredItems" :key="item.id" class="table-row" @click="showItemcontent(item)">
                 <div class="table-cell">{{ item.title }}</div>
                 <div class="table-cell">{{ item.recorder }}</div>
                 <div class="table-cell">{{ item.date }}</div>
-                <div class="table-cell">{{ item.ifProved }}</div>
+                <div class="table-cell">{{ getstatus(item.ifProved) }}</div>
               </div>
             </div>
           </div>
@@ -85,6 +85,14 @@ import { offset } from '@popperjs/core';
           return this.items;
         }
         return this.items.filter(item => item.ifProved === this.filter);
+      },
+      sortedFilteredItems() {
+        const priority = {
+          'no': 1,
+          'rejected': 2,
+          'approved': 3
+        };
+        return this.filteredItems.sort((a, b) => priority[a.ifProved] - priority[b.ifProved]);
       },
     },
     methods: {
@@ -159,6 +167,18 @@ import { offset } from '@popperjs/core';
           this.items = response.data;
         } catch (error) {
           console.error('Error fetching posts:', error);
+        }
+      },
+      getstatus(status) {
+        switch (status) {
+          case 'no':
+            return '未審核';
+          case 'approved':
+            return '已批准';
+          case 'rejected':
+            return '已拒絕';
+          default:
+            return status;
         }
       },
     },
@@ -352,4 +372,3 @@ import { offset } from '@popperjs/core';
   height: 65vh;
 }
 </style>
-
