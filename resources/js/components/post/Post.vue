@@ -56,22 +56,21 @@ export default {
     };
   },
   methods: {
-     async fetchRecordItem() {
-       const id = this.$route.params.id;
-       try {
-         const response = await axios.get(`/api/post/${id}`);
-         const record = response.data;
-         this.recordItem = response.data;
-         this.recordItem.cover = record.cover || '/images/recordImg/default.jpg';
-         // Fetch user's name based on user_id
-         this.fetchUserName(this.recordItem.user_id);
-       } catch (error) {
-         console.error('Failed to fetch record item:', error);
-       }
- },
-     async fetchUserName(userId) {
-       try {
-         const response = await axios.get(`/api/userprofile/${userId}`);
+    async fetchRecordItem() {
+      const id = this.$route.params.id;
+      try {
+        const response = await axios.get(`/api/post/${id}`);
+        const record = response.data;
+        this.recordItem = response.data;
+        this.recordItem.cover = record.cover || '/images/recordImg/default.jpg'; 
+        this.fetchUserName(this.recordItem.user_id);
+      } catch (error) {
+        console.error('Failed to fetch record item:', error);
+      }
+    },
+    async fetchUserName(userId) {
+      try {
+        const response = await axios.get(`/api/userprofile/${userId}`);
         console.log('User profile data:', response.data);
         this.recordItem.username = response.data.name;
         this.recordItem.id = response.data.user_id;
@@ -131,7 +130,7 @@ export default {
   
 .image {
   width: 100%; 
-  max-height: 500px; 
+  max-height: 600px; 
   height: auto;
   object-fit: cover; /* 保持比例填滿容器 */
 }

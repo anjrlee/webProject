@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 
 use function PHPSTORM_META\type;
@@ -14,7 +15,7 @@ class PostController extends Controller
 {
     public function addPost(Request $request)
     {
-        $validator = \Validator::make($request->all(), [
+        $validator = Validator::make($request->all(), [
             'type' => 'required|string',
             'title' => 'required|string',
             'recordScore' => 'required|string',

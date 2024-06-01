@@ -47,7 +47,7 @@ class PostsTableSeeder extends Seeder
                 'proveFile' => 'https://drive.google.com/drive/folders/1HFNvrMiFao84oVqCWdEHGND-sG67n2qV?usp=sharing',
                 'ifProved' => 'approved',
                 'awardSpeech' => '我沒有偷，我只是借，讀...讀書人的事，能叫偷嗎',
-                'cover' => '/images/recordImg/default.jpg',
+                'cover' => '/images/recordImg/3.jpg',
                 'user_id' => 11,
             ],
             [
