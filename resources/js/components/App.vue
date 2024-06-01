@@ -7,10 +7,10 @@
         <!-- 央氏世界紀錄 -->
         <img src="/images/index/title.png" class=" h-[140%]">
       </router-link>
-      <div class="h-[70%] w-[66px] top-[15%] cursor-pointer absolute left-[2%]" @click.stop="sideBarShowFun">
-        <div class="h-[10%] bg-black w-full relative top-[20%]"></div>
-        <div class="h-[10%] bg-black w-full relative top-[40%]"></div>
-        <div class="h-[10%] bg-black w-full relative top-[60%]"></div>
+      <div class="menu-icon h-[70%] w-[66px] top-[15%] cursor-pointer absolute left-[2%]" @click.stop="sideBarShowFun">
+        <div class="line h-[10%] w-full relative top-[20%]"></div>
+        <div class="line h-[10%] w-full relative top-[45%]"></div>
+        <div class="line h-[10%] w-full relative top-[70%]"></div>
       </div>
       <div class="absolute top-[25%] right-[2%] h-[50%] w-[8%] ">
         <router-link to="/login" v-if="!ifLogin" style="text-decoration: none; color: black;" @click="sideBarShowFun"><font-awesome-icon :icon="['fas', 'user']" class="h-full w-full" /></router-link>
@@ -20,20 +20,23 @@
 
     <div :class="['sideBar', sideBarShow ? 'show' : 'hide']" >
       <div class="h-[7%] w-5/6 m-[8%] flex"></div>
-      <div class="sideBarWord">
-        <div class="sideBarTitle">
+      <div class="sideBarWord" :class="{ expand: isExpanded }">
+        <div class="sideBarTitle"  @mouseover="expandLinks" @mouseleave="collapseLinks">
           <font-awesome-icon :icon="['fab', 'readme']" class="mr-[2%]" />
-          <router-link to="/" style="text-decoration: none; color: black;" @click="sideBarShowFun">post</router-link>
+          <router-link to="/" style="text-decoration: none; color: black;" @click="sideBarShowFun">Post</router-link>
+          <font-awesome-icon :icon="['fas', 'chevron-down']" class="ml-[50%]" />
         </div>
-        <div class="sideBarLink">
+        
+        <div class="sideBarLink post1" @mouseover="expandLinks" @mouseleave="collapseLinks">
           <router-link to="/?id=leisure" style="text-decoration: none; color: black;" @click="sideBarShowFun">休閒類</router-link>
         </div>
-        <div class="sideBarLink">
+        <div class="sideBarLink post2" @mouseover="expandLinks" @mouseleave="collapseLinks">
           <router-link to="/?id=study" style="text-decoration: none; color: black;" @click="sideBarShowFun">學術研究類</router-link>
         </div>
-        <div class="sideBarLink">
+        <div class="sideBarLink post3" @mouseover="expandLinks" @mouseleave="collapseLinks">
           <router-link to="/?id=campus" style="text-decoration: none; color: black;" @click="sideBarShowFun">校園生活類</router-link>
         </div>
+      
       </div>
       <div class="sideBarWord">
         <div class="sideBarTitle">
@@ -79,7 +82,7 @@ import axios from 'axios';
 const props=defineProps({
   msg: String
 })
-
+const isExpanded = ref(false);
 const sideBarShow = ref(false);
 const sideBarShowStart = ref(false);
 var ifLogin = ref(false);
@@ -92,6 +95,14 @@ const checkAuthentication = async () => {
   } catch (error) {
     console.error('Error checking authentication status:', error);
   }
+};
+
+const expandLinks = () => {
+  isExpanded.value = true;
+};
+
+const collapseLinks = () => {
+  isExpanded.value = false;
 };
 
 onMounted(()=>{
@@ -172,7 +183,6 @@ onUnmounted(() => {
   position: relative;
   width: 80%;
   margin-left: 15%;
-  margin-bottom: 5%;
   text-decoration: none;
 }
 
@@ -183,20 +193,28 @@ onUnmounted(() => {
 .sideBarLink {
   position: relative;
   margin-left: 15%;
-  margin-bottom: 5%;
+  margin-bottom: 0;
   font-size: 20px;
+  height: 0;
+  overflow: hidden;
+  transition: height 0.3s ease-in-out;
 }
+/* 
+.sideBarTitle:hover ~ .sideBarLink
+{
+  height: 50px;
+} */
 
-.sideBarLink:hover {
-  background-color: rgb(160, 160, 160);
+.expand .sideBarLink {
+  height: 50px;
 }
-
 .sideBarTitle {
   color: rgb(0, 0, 0);
   position: relative;
   font-weight: bold;
   font-size: 30px;
   margin-bottom: 5%;
+  transition: background-color 0.3s ease-in-out;
 }
 
 .sideBarTitle:hover {
@@ -216,6 +234,7 @@ onUnmounted(() => {
 .container {
   margin-top: 100px;
 }
+
 .overlay {
   position: fixed;
   top: 0;
@@ -225,5 +244,17 @@ onUnmounted(() => {
   background-color: rgba(199, 199, 199, 0.75);
   z-index: 1;
 }
+.menu-icon {
+  background-color: rgb(94 75 23 / 48%);
+  border-radius: 8px;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
 
+.line {
+  background-color: rgb(255, 255, 255);
+  height: 4px;
+  width: 45px;
+}
 </style>
